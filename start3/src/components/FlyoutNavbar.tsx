@@ -33,7 +33,7 @@ export const FlyoutNavbar = () => {
           <Links />
           <CTAs />
         </div> */}
-        <MobileMenu />
+        {/* <MobileMenu /> */}
       </div>
     </nav>
   );
@@ -44,7 +44,7 @@ const Logo = ({ color = "white" }: { color?: string }) => {
   return (
     <div className="flex items-center gap-2">
       <span className="text-2xl font-bold" style={{ color }}>
-        Brightstars
+        Start3
       </span>
     </div>
   );
@@ -381,7 +381,7 @@ const MobileMenu = () => {
             <div className="flex items-center justify-between p-6">
               <Logo color="black" />
               <button onClick={() => setOpen(false)}>
-                <FiX className="text-3xl text-neutral-950" />
+                {/* <FiX className="text-3xl text-neutral-950" /> */}
               </button>
             </div>
             <div className="h-screen overflow-y-scroll bg-neutral-100 p-6">
