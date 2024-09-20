@@ -91,18 +91,17 @@ export default function Home() {
   return (
     <main className="bg-neutral-900">
       <div className="pb-[200px] pt-20 md:pt-20">
-
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />
       </div>
-      <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% duration-300 ease-in-out animate-in dark:from-background/10 dark:from-10% dark:to-background/80 peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+      <div className="fixed inset-x-0 bottom-0 w-full bg-neutral-900 duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
         <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 flex justify-center flex-col py-2 space-y-4 border-t shadow-lg bg-background sm:rounded-t-xl sm:border md:py-4 bg-white">
+          <div className="px-4 flex justify-center flex-col py-2 space-y-4 border-t shadow-lg bg-neutral-900 sm:border md:py-4 ß">
             <form
               ref={formRef}
               onSubmit={form.handleSubmit(submitHandler)}
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border">
+              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow bg-neutral-900 sm:rounded-md sm:border">
                 <TextareaAutosize
                   tabIndex={0}
                   onKeyDown={onKeyDown}

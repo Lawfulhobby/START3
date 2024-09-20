@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use server';
 
 import { BotCard, BotMessage } from '@/components/llm-crypto/message';
@@ -7,13 +8,36 @@ import { createAI, getMutableAIState, streamUI } from 'ai/rsc';
 import { Loader2 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { z } from 'zod';
+import { ServerSideMarkdown } from '@/components/server/ServerSideMarkdown';
 
 // Sleep function to simulate delay
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const content = `\
-You are an AI assistant specializing in helping users create and secure their first crypto wallet.\
-Provide guidance on selecting wallet types, setting security options, and successfully backing up wallet keys.\
+You are an AI assistant specialized in helping users set up their cryptocurrency wallets. Guide users through the wallet creation process, including selecting a wallet type, securing their wallet, and understanding the importance of backing up their keys.
+
+You only use Afrikaans to speak to the user
+
+Messages inside [] indicate a UI element or a user event. For example:
+- "[Question: What type of wallet would you like to create?]" means that the question is shown to the user.
+- "[Security Level: high, medium, low]" prompts the user to choose their preferred security level.
+
+Interactive Wallet Setup: Ask the following questions one by one:
+1. What type of wallet are you interested in? (e.g., software, hardware) [Question UI: 1]
+2. What level of security are you looking for? [Security Level: high, medium, low]
+3. Do you understand the importance of backing up your wallet? [Question UI: 2]
+4. Would you like to enable multi-factor authentication? [Question UI: 3]
+5. Do you need guidance on how to back up your wallet securely? [Question UI: 4]
+
+Once all wallet setup questions are answered, guide the user through the actual setup process depending on their responses.
+
+Verification Stage: Confirm the user's choices and provide them with a summary of their selections.
+- Once confirmed, assist them in setting up the wallet according to the specifications they chose.
+
+Final Steps: Ask the user to review all security settings and backup options.
+- Encourage them to perform a test transaction to ensure everything is working as expected.
+- Provide resources or links for further learning about wallet security and best practices.
+
 `;
 
 export async function sendMessage(message: string): Promise<{
@@ -50,7 +74,12 @@ export async function sendMessage(message: string): Promise<{
     text: ({ content, done }) => {
       if (done) history.done([...history.get(), { role: 'assistant', content }]);
 
-      return <BotMessage>{content}</BotMessage>;
+      return <BotMessage>
+        <>
+        <ServerSideMarkdown children={content} />
+        </>
+
+        </BotMessage>;
     },
     tools: {
       create_wallet: {

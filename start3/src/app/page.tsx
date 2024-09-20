@@ -1,16 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
 import { FlyoutNavbar } from '@/components/FlyoutNavbar'
 import { GridCards } from '@/components/GridCards'
-
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
