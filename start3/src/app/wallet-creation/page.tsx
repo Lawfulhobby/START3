@@ -90,7 +90,7 @@ export default function Home() {
 
   return (
     <main className="bg-neutral-900">
-      <div className="pb-[200px] pt-4 md:pt-10">
+      <div className="pb-[200px] pt-20 md:pt-20">
 
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />

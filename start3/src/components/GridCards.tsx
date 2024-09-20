@@ -9,7 +9,7 @@ export const GridCards = () => {
             <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <TitleCard />
                 <Card
-                    href="#"
+                    href="/wallet-creation"
                     title="Interactive Wallet Setup"
                     readTime="12 min"
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -91,7 +91,7 @@ const Card = ({
             className="group relative flex h-56 flex-col justify-end overflow-hidden p-6 transition-colors hover:bg-neutral-950 md:h-80 md:p-9"
         >
             <div className="absolute left-3 top-5 z-10 flex items-center gap-1.5 text-xs uppercase text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50">
-                <FiWatch className="text-base" />
+                {/* <FiWatch className="text-base" /> */}
                 {/* <span>{readTime}</span> */}
             </div>
             <h2 className="relative z-10 text-3xl leading-tight transition-transform duration-500 group-hover:-translate-y-3">
@@ -130,8 +130,8 @@ const Corners = () => (
 const TitleCard = () => {
     return (
         <a
-            href="#"
-            target="_blank"
+            href="/wallet-creation"
+            // target="_blank"
             className="group relative flex h-56 flex-col justify-between bg-neutral-950 p-6 md:h-80 md:p-9"
         >
             <h2 className="text-4xl uppercase leading-tight">
