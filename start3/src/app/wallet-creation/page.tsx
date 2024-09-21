@@ -9,24 +9,12 @@ import type { ChatInputs } from "@/lib/chat-schema";
 import { useEnterSubmit } from "@/lib/use-enter-submit";
 import { useForm } from "@/lib/use-form";
 import { useActions, useUIState } from "ai/rsc";
-import { ArrowDownIcon, PlusIcon } from "lucide-react";
+import { ArrowDownIcon, ArrowRight, PlusIcon } from "lucide-react";
 import { useEffect, useRef } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import TextareaAutosize from 'react-textarea-autosize';
 import type { AI } from "./actions";
 
-/*
-  !-- With language models becoming better at reasoning, we believe that there is a future where
-  !-- developers only write core application specific components while models take care of routing
-  !-- them based on the user's state in an application.
-
-  !-- With generative user interfaces, the language model decides which user interface to render
-  !-- based on the user's state in the application, giving users the flexibility to interact with
-  !-- your application in a conversational manner instead of navigating through a series of predefined routes.
-*/
-
-// Here we can read the streamable UI using the sendMessage Server Action via a function call
-// render the returned UI like any other normal React components.
 export default function Home() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { sendMessage } = useActions<typeof AI>();
@@ -94,19 +82,19 @@ export default function Home() {
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />
       </div>
-      <div className="fixed inset-x-0 bottom-0 w-full bg-neutral-900 duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+      <div className="fixed inset-x-0 bottom-0 w-full bg-transparent duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
         <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 flex justify-center flex-col py-2 space-y-4 border-t shadow-lg bg-neutral-900 sm:border md:py-4 ß">
+          <div className="px-4 flex justify-center flex-col py-2 space-y-4  shadow-lg bg-transparent  md:py-4 ß">
             <form
               ref={formRef}
               onSubmit={form.handleSubmit(submitHandler)}
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow bg-neutral-900 sm:rounded-md sm:border">
+              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl sm:border">
                 <TextareaAutosize
                   tabIndex={0}
                   onKeyDown={onKeyDown}
                   placeholder="Send a message."
-                  className="min-h-[60px] w-full resize-none bg-transparent pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
+                  className="min-h-[60px] text-black w-full resize-none bg-neutral-200 pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
                   autoFocus
                   spellCheck={false}
                   autoComplete="off"
@@ -119,9 +107,9 @@ export default function Home() {
                     type="submit"
                     size="icon"
                     disabled={form.watch('message') === ''}
+                    className="border border-2 border-black rounded-full"
                   >
-                    <ArrowDownIcon className="w-5 h-5" />
-                    <span className="sr-only">Send message</span>
+                    <ArrowRight className="text-black text-sm" />
                   </Button>
                 </div>
               </div>
