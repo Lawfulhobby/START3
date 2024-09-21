@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use server';
 
-import { BotCard, BotMessage } from '@/components/llm-crypto/message';
+import { BotCard, BotMessage } from '@/components/llm/message';
 import { openai } from '@ai-sdk/openai';
 import type { CoreMessage, ToolInvocation } from 'ai';
 import { createAI, getMutableAIState, streamUI } from 'ai/rsc';

@@ -3,7 +3,7 @@
 
 import { ChatList } from "@/components/chat-list";
 import { ChatScrollAnchor } from "@/components/chat-scroll-anchor";
-import { UserMessage } from "@/components/llm-crypto/message";
+import { UserMessage } from "@/components/llm/message";
 import { Button } from "@headlessui/react";
 import type { ChatInputs } from "@/lib/chat-schema";
 import { useEnterSubmit } from "@/lib/use-enter-submit";
