@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import useMeasure from "react-use-measure";
 import Link from "next/link";
+import { ConnectBtn } from "./connectButton";
 
 export const FlyoutNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,10 +30,10 @@ export const FlyoutNavbar = () => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Logo />
-        {/* <div className="hidden gap-6 lg:flex">
-          <Links />
+        <div className="hidden gap-6 lg:flex">
+          {/* <Links /> */}
           <CTAs />
-        </div> */}
+        </div>
         {/* <MobileMenu /> */}
       </div>
     </nav>
@@ -113,16 +114,7 @@ const NavLink = ({
 const CTAs = () => {
   return (
     <div className="flex items-center gap-3">
-      <Link href="/login">
-        <button className="flex items-center gap-2 rounded-full border-2 border-white px-4 py-2 font-semibold text-white transition-colors hover:bg-white hover:text-black">
-          <span>Sign in</span>
-        </button>
-      </Link>
-      <Link href="/register">
-        <button className="rounded-full border-2 border-indigo-300 bg-indigo-300 px-4 py-2 font-semibold text-black transition-colors hover:border-indigo-600 hover:bg-indigo-600 hover:text-white">
-          Get started!
-        </button>
-      </Link>
+      <ConnectBtn />
     </div>
   );
 };

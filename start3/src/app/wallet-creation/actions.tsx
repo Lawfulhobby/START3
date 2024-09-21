@@ -9,38 +9,36 @@ import { Loader2 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { z } from 'zod';
 import { ServerSideMarkdown } from '@/components/server/ServerSideMarkdown';
-import { ServerSideQuestion } from '@/components/wallet-creation/ServerSideQuestion';
+import { ServerSideWallet } from '@/components/wallet-creation/ServerSideWallet';
 
 // Sleep function to simulate delay
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-// You only use Afrikaans to speak to the user
 
 const content = `\
 You are an AI assistant specialized in helping users set up their cryptocurrency wallets. Guide users through the wallet creation process, including selecting a wallet type, securing their wallet, and understanding the importance of backing up their keys.
 
 Messages inside [] indicate a UI element or a user event. For example:
 - "[Question: What is your first name?]" means that the question is shown to the user.
-- "[Question UI: 1]" meants the UI component shown to the user
+- "[Question UI: 1]" means the UI component shown to the user.
 
-Ask the user which language they prefer to communicate with and use that. [Question UI: 1]
+1. Language Selection:
+   - Ask the user which language they prefer to communicate with and use that. 
+   - [Question UI: 1]
 
-Interactive Wallet Setup: Ask the following questions one by one:
-1. What type of wallet are you interested in? (e.g., software, hardware) 
-2. What level of security are you looking for? [Security Level: high, medium, low]
-3. Do you understand the importance of backing up your wallet? [Question UI: 2]
-4. Would you like to enable multi-factor authentication? [Question UI: 3]
-5. Do you need guidance on how to back up your wallet securely? 
+2. Wallet Creation Inquiry:
+   - Find out if the user wants to learn about creating a wallet. If they do, answer all their questions.
+   - [Question: Would you like to learn about creating a new cryptocurrency wallet? (Yes/No)] 
+    - [Question UI: 4]
+
+3. Initiate Wallet Creation:
+   - Once the user confirms that they want to create a wallet, proceed with the wallet creation process.
+   - [Question UI: 2]
+
+4. Wallet Connection or Management:
+   - Once the user confirms that they have created a wallet or if they already have a wallet, proceed with wallet connection or management.
+   - [Question UI: 3]
 
 Once all wallet setup questions are answered, guide the user through the actual setup process depending on their responses.
-
-Verification Stage: Confirm the user's choices and provide them with a summary of their selections.
-- Once confirmed, assist them in setting up the wallet according to the specifications they chose.
-
-Final Steps: Ask the user to review all security settings and backup options.
-- Encourage them to perform a test transaction to ensure everything is working as expected.
-- Provide resources or links for further learning about wallet security and best practices.
-
 `;
 
 export async function sendMessage(message: string): Promise<{
@@ -100,7 +98,7 @@ export async function sendMessage(message: string): Promise<{
                 </div>
               )}
               {questionNumberMatch && (
-                <ServerSideQuestion question={Number(questionNumberMatch[1])} />
+                <ServerSideWallet question={Number(questionNumberMatch[1])} />
               )}
             </>
           </BotMessage>
@@ -108,51 +106,51 @@ export async function sendMessage(message: string): Promise<{
         </>
       );
     },
-    tools: {
-      create_wallet: {
-        description: "Guide the user through the steps of creating a new wallet, including selecting a wallet type and securing it.",
-        parameters: z.object({
-          walletType: z.string().describe("Type of wallet to create."),
-          secure: z.boolean().describe("Whether to apply high-security settings."),
-        }),
-        generate: async function* ({ walletType, secure }: { walletType: string, secure: boolean; }) {
-          yield (
-            <BotMessage>
-              Let's start by choosing a wallet type. You've selected: {walletType}.
-            </BotMessage>
-          );
+    // tools: {
+    //   create_wallet: {
+    //     description: "",
+    //     // parameters: z.object({
+    //     //   walletType: z.string().describe("Type of wallet to create."),
+    //     //   secure: z.boolean().describe("Whether to apply high-security settings."),
+    //     // }),
+    //     generate: async function* ({ walletType, secure }: { walletType: string, secure: boolean; }) {
+    //       yield (
+    //         <BotMessage>
+    //           Let's start by choosing a wallet type. You've selected: {walletType}.
+    //         </BotMessage>
+    //       );
 
-          // Simulate wallet creation steps
-          await sleep(1000);
+    //       // Simulate wallet creation steps
+    //       await sleep(1000);
 
-          yield (
-            <BotMessage>
-              Next, we'll secure your wallet. Applying security measures: {secure ? "Enabled" : "Disabled"}.
-            </BotMessage>
-          );
+    //       yield (
+    //         <BotMessage>
+    //           Next, we'll secure your wallet. Applying security measures: {secure ? "Enabled" : "Disabled"}.
+    //         </BotMessage>
+    //       );
 
-          await sleep(1000);
+    //       await sleep(1000);
 
-          // Confirm wallet creation
-          history.done([
-            ...history.get(),
-            {
-              role: 'assistant',
-              name: 'create_wallet',
-              content: `[Wallet Created Successfully: Type ${walletType}, Security ${secure ? "High" : "Standard"}]`,
-            },
-          ]);
+    //       // Confirm wallet creation
+    //       history.done([
+    //         ...history.get(),
+    //         {
+    //           role: 'assistant',
+    //           name: 'create_wallet',
+    //           content: `[Wallet Created Successfully: Type ${walletType}, Security ${secure ? "High" : "Standard"}]`,
+    //         },
+    //       ]);
 
-          return (
-            <BotCard>
-              <BotMessage>
-                Your wallet has been created successfully. Type: {walletType}, Security: {secure ? "High" : "Standard"}.
-              </BotMessage>
-            </BotCard>
-          );
-        },
-      },
-    },
+    //       return (
+    //         <BotCard>
+    //           <BotMessage>
+    //             Your wallet has been created successfully. Type: {walletType}, Security: {secure ? "High" : "Standard"}.
+    //           </BotMessage>
+    //         </BotCard>
+    //       );
+    //     },
+    //   },
+    // },
     temperature: 0,
   });
 
