@@ -11,6 +11,7 @@ import QuestionSix from "./question_six";
 import QuestionTen from "./question_ten";
 import QuestionThree from "./question_three";
 import QuestionTwo from "./question_two";
+import WalletConnect from "./wallet-connect";
 import WalletCreation from "./wallet-creation";
 
 export async function ServerSideQuestion({
@@ -24,7 +25,8 @@ export async function ServerSideQuestion({
             case 1:
                 return (
                 //   <LanguageOptions/>
-                <WalletCreation/>
+                // <WalletCreation/>
+                <WalletConnect/>
                 );
             case 2:
                 return (

@@ -1,44 +1,15 @@
-// app/connect-wallet/page.tsx
-// @ts-nocheck
-'use client'
+// app/create-wallet/page.tsx
+"use client";
 
-import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { useAccount, useBalance } from 'wagmi'
+import Image from "next/image";
+import { ConnectBtn } from "@/components/connectButton";
+import Profile from "@/components/profile";
 
-const ConnectWalletPage = () => {
-  const { address, isConnected } = useAccount()
-  const { data: balance } = useBalance({
-    addressOrName: address,
-  })
 
+export default function WalletConnect() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">
-        <h1 className="text-2xl font-bold mb-6">Connect Your Wallet</h1>
-        <ConnectButton />
-
-        {isConnected && address && (
-          <div className="mt-6 text-left">
-            <p>
-              <strong>Connected Address:</strong>{' '}
-              <span className="break-all">{address}</span>
-            </p>
-            {balance && (
-              <p>
-                <strong>Balance:</strong> {balance.formatted} {balance.symbol}
-              </p>
-            )}
-          </div>
-        )}
-
-        <div className="mt-6">
-          <p className="text-gray-500 text-sm">
-            Ensure you have a compatible wallet installed.
-          </p>
-        </div>
-      </div>
+    <div className="bg-neutral-800 rounded-lg pb-5 max-w-2xl w-full">
+          <ConnectBtn />
     </div>
   )
 }
-
-export default ConnectWalletPage
