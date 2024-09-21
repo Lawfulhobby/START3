@@ -37,11 +37,11 @@ export function BotMessage({
 export function ResponseSubmitted({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative flex items-start justify-end md:-mr-12">
-      <div className="max-w-xs rounded-lg py-2 px-3 mr-2 bg-background text-primary flex items-center text-sm shadow-sm">
+      <div className="max-w-xs rounded-lg py-2 px-3 mr-2 bg-background text-primary flex items-center text-sm ">
         {children}
       </div>
       <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full bg-black">
-        <UserIcon className='text-primary h-5 w-5' />
+        <UserIcon className='text-black h-5 w-5' />
       </div>
     </div>
   );

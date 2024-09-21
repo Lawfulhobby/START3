@@ -106,51 +106,6 @@ export async function sendMessage(message: string): Promise<{
         </>
       );
     },
-    // tools: {
-    //   create_wallet: {
-    //     description: "",
-    //     // parameters: z.object({
-    //     //   walletType: z.string().describe("Type of wallet to create."),
-    //     //   secure: z.boolean().describe("Whether to apply high-security settings."),
-    //     // }),
-    //     generate: async function* ({ walletType, secure }: { walletType: string, secure: boolean; }) {
-    //       yield (
-    //         <BotMessage>
-    //           Let's start by choosing a wallet type. You've selected: {walletType}.
-    //         </BotMessage>
-    //       );
-
-    //       // Simulate wallet creation steps
-    //       await sleep(1000);
-
-    //       yield (
-    //         <BotMessage>
-    //           Next, we'll secure your wallet. Applying security measures: {secure ? "Enabled" : "Disabled"}.
-    //         </BotMessage>
-    //       );
-
-    //       await sleep(1000);
-
-    //       // Confirm wallet creation
-    //       history.done([
-    //         ...history.get(),
-    //         {
-    //           role: 'assistant',
-    //           name: 'create_wallet',
-    //           content: `[Wallet Created Successfully: Type ${walletType}, Security ${secure ? "High" : "Standard"}]`,
-    //         },
-    //       ]);
-
-    //       return (
-    //         <BotCard>
-    //           <BotMessage>
-    //             Your wallet has been created successfully. Type: {walletType}, Security: {secure ? "High" : "Standard"}.
-    //           </BotMessage>
-    //         </BotCard>
-    //       );
-    //     },
-    //   },
-    // },
     temperature: 0,
   });
 

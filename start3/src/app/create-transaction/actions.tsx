@@ -10,6 +10,8 @@ import type { ReactNode } from 'react';
 import { z } from 'zod';
 import { ServerSideMarkdown } from '@/components/server/ServerSideMarkdown';
 import { ServerSideWallet } from '@/components/wallet-creation/ServerSideWallet';
+import { ServerSideTx } from '@/components/create-transaction/ServerSideTx';
+import { ServerSideSendTx } from '@/components/create-transaction/ServerSideSendTx';
 
 // Sleep function to simulate delay
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,7 +35,7 @@ Messages inside [] indicate a UI element or a user event. For example:
    -  Find out how much is going to be transfered.
    - [Question UI: 2]
 
-Once all transaction questions are answered, call the \`create_transaction\` module
+Once all transaction questions are answered, call \`create_transaction_session\` 
 `;
 
 export async function sendMessage(message: string): Promise<{
@@ -93,7 +95,7 @@ export async function sendMessage(message: string): Promise<{
                 </div>
               )}
               {questionNumberMatch && (
-                <ServerSideWallet question={Number(questionNumberMatch[1])} />
+                <ServerSideSendTx question={Number(questionNumberMatch[1])} />
               )}
             </>
           </BotMessage>
@@ -101,51 +103,59 @@ export async function sendMessage(message: string): Promise<{
         </>
       );
     },
-    // tools: {
-    //   create_wallet: {
-    //     description: "",
-    //     // parameters: z.object({
-    //     //   walletType: z.string().describe("Type of wallet to create."),
-    //     //   secure: z.boolean().describe("Whether to apply high-security settings."),
-    //     // }),
-    //     generate: async function* ({ walletType, secure }: { walletType: string, secure: boolean; }) {
-    //       yield (
-    //         <BotMessage>
-    //           Let's start by choosing a wallet type. You've selected: {walletType}.
-    //         </BotMessage>
-    //       );
+    tools: {
+      create_transaction_session: {
+        description: "Start the blockchain transaction process",
+        parameters: z.object({
+          txData: z.object({
+            walletAddress: z.string(),
+            amount: z.number(),
+          }),
+        }),
 
-    //       // Simulate wallet creation steps
-    //       await sleep(1000);
+        generate: async function* ({ txData }) {
+          yield (
+            <BotCard>
+              <Loader2 className="h-5 w-5 animate-spin stroke-foreground" />
+            </BotCard>
+          );
 
-    //       yield (
-    //         <BotMessage>
-    //           Next, we'll secure your wallet. Applying security measures: {secure ? "Enabled" : "Disabled"}.
-    //         </BotMessage>
-    //       );
+          // Simulate delay
+          await sleep(1000);
 
-    //       await sleep(1000);
+          try {
+            // Update the history with the received data
+            history.done([
+              ...history.get(),
+              {
+                role: 'assistant',
+                name: 'create_transaction_session',
+                content: `Started create transaction`,
+              },
+            ]);
 
-    //       // Confirm wallet creation
-    //       history.done([
-    //         ...history.get(),
-    //         {
-    //           role: 'assistant',
-    //           name: 'create_wallet',
-    //           content: `[Wallet Created Successfully: Type ${walletType}, Security ${secure ? "High" : "Standard"}]`,
-    //         },
-    //       ]);
+            return (
+              <BotMessage>
+                Confirm your transaction of {txData.amount}
+                <ServerSideTx
+                  walletAddress={txData.walletAddress}
+                  amount={txData.amount}
+                />
+              </BotMessage>
+            );
 
-    //       return (
-    //         <BotCard>
-    //           <BotMessage>
-    //             Your wallet has been created successfully. Type: {walletType}, Security: {secure ? "High" : "Standard"}.
-    //           </BotMessage>
-    //         </BotCard>
-    //       );
-    //     },
-    //   },
-    // },
+          } catch (error) {
+            console.error('Error retrieving portfolio:', error);
+            return (
+              <BotMessage>
+                Error starting transaction session. Please try again later.
+              </BotMessage>
+            );
+          }
+        },
+
+      },
+    },
     temperature: 0,
   });
 
@@ -159,7 +169,7 @@ export async function sendMessage(message: string): Promise<{
 // Define the AI state and UI state types
 export type AIState = Array<{
   id?: number;
-  name?: 'create_wallet';
+  name?: 'create_transaction';
   role: 'user' | 'assistant' | 'system';
   content: string;
 }>;
