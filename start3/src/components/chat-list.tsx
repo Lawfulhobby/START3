@@ -1,4 +1,4 @@
-import type { UIState } from "@ai-rsc/app/actions";
+import type { UIState } from "@/app/wallet-creation/actions";
 
 export function ChatList({ messages }: { messages: UIState[number][]; }) {
   // if (!messages.length) return null;
