@@ -13,7 +13,7 @@ interface Option {
 }
 
 const settings: Option[] = [
-    { name: 'Click once verification is complete', description: 'I have completed the verification process' },
+    { name: 'Continue', description: 'I have completed the wallet creation' },
 ];
 
 export default function QuestionEight() {
