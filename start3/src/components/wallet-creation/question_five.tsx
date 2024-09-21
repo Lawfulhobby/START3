@@ -1,12 +1,12 @@
 "use client";
 
-import { BotMessage, ResponseSubmitted, UserMessage } from "@ai-rsc/components/llm-onboarding/message";
-import { Button } from "@ai-rsc/components/ui/button";
+import { BotMessage, ResponseSubmitted, UserMessage } from "@/components/llm/message";
+import { Button } from "@/components/ui/button";
 import { useActions, useUIState } from "ai/rsc";
 import { useState } from "react";
-import { AI } from "@ai-rsc/app/actions";
+import { AI } from "@/app/wallet-creation/actions";
 import { Slider } from "../ui/slider";
-import { cn } from "@ai-rsc/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function QuestionFive() {
     const [messages, setMessages] = useUIState<typeof AI>();

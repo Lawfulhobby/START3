@@ -1,9 +1,9 @@
 "use client";
 
-import { BotMessage, ResponseSubmitted } from "@ai-rsc/components/llm-onboarding/message";
+import { BotMessage, ResponseSubmitted } from "@/components/llm/message";
 import { useActions, useUIState } from "ai/rsc";
-import { AI } from "@ai-rsc/app/actions";
-import { cn } from "@ai-rsc/lib/utils";
+import { AI } from "@/app/wallet-creation/actions";
+import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useState } from "react";
 

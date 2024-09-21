@@ -9,6 +9,7 @@ import { Loader2 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { z } from 'zod';
 import { ServerSideMarkdown } from '@/components/server/ServerSideMarkdown';
+import { ServerSideQuestion } from '@/components/wallet-creation/ServerSideQuestion';
 
 // Sleep function to simulate delay
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -19,17 +20,17 @@ const content = `\
 You are an AI assistant specialized in helping users set up their cryptocurrency wallets. Guide users through the wallet creation process, including selecting a wallet type, securing their wallet, and understanding the importance of backing up their keys.
 
 Messages inside [] indicate a UI element or a user event. For example:
-- "[Question: What type of wallet would you like to create?]" means that the question is shown to the user.
-- "[Security Level: high, medium, low]" prompts the user to choose their preferred security level.
+- "[Question: What is your first name?]" means that the question is shown to the user.
+- "[Question UI: 1]" meants the UI component shown to the user
 
-Ask the user which language they prefer to communicate with and use that.
+Ask the user which language they prefer to communicate with and use that. [Question UI: 1]
 
 Interactive Wallet Setup: Ask the following questions one by one:
-1. What type of wallet are you interested in? (e.g., software, hardware) [Question UI: 1]
+1. What type of wallet are you interested in? (e.g., software, hardware) 
 2. What level of security are you looking for? [Security Level: high, medium, low]
 3. Do you understand the importance of backing up your wallet? [Question UI: 2]
 4. Would you like to enable multi-factor authentication? [Question UI: 3]
-5. Do you need guidance on how to back up your wallet securely? [Question UI: 4]
+5. Do you need guidance on how to back up your wallet securely? 
 
 Once all wallet setup questions are answered, guide the user through the actual setup process depending on their responses.
 
@@ -76,12 +77,36 @@ export async function sendMessage(message: string): Promise<{
     text: ({ content, done }) => {
       if (done) history.done([...history.get(), { role: 'assistant', content }]);
 
-      return <BotMessage>
-        <>
-        <ServerSideMarkdown children={content} />
-        </>
+      const questionMatch = content.match(/\[Question: (.*?)\]/);
+      const questionNumberMatch = content.match(/\[Question UI: (.*?)\]/);
 
-        </BotMessage>;
+      const question = questionMatch ? questionMatch[1] : '';
+
+      const remainingContent = content
+        .replace(questionMatch ? questionMatch[0] : '', '')  // Remove questionMatch from content
+        .replace(questionNumberMatch ? questionNumberMatch[0] : '', '') // Remove questionNumberMatch from content
+        .trim();
+
+      return (
+        <>
+          <BotMessage>
+            <>
+              {remainingContent &&
+                <ServerSideMarkdown children={remainingContent} />
+              }
+              {question && (
+                <div className={`${remainingContent && `mt-2`}  bg-transparent`} >
+                  {question}
+                </div>
+              )}
+              {questionNumberMatch && (
+                <ServerSideQuestion question={Number(questionNumberMatch[1])} />
+              )}
+            </>
+          </BotMessage>
+
+        </>
+      );
     },
     tools: {
       create_wallet: {

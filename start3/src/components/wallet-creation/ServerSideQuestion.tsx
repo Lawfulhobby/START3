@@ -1,4 +1,5 @@
 'use server';
+import LanguageOptions from "./language_options";
 import QuestionEight from "./question_eight";
 import QuestionEleven from "./question_eleven";
 import QuestionFive from "./question_five";
@@ -21,7 +22,7 @@ export async function ServerSideQuestion({
         switch (question) {
             case 1:
                 return (
-                    <QuestionOne />
+                  <LanguageOptions/>
                 );
             case 2:
                 return (
