@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <AI>
       <html lang="en">
-        <body className={openSans.className}>
+        <body className={'bg-background'}>
             <FlyoutNavbar/>
             {children}
             </body>

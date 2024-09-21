@@ -80,7 +80,7 @@ export default function LanguageOptions() {
                                         settingIdx === 0 ? 'rounded-tl-md rounded-tr-md' : '',
                                         settingIdx === settings.length - 1 ? 'rounded-bl-md rounded-br-md' : '',
                                         'group items-center relative flex cursor-pointer border border-gray-200 p-2 focus:outline-none',
-                                        checked ? 'bg-neutral-50 border-neutral-200 z-10' : 'bg-neutral-900',
+                                        checked ? 'bg-neutral-50 border-neutral-200 z-10' : 'bg-background',
                                         dis ? 'cursor-not-allowed opacity-50' : '' // Add disabled styling when `dis` is true
                                     )
                                 }

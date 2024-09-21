@@ -5,7 +5,7 @@ import { Sparkle, UserIcon } from 'lucide-react';
 export function UserMessage({ children }: { children: React.ReactNode; }) {
   return (
     <div className="group relative flex flex-col items-end">
-      <div className="flex  shrink-0 select-none items-center justify-center shadow-sm bg-neutral-900">
+      <div className="flex  shrink-0 select-none items-center justify-center bg-background text-accent-foreground">
    {'me'}
       </div>
       <div className="mt-2 min-w-[150px] rounded-3xl flex-1 space-y-2 overflow-hidden p-3 bg-neutral-200 text-black">
@@ -24,10 +24,10 @@ export function BotMessage({
 }) {
   return (
     <div className={cn('group relative flex flex-col items-start', className)}>
-      <div className="flex  shrink-0 select-none items-center justify-center shadow-sm bg-primary text-primary-foreground">
+      <div className="flex  shrink-0 select-none items-center justify-center  bg-background text-accent-foreground">
     BlockBuddy 
       </div>
-      <div className="mt-2 min-w-[150px] rounded-3xl flex-1 space-y-2 overflow-hidden p-3 bg-neutral-800">
+      <div className="mt-2 w-full text-primary-foreground rounded-lg flex-1 space-y-2 overflow-hidden p-3 bg-card-foreground">
         {children}
       </div>
     </div>
@@ -36,17 +36,12 @@ export function BotMessage({
 
 export function ResponseSubmitted({ children }: { children: React.ReactNode }) {
   return (
-    // <div className="'group relative flex items-start mb-2'">
-    //   <div className="text-black text-sm bg-[#E4F2FA] text-center p-2 rounded flex-1 justify-center items-center space-y-2 overflow-hidden">
-    //     {children}
-    //   </div>
-    // </div>
     <div className="group relative flex items-start justify-end md:-mr-12">
-      <div className="max-w-xs rounded-lg py-2 px-3 mr-2 bg-black text-white flex items-center text-sm shadow-sm">
+      <div className="max-w-xs rounded-lg py-2 px-3 mr-2 bg-background text-primary flex items-center text-sm shadow-sm">
         {children}
       </div>
       <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full bg-black">
-        <UserIcon className='text-white h-5 w-5' />
+        <UserIcon className='text-primary h-5 w-5' />
       </div>
     </div>
   );

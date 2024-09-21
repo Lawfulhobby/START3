@@ -8,7 +8,7 @@ export const GridCards = () => {
     const { isConnected } = useAccount(); // Get connection status
 
     return (
-        <div className="bg-neutral-900 p-4 text-neutral-50 md:p-12">
+        <div className="bg-background p-4 text-foreground md:p-12">
             <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <TitleCard />
                 <Card
@@ -102,22 +102,21 @@ const Card = ({
             href={disabled ? "#" : href} // Prevent navigation if disabled
             target="_blank"
             className={`group relative flex h-56 flex-col justify-end overflow-hidden p-6 transition-colors md:h-80 md:p-9 
-                ${disabled ? "opacity-50 cursor-not-allowed pointer-events-none" : "hover:bg-neutral-950"}`}
+                ${disabled ? "opacity-50 cursor-not-allowed pointer-events-none " : "hover:bg-neutral-950"}`}
             onClick={(e) => {
                 if (disabled) {
                     e.preventDefault(); // Prevent navigation if disabled
                 }
             }}
         >
-            <div className="absolute left-3 top-5 z-10 flex items-center gap-1.5 text-xs uppercase text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50">
-                {/* <FiWatch className="text-base" /> */}
+            <div className="absolute left-3 top-5 z-10 flex items-center gap-1.5 text-xs uppercase text-primary transition-colors duration-500 group-hover:text-neutral-50">
                 <span>{readTime}</span>
             </div>
-            <h2 className="relative z-10 text-3xl leading-tight transition-transform duration-500 group-hover:-translate-y-3">
+            <h2 className="relative  z-10 text-3xl text-primary group-hover:text-neutral-50 leading-tight transition-transform duration-500 group-hover:-translate-y-3">
                 {title}
             </h2>
 
-            <FiEye className="absolute right-3 top-4 z-10 text-2xl text-neutral-400 transition-colors group-hover:text-neutral-50" />
+            <FiEye className="absolute right-3 top-4 z-10 text-2xl text-primary transition-colors group-hover:text-neutral-50" />
 
             <div
                 className="absolute bottom-0 left-0 right-0 top-0 opacity-0 blur-sm grayscale transition-all group-hover:opacity-10 group-active:scale-105 group-active:opacity-30 group-active:blur-0 group-active:grayscale-0"
@@ -135,14 +134,14 @@ const Card = ({
 
 const Corners = () => (
     <>
-        <span className="absolute left-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute left-[1px] top-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] right-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] right-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] left-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] left-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute right-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute right-[1px] top-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-emerald-300 transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute left-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute left-[1px] top-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] right-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] right-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] left-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] left-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute right-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute right-[1px] top-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
     </>
 );
 

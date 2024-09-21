@@ -8,20 +8,20 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className=" bg-neutral-900">
+    <div className=" bg-background">
       <FlyoutNavbar />
       <div className="relative isolate overflow-hidden  pt-14">
         <div
           aria-hidden="true"
-          className="absolute bg-neutral-900 p-4 text-neutral-50 inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] shadow-xl  sm:-mr-80 lg:-mr-96"
+          className="absolute bg-background p-4 text-primary inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] shadow-xl  sm:-mr-80 lg:-mr-96"
         />
         <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-            <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-6xl lg:col-span-2 xl:col-auto">
+            <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-primary sm:text-6xl lg:col-span-2 xl:col-auto">
               Welcome to Start3: Your Web3 Journey Begins
             </h1>
             <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-              <p className="text-lg leading-8 text-white">
+              <p className="text-lg leading-8 text-primary">
                 At Start3, we empower newcomers to navigate the exciting world of web3 with ease. Our mission is to simplify blockchain technologies, making them accessible and engaging for everyone.
               </p>
             </div>

@@ -10,6 +10,8 @@ import {
 import useMeasure from "react-use-measure";
 import Link from "next/link";
 import { ConnectBtn } from "./connectButton";
+import ModeToggle from "./ModeToggle";
+
 
 export const FlyoutNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +33,7 @@ export const FlyoutNavbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Logo />
         <div className="hidden gap-6 lg:flex">
-          {/* <Links /> */}
+         <ModeToggle/>
           <CTAs />
         </div>
         {/* <MobileMenu /> */}
@@ -43,11 +45,11 @@ export const FlyoutNavbar = () => {
 const Logo = ({ color = "white" }: { color?: string }) => {
   // Temp logo from https://logoipsum.com/
   return (
-    <div className="flex items-center gap-2">
+    <Link href={'/'} className="flex items-center gap-2">
       <span className="text-2xl font-bold" style={{ color }}>
         Start3
       </span>
-    </div>
+    </Link>
   );
 };
 

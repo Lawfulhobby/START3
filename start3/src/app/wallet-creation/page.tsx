@@ -77,14 +77,14 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-neutral-900 min-h-screen">
+    <main className="bg-background min-h-screen">
       <div className="pb-[200px] pt-20 md:pt-20">
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />
       </div>
       <div className="fixed inset-x-0 bottom-0 w-full bg-transparent duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
         <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 flex justify-center flex-col py-2 space-y-4  shadow-lg bg-transparent  md:py-4 ß">
+          <div className="px-4 flex justify-center flex-col py-2 space-y-4 bg-transparent  md:py-4 ß">
             <form
               ref={formRef}
               onSubmit={form.handleSubmit(submitHandler)}
@@ -94,7 +94,7 @@ export default function Home() {
                   tabIndex={0}
                   onKeyDown={onKeyDown}
                   placeholder="Send a message."
-                  className="min-h-[60px] text-black w-full resize-none bg-neutral-200 pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
+                  className="min-h-[60px] text-primary w-full resize-none bg-accent pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
                   autoFocus
                   spellCheck={false}
                   autoComplete="off"
@@ -107,9 +107,9 @@ export default function Home() {
                     type="submit"
                     size="icon"
                     disabled={form.watch('message') === ''}
-                    className="border border-2 border-black rounded-full"
+                    className="border border-2 border-primary rounded-full"
                   >
-                    <ArrowRight className="text-black text-sm" />
+                    <ArrowRight className="text-primary text-sm" />
                   </Button>
                 </div>
               </div>
