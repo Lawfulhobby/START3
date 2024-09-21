@@ -57,15 +57,14 @@ export function SendTransaction({
         })
 
     return (
-        <form onSubmit={submit} className='mt-40 flex flex-col space-y-4'>
+        <form onSubmit={submit} className='mt-10 flex flex-col space-y-4'>
+
             {/* Address Input */}
             <Input
                 name="address"
                 placeholder="0xA0Cf…251e"
                 required
                 defaultValue={toAddress}
-                // Optionally, you can make this a controlled component
-                // by using state and onChange handlers
             />
 
             {/* Value Input */}
@@ -81,6 +80,7 @@ export function SendTransaction({
 
             {/* Submit Button */}
             <Button
+            className='bg-purple-500 '
                 disabled={isPending}
                 type="submit"
             >
