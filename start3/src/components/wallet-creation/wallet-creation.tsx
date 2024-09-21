@@ -43,7 +43,7 @@ export default function WalletCreation() {
 
     return (
         // <div className=" bg-gray-100 flex items-center justify-center p-4">
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full">
+        <div className="bg-neutral-100 shadow-lg rounded-lg p-8 max-w-2xl w-full">
             <div className="space-y-4">
                 {/* Address */}
                 <div>
@@ -68,7 +68,7 @@ export default function WalletCreation() {
 
             </div>
             <div className="mt-6">
-                <p className="text-neutral-500">
+                <p className="text-neutral-500 text-xs">
                     <strong>Warning:</strong> Store your private key and seed phrase securely. Anyone with access to them can control your wallet.
                 </p>
             </div>

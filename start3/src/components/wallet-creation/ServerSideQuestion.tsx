@@ -11,7 +11,7 @@ import QuestionSix from "./question_six";
 import QuestionTen from "./question_ten";
 import QuestionThree from "./question_three";
 import QuestionTwo from "./question_two";
-import WalletCreation from "./wallet_creation";
+import WalletCreation from "./wallet-creation";
 
 export async function ServerSideQuestion({
     question,

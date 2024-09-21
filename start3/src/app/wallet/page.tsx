@@ -1,104 +1,28 @@
-// // app/create-wallet/page.tsx
-// // @ts-nocheck
-// 'use client'
+"use client";
 
-// import { useEffect, useState } from 'react'
-// import { Wallet } from 'ethers'
+import Image from "next/image";
+import { ConnectBtn } from "@/components/connectButton";
+import Profile from "@/components/profile";
 
-// const CreateWalletModule = () => {
-//   const [wallet, setWallet] = useState<Wallet | null>(null)
-//   const [showPrivateKey, setShowPrivateKey] = useState<boolean>(false)
-//   const [showSeedPhrase, setShowSeedPhrase] = useState<boolean>(false)
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <ConnectBtn />
+      </div>
 
-//   useEffect(() => {
-//     const generateWallet = () => {
-//       const newWallet = Wallet.createRandom()
-//       setWallet(newWallet)
-//     }
+      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+        <Image
+          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src="/next.svg"
+          alt="Next.js Logo"
+          width={180}
+          height={37}
+          priority
+        />
+      </div>
 
-//     generateWallet()
-//   }, [])
-
-//   const togglePrivateKeyVisibility = () => {
-//     setShowPrivateKey((prev) => !prev)
-//   }
-
-//   const toggleSeedPhraseVisibility = () => {
-//     setShowSeedPhrase((prev) => !prev)
-//   }
-
-//   if (!wallet) {
-//     return (
-//       <div className="flex items-center justify-center ">
-//         <p className="text-xl">Generating wallet...</p>
-//       </div>
-//     )
-//   }
-
-//   return (
-//     <div className=" bg-gray-100 flex items-center justify-center p-4">
-//       <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full">
-//         <div className="space-y-4">
-//           {/* Address */}
-//           <div>
-//             <h2 className="text-lg font-semibold text-neutral-500">Address</h2>
-//             <p className="break-all text-neutral-500">{wallet.address}</p>
-//           </div>
-
-//           {/* Public Key */}
-//           <div>
-//             <h2 className="text-lg font-semibold text-neutral-500">Public Key</h2>
-//             <p className="break-all text-neutral-500">{wallet.publicKey}</p>
-//           </div>
-
-//           {/* Private Key with Toggle */}
-//           <div>
-//             <h2 className="text-lg font-semibold flex items-center justify-between">
-//               <span className='text-neutral-500'>Private Key</span>
-//               <button
-//                 onClick={togglePrivateKeyVisibility}
-//                 className="text-sm text-blue-500 hover:underline focus:outline-none"
-//               >
-//                 {showPrivateKey ? 'Hide' : 'Show'}
-//               </button>
-//             </h2>
-//             <p className="break-all">
-//               {showPrivateKey ? (
-//                 <span className="text-red-600">{wallet.privateKey}</span>
-//               ) : (
-//                 <span className="text-gray-400">•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••</span>
-//               )}
-//             </p>
-//           </div>
-
-//           {/* Seed Phrase with Toggle */}
-//           <div>
-//             <h2 className="text-lg font-semibold flex items-center justify-between">
-//               <span className='text-neutral-500'>Seed Phrase</span>
-//               <button
-//                 onClick={toggleSeedPhraseVisibility}
-//                 className="text-sm text-blue-500 hover:underline focus:outline-none"
-//               >
-//                 {showSeedPhrase ? 'Hide' : 'Show'}
-//               </button>
-//             </h2>
-//             <p className="break-all">
-//               {showSeedPhrase ? (
-//                 <span className="text-yellow-600">{wallet.mnemonic?.phrase}</span>
-//               ) : (
-//                 <span className="text-gray-400">•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••</span>
-//               )}
-//             </p>
-//           </div>
-//         </div>
-//         <div className="mt-6">
-//           <p className="text-neutral-500">
-//             <strong>Warning:</strong> Store your private key and seed phrase securely. Anyone with access to them can control your wallet.
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default CreateWalletPage
+      <Profile />
+    </main>
+  );
+}
