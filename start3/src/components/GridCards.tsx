@@ -134,14 +134,14 @@ const Card = ({
 
 const Corners = () => (
     <>
-        <span className="absolute left-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute left-[1px] top-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] right-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] right-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] left-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute bottom-[1px] left-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute right-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
-        <span className="absolute right-[1px] top-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-accent transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute left-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute left-[1px] top-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] right-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] right-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] left-[1px] z-10 h-3 w-[1px] origin-bottom scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute bottom-[1px] left-[1px] z-10 h-[1px] w-3 origin-left scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute right-[1px] top-[1px] z-10 h-3 w-[1px] origin-top scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
+        <span className="absolute right-[1px] top-[1px] z-10 h-[1px] w-3 origin-right scale-0 bg-[#7C00FF] transition-all duration-500 group-hover:scale-100" />
     </>
 );
 
@@ -153,7 +153,7 @@ const TitleCard = () => {
             className="group relative flex h-56 flex-col justify-between bg-neutral-950 p-6 md:h-80 md:p-9"
         >
             <h2 className="text-4xl uppercase leading-tight">
-                <span className="text-neutral-400 transition-colors duration-500 group-hover:text-emerald-300">
+                <span className="text-neutral-400 transition-colors duration-500 group-hover:text-[#7C00FF]">
                     Interactive
                 </span>
                 <br />
@@ -164,7 +164,7 @@ const TitleCard = () => {
                 <span>your.beehiiv.com</span>
             </div> */}
 
-            <FiArrowUpRight className="absolute right-3 top-4 text-2xl text-neutral-400 transition-colors duration-500 group-hover:text-emerald-300" />
+            <FiArrowUpRight className="absolute right-3 top-4 text-2xl text-neutral-400 transition-colors duration-500 group-hover:text-[#7C00FF]" />
         </a>
     );
 };

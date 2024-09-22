@@ -39,10 +39,10 @@ interface DarkModeToggleProps {
     return (
       <button
         onClick={toggleMode}
-        className={`p-2 w-28 rounded-full flex items-center shadow-lg relative bg-gradient-to-b transition-all duration-300 ${
+        className={`px-2 w-28 rounded-full flex items-center shadow-lg relative bg-gradient-to-b transition-all duration-300 ${
           mode === 'light'
             ? 'justify-end from-blue-500 to-sky-300'
-            : 'justify-start from-indigo-600 to-indigo-400'
+            : 'justify-start from-[#7C00FF] to-indigo-400'
         }`}
         aria-label="Toggle Dark Mode"
       >
