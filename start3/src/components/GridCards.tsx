@@ -12,7 +12,7 @@ export const GridCards = () => {
             <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <TitleCard />
                 <Card
-                    href="/wallet-creation"
+                    href="/marketing"
                     title="Incentivized marketing"
                     readTime="Live"
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
