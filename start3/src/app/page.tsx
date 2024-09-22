@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { FlyoutNavbar } from '@/components/FlyoutNavbar'
-import { GridCards } from '@/components/GridCards'
+import {GridCards}  from '@/components/GridCards'
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

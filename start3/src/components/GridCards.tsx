@@ -13,16 +13,16 @@ export const GridCards = () => {
                 <TitleCard />
                 <Card
                     href="/wallet-creation"
-                    title="Interactive Wallet Setup"
+                    title="Incentivized marketing"
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Guide users through the process of creating and securing their first crypto wallet using interactive AI assistance."
                     disabled={!isConnected} // Pass disabled prop
                 />
                 <Card
-                    href="#"
-                    title="Dynamic Learning Modules"
-                    readTime="Coming soon"
+                    href="/create-transaction"
+                    title="Send Transactions"
+                    readTime="Live"
                     src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2379&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Experience personalized learning paths that adjust content based on your responses to enhance your understanding of web3."
                     disabled={!isConnected} // Pass disabled prop
