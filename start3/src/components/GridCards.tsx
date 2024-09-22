@@ -14,7 +14,7 @@ export const GridCards = () => {
                 <Card
                     href="/wallet-creation"
                     title="Incentivized marketing"
-                    readTime="Coming soon"
+                    readTime="Live"
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Guide users through the process of creating and securing their first crypto wallet using interactive AI assistance."
                     disabled={!isConnected} // Pass disabled prop
@@ -35,7 +35,7 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Discover airdrops you qualify for through an AI-driven questionnaire that matches you with suitable opportunities."
-                    disabled={!isConnected} // Pass disabled prop
+                    disabled={true} // Pass disabled prop
                 />
                 <Card
                     href="#"
@@ -43,7 +43,7 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Engage with custom-tailored onboarding journeys based on your interests in the web3 ecosystem, guided by AI."
-                    disabled={!isConnected} // Pass disabled prop
+                    disabled={true}// Pass disabled prop
                 />
                 <Card
                     href="#"
@@ -51,7 +51,7 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Get real-time assistance and answers to your web3 questions from our AI-powered virtual assistant."
-                    disabled={!isConnected} // Pass disabled prop
+                    disabled={true} // Pass disabled prop
                 />
             </div>
             <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
@@ -61,7 +61,7 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Practice safe and risk-free transactions with simulated smart contract interactions to build your confidence in handling real assets."
-                    disabled={!isConnected} // Pass disabled prop
+                    disabled={true} // Pass disabled prop
                 />
                 <Card
                     href="#"
@@ -69,7 +69,7 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Enhance your learning experience with AI that analyzes your feedback to continuously improve the onboarding process."
-                    disabled={!isConnected} // Pass disabled prop
+                    disabled={true} // Pass disabled prop
                 />
                 <Card
                     href="#"
@@ -77,7 +77,7 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1506259091721-347e791bab0f?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Navigate the complexities of the web3 world with guided tours and explorations designed by our advanced AI system."
-                    disabled={!isConnected} // Pass disabled prop
+                    disabled={true} // Pass disabled prop
                 />
             </div>
         </div>
