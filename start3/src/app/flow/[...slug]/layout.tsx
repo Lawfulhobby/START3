@@ -18,14 +18,11 @@ export default function RootLayout({
   children,
   params: { slug },
 }: Props) {
-  const [id] = slug || []; // Destructure the first part of the slug or fallback to empty array if undefined
-
   return (
-    <AI > {/* Pass the id to AI */}
+    <AI > 
       <html lang="en">
         <body className={'bg-background'}>
           <FlyoutNavbar />
-          <p className="text-black mt-20">{id ? `Slug: ${id}` : "No Slug Found"}</p>
           {children}
         </body>
       </html>

@@ -28,6 +28,8 @@ export default function Home({ params: { slug } }: Props) {
 
   const form = useForm<ChatInputs>();
 
+  const [id] = slug;
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === '/') {
@@ -69,7 +71,7 @@ export default function Home({ params: { slug } }: Props) {
 
     try {
       // Submit and get response message, passing the dynamic `id`
-      const responseMessage = await sendMessage(value, "web3Expo"); // Pass `id` here
+      const responseMessage = await sendMessage(value,id); // Pass `id` here
       setMessages(currentMessages => [
         ...currentMessages,
         responseMessage,
@@ -84,6 +86,7 @@ export default function Home({ params: { slug } }: Props) {
   return (
     <main className="bg-background min-h-screen">
       <div className="pb-[200px] pt-20 md:pt-20">
+        {/* <p>{id}</p> */}
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />
       </div>
