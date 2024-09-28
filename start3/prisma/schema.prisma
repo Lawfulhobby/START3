@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Model for content with an embedded array of steps
+model Content {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  description       String
+  steps             Step[]   
+  rewardInstructions String
+}
+
+// Embedded type for the steps
+type Step {
+  step     Int
+  title    String
+  content  String
+}
