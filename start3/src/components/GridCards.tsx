@@ -28,7 +28,7 @@ export const GridCards = () => {
                     disabled={!isConnected} // Pass disabled prop
                 />
             </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
+            {/* <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <Card
                     href="#"
                     title="Airdrop Eligibility Screener"
@@ -79,7 +79,7 @@ export const GridCards = () => {
                     description="Navigate the complexities of the web3 world with guided tours and explorations designed by our advanced AI system."
                     disabled={true} // Pass disabled prop
                 />
-            </div>
+            </div> */}
         </div>
     );
 };
@@ -148,16 +148,16 @@ const Corners = () => (
 const TitleCard = () => {
     return (
         <a
-            href="/wallet-creation"
+            href="/content"
             // target="_blank"
             className="group relative flex h-56 flex-col justify-between bg-neutral-950 p-6 md:h-80 md:p-9"
         >
             <h2 className="text-4xl uppercase leading-tight">
                 <span className="text-neutral-400 transition-colors duration-500 group-hover:text-[#7C00FF]">
-                    Interactive
+                    Create
                 </span>
                 <br />
-                Wallet Setup
+                Your flow
             </h2>
             {/* <div className="flex items-center gap-1.5 text-xs uppercase text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50">
                 <FiBookOpen className="text-base" />
