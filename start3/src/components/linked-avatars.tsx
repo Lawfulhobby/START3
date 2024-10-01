@@ -86,8 +86,8 @@ export function LinkedAvatars() {
   return (
     <div aria-hidden="true" className="isolate mx-auto grid h-full grid-cols-1">
       <Rings />
-      <Photos />
-      <Checkmark />
+      {/* <Photos /> */}
+      {/* <Checkmark /> */}
     </div>
   )
 }

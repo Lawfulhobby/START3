@@ -10,24 +10,23 @@ function CallToAction() {
   return (
     <div className="relative pb-16 pt-20 text-center sm:py-24">
       <hgroup>
-        <Subheading>Get started</Subheading>
-        <p className="mt-6 text-3xl font-medium tracking-tight text-gray-950 sm:text-5xl">
-          Ready to dive in?
+        <Subheading>Join Start3</Subheading>
+        <p className="mt-6 text-3xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
+          Ready to explore Web3?
           <br />
-          Start your free trial today.
+          Start your journey with Start3 today.
         </p>
       </hgroup>
       <p className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-500">
-        Get the cheat codes for selling and unlock your team&apos;s revenue
-        potential.
+        Simplify your entry into blockchain and accelerate your digital adventure.
       </p>
       <div className="mt-6">
         <Button className="w-full sm:w-auto" href="#">
-          Get started
+          Sign Up Free
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
 function SitemapHeading({ children }: { children: React.ReactNode }) {
@@ -148,7 +147,7 @@ function SocialLinks() {
 function Copyright() {
   return (
     <div className="text-sm/6 text-gray-950">
-      &copy; {new Date().getFullYear()} Radiant Inc.
+      &copy; {new Date().getFullYear()} Zerovoid Technologies.
     </div>
   )
 }
@@ -156,7 +155,7 @@ function Copyright() {
 export function Footer() {
   return (
     <footer>
-      <Gradient className="relative">
+      <div className="relative">
         <div className="absolute inset-2 rounded-4xl bg-white/80" />
         <Container>
           <CallToAction />
@@ -187,7 +186,7 @@ export function Footer() {
             </PlusGridRow>
           </PlusGrid>
         </Container>
-      </Gradient>
+      </div>
     </footer>
   )
 }

@@ -34,7 +34,7 @@ export function BentoCard({
         'data-[dark]:bg-gray-800 data-[dark]:ring-white/15',
       )}
     >
-      <div className="relative h-80 shrink-0">
+      <div className="relative h-50 shrink-0">
         {graphic}
         {fade.includes('top') && (
           <div className="absolute inset-0 bg-gradient-to-b from-white to-50% group-data-[dark]:from-gray-800 group-data-[dark]:from-[-25%]" />
@@ -43,10 +43,10 @@ export function BentoCard({
           <div className="absolute inset-0 bg-gradient-to-t from-white to-50% group-data-[dark]:from-gray-800 group-data-[dark]:from-[-25%]" />
         )}
       </div>
-      <div className="relative p-10">
-        <Subheading as="h3" dark={dark}>
+      <div className="relative p-5">
+        {/* <Subheading as="h3" dark={dark}>
           {eyebrow}
-        </Subheading>
+        </Subheading> */}
         <p className="mt-1 text-2xl/8 font-medium tracking-tight text-gray-950 group-data-[dark]:text-white">
           {title}
         </p>
