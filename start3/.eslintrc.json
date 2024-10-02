@@ -8,6 +8,8 @@
      "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "react/no-children-prop": "off"
+    "react/no-children-prop": "off",
+    "prefer-const": "off",
+    "jsx-a11y/aria-props": "off"
   }
 }
