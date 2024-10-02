@@ -10,15 +10,19 @@ import { motion } from 'framer-motion'
 import { Link } from './link'
 import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
+import SignupButton from './wallet/SignupButton'
+import LoginButton from './wallet/LoginButton'
+import { useAccount } from 'wagmi';
 
 const links = [
   { href: '/pricing', label: 'Pricing' },
   { href: '/company', label: 'Company' },
   { href: '/blog', label: 'Blog' },
-  { href: '/login', label: 'Login' },
+  // { href: '/login', label: 'Login' },
 ]
 
 function DesktopNav() {
+  const { address } = useAccount();
   return (
     <nav className="relative hidden lg:flex">
       {links.map(({ href, label }) => (
@@ -31,6 +35,23 @@ function DesktopNav() {
           </Link>
         </PlusGridItem>
       ))}
+      {!address ? (
+        <PlusGridItem className="relative flex">
+          <div
+            className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+          >
+            <LoginButton />
+          </div>
+        </PlusGridItem>)
+        : (
+          <PlusGridItem className="relative flex">
+            <div
+              className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+            >
+              <SignupButton />
+            </div>
+          </PlusGridItem>
+        )}
     </nav>
   )
 }

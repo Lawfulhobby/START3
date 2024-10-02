@@ -17,7 +17,7 @@ export function Logo({ className }: { className?: string }) {
         viewBox="0 0 92 90"
         fill="#A479FF"
         xmlns="http://www.w3.org/2000/svg"
-        strokeWidth="0.5px"
+        stroke-width="0.5px"
         strokeLinecap="round"
         strokeLinejoin="round">
         <path
@@ -80,7 +80,7 @@ export function Logo({ className }: { className?: string }) {
           stroke="white"
           strokeLinejoin="round" />
       </svg>
-      <p className='text-4xl text-black font-bold'>Start3</p>
+      <p className='text-md uppercase text-black font-bold'>Start<span className='text-purple-500'>3</span></p>
     </div>
 
   )
