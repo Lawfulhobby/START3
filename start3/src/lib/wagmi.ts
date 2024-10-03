@@ -37,13 +37,15 @@ export function useWagmiConfig() {
     );
 
     const wagmiConfig = createConfig({
-      chains: [base, baseSepolia],
+      chains: [
+        // base, 
+        baseSepolia],
       // turn off injected provider discovery
       multiInjectedProviderDiscovery: false,
       connectors,
       ssr: true,
       transports: {
-        [base.id]: http(),
+        // [base.id]: http(),
         [baseSepolia.id]: http(),
       },
     });

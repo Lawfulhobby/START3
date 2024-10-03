@@ -16,8 +16,7 @@ export default function RootLayout({
     <AI>
       <html lang="en">
         <body className={'bg-background'}>
-          <FlyoutNavbar />
-          <p className="text-black mt-20">TEst</p>
+          {/* <FlyoutNavbar /> */}
           {children}
         </body>
       </html>
