@@ -80,7 +80,7 @@ export function Logo({ className }: { className?: string }) {
           stroke="white"
           strokeLinejoin="round" />
       </svg>
-      <p className='text-md uppercase text-black font-bold'>Start<span className='text-purple-500'>3</span></p>
+      <p className='text-md uppercase text-black font-bold'>Start<span className='text-purple-500'>3W</span></p>
     </div>
 
   )

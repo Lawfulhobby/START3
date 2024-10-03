@@ -15,9 +15,8 @@ import LoginButton from './wallet/LoginButton'
 import { useAccount } from 'wagmi';
 
 const links = [
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/company', label: 'Company' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+  { href: '/flow-dashboard', label: 'Flows' },
   // { href: '/login', label: 'Login' },
 ]
 
@@ -46,11 +45,7 @@ function DesktopNav() {
         </PlusGridItem>)
         : (
           <PlusGridItem className="relative flex">
-            {/* <div
-              className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
-            > */}
-              <SignupButton />
-            {/* </div> */}
+            <SignupButton />
           </PlusGridItem>
         )}
     </nav>

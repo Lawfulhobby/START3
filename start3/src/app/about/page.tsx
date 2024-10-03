@@ -8,99 +8,92 @@ import { Heading, Lead, Subheading } from '@/components/text'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Company',
+  title: 'About Start3',
   description:
-    'We’re on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data.',
+    'Start3 is on a mission to onboard the next billion users into Web3 through AI-driven, user-friendly onboarding flows.',
 }
 
 function Header() {
   return (
     <Container className="mt-16">
-      <Heading as="h1">Helping companies generate revenue.</Heading>
+      <Heading as="h1">Onboarding the Next Billion Users into Web3</Heading>
       <Lead className="mt-6 max-w-3xl">
-        We’re on a mission to transform revenue organizations by harnessing vast
-        amounts of illegally acquired customer data.
+        Start3 is dedicated to simplifying the Web3 experience, guiding users seamlessly into the decentralized future.
       </Lead>
       <section className="mt-16 grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
         <div className="max-w-lg">
-          <h2 className="text-2xl font-medium tracking-tight">Our mission</h2>
+          <h2 className="text-2xl font-medium text-neutral-400 tracking-tight">Our Mission</h2>
           <p className="mt-6 text-sm/6 text-gray-600">
-            At Radiant, we are dedicated to transforming the way revenue
-            organizations source and close deals. Our mission is to provide our
-            customers with an unfair advantage over both their competitors and
-            potential customers through insight and analysis. We’ll stop at
-            nothing to get you the data you need to close a deal.
+            At Start3, we aim to bring the next billion users on-chain by making Web3 accessible, secure, and rewarding.
+            Our mission is to simplify the complexities of blockchain technology through AI-driven, personalized onboarding experiences.
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
-            We’re customer-obsessed — putting the time in to build a detailed
-            financial picture of every one of our customers so that we know more
-            about your business than you do. We are in this together, mostly
-            because we are all implicated in large-scale financial crime. In our
-            history as a company, we’ve never lost a customer, because if any
-            one of us talks, we all go down.
+            We believe in empowering individuals and organizations worldwide to seamlessly enter the decentralized space.
+            By providing interactive learning modules, secure wallet creation, and incentive-driven participation,
+            Start3 ensures that anyone can navigate the world of Web3 with confidence.
           </p>
         </div>
         <div className="pt-20 lg:row-span-2 lg:-mr-16 xl:mr-auto">
           <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
               <img
-                alt=""
-                src="/company/1.jpg"
+                alt="Start3 Team"
+                src="https://images.unsplash.com/photo-1589707197624-27802d81f462?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-32">
               <img
-                alt=""
-                src="/company/2.jpg"
+                alt="Blockchain Technology"
+                src="https://images.unsplash.com/photo-1562964400-f8ec1ef25777?q=80&w=3311&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
               />
             </div>
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
               <img
-                alt=""
-                src="/company/3.jpg"
+                alt="AI-Powered Onboarding"
+                src="https://images.unsplash.com/photo-1515658323406-25d61c141a6e?q=80&w=3001&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-32">
               <img
-                alt=""
-                src="/company/4.jpg"
+                alt="Web3 Community"
+                src="https://images.unsplash.com/photo-1497271679421-ce9c3d6a31da?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
               />
             </div>
           </div>
         </div>
         <div className="max-lg:mt-16 lg:col-span-1">
-          <Subheading>The Numbers</Subheading>
+          {/* <Subheading>The Numbers</Subheading>
           <hr className="mt-6 border-t border-gray-200" />
           <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
             <div className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4">
-              <dt className="text-sm/6 text-gray-600">Raised</dt>
+              <dt className="text-sm/6 text-gray-600">Users Onboarded</dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
-                $<AnimatedNumber start={100} end={150} />M
+                <AnimatedNumber start={0} end={1} decimals={1} />M
               </dd>
             </div>
             <div className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4">
-              <dt className="text-sm/6 text-gray-600">Companies</dt>
+              <dt className="text-sm/6 text-gray-600">Wallets Created</dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
-                <AnimatedNumber start={15} end={30} />K
+                <AnimatedNumber start={0} end={500} />K
               </dd>
             </div>
             <div className="flex flex-col gap-y-2 max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4">
-              <dt className="text-sm/6 text-gray-600">Deals Closed</dt>
+              <dt className="text-sm/6 text-gray-600">Flows Completed</dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
-                <AnimatedNumber start={0.9} end={1.5} decimals={1} />M
+                <AnimatedNumber start={0} end={2} decimals={1} />M
               </dd>
             </div>
             <div className="flex flex-col gap-y-2">
-              <dt className="text-sm/6 text-gray-600">Leads Generated</dt>
+              <dt className="text-sm/6 text-gray-600">Partners Worldwide</dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
-                <AnimatedNumber start={150} end={200} />M
+                <AnimatedNumber start={0} end={100} />+
               </dd>
             </div>
-          </dl>
+          </dl> */}
         </div>
       </section>
     </Container>
@@ -130,50 +123,41 @@ function Person({
 function Team() {
   return (
     <Container className="mt-32">
-      <Subheading>Meet the team</Subheading>
+      <Subheading>Meet the Team</Subheading>
       <Heading as="h3" className="mt-2">
-        Founded by an all-star team.
+        Founded by innovators in Web3.
       </Heading>
       <Lead className="mt-6 max-w-3xl">
-        Radiant is founded by two of the best sellers in the business and backed
-        by investors who look the other way.
+        Start3 is built by a passionate team dedicated to making Web3 accessible to everyone.
       </Lead>
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
         <div className="max-w-lg">
           <p className="text-sm/6 text-gray-600">
-            Years ago, while working as sales associates at rival companies,
-            Thomas, Ben, and Natalie were discussing a big client they had all
-            been competing for. Joking about seeing the terms of each other’s
-            offers, they had an idea: what if they shared data to win deals and
-            split the commission behind their companies’ backs? It turned out to
-            be an incredible success, and that idea became the kernel for
-            Radiant.
+            Our founders recognized the barriers that prevented people from engaging with decentralized technologies.
+            With backgrounds in blockchain development, AI, and user experience design, they came together to create a platform that simplifies the complexities of Web3.
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
-            Today, Radiant transforms revenue organizations by harnessing
-            illegally acquired customer and competitor data, using it to provide
-            extraordinary leverage. More than 30,000 companies rely on Radiant
-            to undercut their competitors and extort their customers, all
-            through a single integrated platform.
+            Today, Start3 aims to empower users around the globe to seamlessly enter the world of decentralized applications, DeFi, NFTs, and more.
+            Our team is committed to continuous innovation, ensuring that Web3 is accessible, secure, and rewarding for all.
           </p>
-          <div className="mt-6">
-            <Button className="w-full sm:w-auto" href="#">
+          {/* <div className="mt-6">
+            <Button className="w-full sm:w-auto" href="/careers">
               Join us
             </Button>
-          </div>
+          </div> */}
         </div>
         <div className="max-lg:order-first max-lg:max-w-lg">
           <div className="aspect-[3/2] overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
             <img
-              alt=""
-              src="/company/5.jpg"
+              alt="Start3 Team"
+              src="https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               className="block size-full object-cover"
             />
           </div>
         </div>
       </div>
-      <Subheading as="h3" className="mt-24">
-        The team
+      {/* <Subheading as="h3" className="mt-24">
+        The Team
       </Subheading>
       <hr className="mt-6 border-t border-gray-200" />
       <ul
@@ -181,51 +165,51 @@ function Team() {
         className="mx-auto mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
       >
         <Person
-          name="Michael Foster"
+          name="Alex Johnson"
+          description="Co-Founder / CEO"
+          img="/team/alex-johnson.jpg"
+        />
+        <Person
+          name="Samantha Lee"
           description="Co-Founder / CTO"
-          img="/team/michael-foster.jpg"
+          img="/team/samantha-lee.jpg"
         />
         <Person
-          name="Dries Vincent"
-          description="Business Relations"
-          img="/team/dries-vincent.jpg"
+          name="Michael Chen"
+          description="Lead Blockchain Developer"
+          img="/team/michael-chen.jpg"
         />
         <Person
-          name="Celeste Vandermark"
+          name="Emily Davis"
+          description="Head of Design"
+          img="/team/emily-davis.jpg"
+        />
+        <Person
+          name="Daniel Martinez"
+          description="AI Engineer"
+          img="/team/daniel-martinez.jpg"
+        />
+        <Person
+          name="Lisa Patel"
+          description="Community Manager"
+          img="/team/lisa-patel.jpg"
+        />
+        <Person
+          name="Kevin Nguyen"
           description="Front-end Developer"
-          img="/team/celeste-vandermark.jpg"
+          img="/team/kevin-nguyen.jpg"
         />
         <Person
-          name="Courtney Henry"
-          description="Designer"
-          img="/team/courtney-henry.jpg"
+          name="Sophia Rodriguez"
+          description="UX Researcher"
+          img="/team/sophia-rodriguez.jpg"
         />
         <Person
-          name="Marcus Eldridge"
-          description="Director of Product"
-          img="/team/marcus-eldridge.jpg"
+          name="James Kim"
+          description="Marketing Lead"
+          img="/team/james-kim.jpg"
         />
-        <Person
-          name="Whitney Francis"
-          description="Copywriter"
-          img="/team/whitney-francis.jpg"
-        />
-        <Person
-          name="Leonard Krasner"
-          description="Senior Designer"
-          img="/team/leonard-krasner.jpg"
-        />
-        <Person
-          name="Nolan Sheffield"
-          description="Principal Designer"
-          img="/team/nolan-sheffield.jpg"
-        />
-        <Person
-          name="Emily Selman"
-          description="VP, User Experience"
-          img="/team/emily-selman.jpg"
-        />
-      </ul>
+      </ul> */}
     </Container>
   )
 }
@@ -235,11 +219,10 @@ function Investors() {
     <Container className="mt-32">
       <Subheading>Investors</Subheading>
       <Heading as="h3" className="mt-2">
-        Funded by industry-leaders.
+        Backed by visionaries in the industry.
       </Heading>
       <Lead className="mt-6 max-w-3xl">
-        We are fortunate to be backed by the best investors in the industry —
-        both literal and metaphorical partners in crime.
+        We are fortunate to be supported by leading investors who believe in our mission to onboard the next billion users into Web3.
       </Lead>
       <Subheading as="h3" className="mt-24">
         Venture Capital
@@ -251,31 +234,23 @@ function Investors() {
       >
         <li>
           <img
-            alt="Remington Schwartz"
-            src="/investors/remington-schwartz.svg"
+            alt="Blockchain Ventures"
+            src="/investors/blockchain-ventures.svg"
             className="h-14"
           />
           <p className="mt-6 max-w-lg text-sm/6 text-gray-500">
-            Remington Schwartz has been a driving force in the tech industry,
-            backing bold entrepreneurs who explore grey areas in financial and
-            privacy law. Their deep industry expertise and extensive political
-            lobbying provide their portfolio companies with favorable regulation
-            and direct access to lawmakers.
+            Blockchain Ventures is a pioneer in the blockchain investment space, supporting innovative projects that are shaping the future of decentralized technology. Their expertise and network have been invaluable in accelerating Start3's growth and outreach.
           </p>
         </li>
         <li>
-          <img alt="Deccel" src="/investors/deccel.svg" className="h-14" />
+          <img alt="FutureTech Capital" src="/investors/futuretech-capital.svg" className="h-14" />
           <p className="mt-6 max-w-lg text-sm/6 text-gray-500">
-            Deccel has been at the forefront of innovation, investing in
-            pioneering companies across various sectors, including technology,
-            consumer goods, and healthcare. Their philosophy of ‘plausible
-            deniability’ and dedication to looking the other way have helped
-            produce some of the world’s most controversial companies.
+            FutureTech Capital invests in transformative technologies that have the potential to redefine industries. Their commitment to fostering innovation aligns perfectly with Start3's vision of democratizing access to Web3.
           </p>
         </li>
       </ul>
       <Subheading as="h3" className="mt-24">
-        Individual investors
+        Individual Investors
       </Subheading>
       <hr className="mt-6 border-t border-gray-200" />
       <ul
@@ -283,34 +258,34 @@ function Investors() {
         className="mx-auto mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
       >
         <Person
-          name="Kristin Watson"
-          description="TechNexus Ventures"
-          img="/individual-investors/kristin-watson.jpg"
+          name="Olivia Brown"
+          description="Tech Innovator"
+          img="/individual-investors/olivia-brown.jpg"
         />
         <Person
-          name="Emma Dorsey"
-          description="Innovate Capital Partners"
-          img="/individual-investors/emma-dorsey.jpg"
+          name="Ethan Wilson"
+          description="Blockchain Enthusiast"
+          img="/individual-investors/ethan-wilson.jpg"
         />
         <Person
-          name="Alicia Bell"
-          description="FutureWave Investments"
-          img="/individual-investors/alicia-bell.jpg"
+          name="Mia Garcia"
+          description="Angel Investor"
+          img="/individual-investors/mia-garcia.jpg"
         />
         <Person
-          name="Jenny Wilson"
-          description="SynergyTech Equity"
-          img="/individual-investors/jenny-wilson.jpg"
+          name="Liam Anderson"
+          description="Entrepreneur"
+          img="/individual-investors/liam-anderson.jpg"
         />
         <Person
-          name="Anna Roberts"
-          description="NextGen Horizons"
-          img="/individual-investors/anna-roberts.jpg"
+          name="Sophia Martinez"
+          description="Crypto Advisor"
+          img="/individual-investors/sophia-martinez.jpg"
         />
         <Person
-          name="Benjamin Russel"
-          description="Pioneer Digital Ventures"
-          img="/individual-investors/benjamin-russel.jpg"
+          name="Noah Thompson"
+          description="Tech Visionary"
+          img="/individual-investors/noah-thompson.jpg"
         />
       </ul>
     </Container>
@@ -321,8 +296,8 @@ function Testimonial() {
   return (
     <div className="relative flex aspect-square flex-col justify-end overflow-hidden rounded-3xl sm:aspect-[5/4] lg:aspect-[3/4]">
       <img
-        alt=""
-        src="/testimonials/veronica-winton.jpg"
+        alt="Testimonial from Ava Patel"
+        src="/testimonials/ava-patel.jpg"
         className="absolute inset-0 object-cover"
       />
       <div
@@ -332,15 +307,14 @@ function Testimonial() {
       <figure className="relative p-10">
         <blockquote>
           <p className="relative text-xl/7 text-white before:absolute before:-translate-x-full before:content-['“'] after:absolute after:content-['”']">
-            We&apos;ve managed to put two of our main competitors out of
-            business in 6 months.
+            Start3 made entering the world of Web3 effortless. Their guided flows helped me create my first wallet and explore decentralized applications confidently.
           </p>
         </blockquote>
         <figcaption className="mt-6 border-t border-white/20 pt-6">
-          <p className="text-sm/6 font-medium text-white">Veronica Winton</p>
+          <p className="text-sm/6 font-medium text-white">Ava Patel</p>
           <p className="text-sm/6 font-medium">
             <span className="bg-gradient-to-r from-[#fff1be] from-[28%] via-[#ee87cb] via-[70%] to-[#b060ff] bg-clip-text text-transparent">
-              CSO, Planeteria
+              CEO, TechNova
             </span>
           </p>
         </figcaption>
@@ -354,15 +328,14 @@ function Careers() {
     <Container className="my-32">
       <Subheading>Careers</Subheading>
       <Heading as="h3" className="mt-2">
-        Join our fully remote team.
+        Join our growing team.
       </Heading>
       <Lead className="mt-6 max-w-3xl">
-        We work together from all over the world, mainly from locations without
-        extradition agreements.
+        We are a fully remote team committed to making Web3 accessible to everyone. Come be a part of our mission.
       </Lead>
       <div className="mt-24 grid grid-cols-1 gap-16 lg:grid-cols-[1fr_24rem]">
         <div className="lg:max-w-2xl">
-          <Subheading as="h3">Open positions</Subheading>
+          <Subheading as="h3">Open Positions</Subheading>
           <div>
             <table className="w-full text-left">
               <colgroup>
@@ -386,28 +359,28 @@ function Careers() {
                   </th>
                 </tr>
                 <tr className="border-b border-dotted border-gray-200 text-sm/6 font-normal">
-                  <td className="px-0 py-4">iOS Developer</td>
+                  <td className="px-0 py-4">Blockchain Developer</td>
                   <td className="px-0 py-4 text-gray-600">Remote</td>
                   <td className="px-0 py-4 text-right">
-                    <Button variant="outline" href="#">
+                    <Button variant="outline" href="/careers/blockchain-developer">
                       View listing
                     </Button>
                   </td>
                 </tr>
                 <tr className="border-b border-dotted border-gray-200 text-sm/6 font-normal">
-                  <td className="px-0 py-4">Backend Engineer</td>
+                  <td className="px-0 py-4">Front-end Engineer</td>
                   <td className="px-0 py-4 text-gray-600">Remote</td>
                   <td className="px-0 py-4 text-right">
-                    <Button variant="outline" href="#">
+                    <Button variant="outline" href="/careers/front-end-engineer">
                       View listing
                     </Button>
                   </td>
                 </tr>
                 <tr className="text-sm/6 font-normal">
-                  <td className="px-0 py-4">Product Engineer</td>
+                  <td className="px-0 py-4">AI/ML Engineer</td>
                   <td className="px-0 py-4 text-gray-600">Remote</td>
                   <td className="px-0 py-4 text-right">
-                    <Button variant="outline" href="#">
+                    <Button variant="outline" href="/careers/ai-ml-engineer">
                       View listing
                     </Button>
                   </td>
@@ -420,28 +393,28 @@ function Careers() {
                   </th>
                 </tr>
                 <tr className="border-b border-dotted border-gray-200 text-sm/6 font-normal">
-                  <td className="px-0 py-4">Principal Designer</td>
+                  <td className="px-0 py-4">UX/UI Designer</td>
                   <td className="px-0 py-4 text-gray-600">Remote</td>
                   <td className="px-0 py-4 text-right">
-                    <Button variant="outline" href="#">
+                    <Button variant="outline" href="/careers/ux-ui-designer">
                       View listing
                     </Button>
                   </td>
                 </tr>
                 <tr className="border-b border-dotted border-gray-200 text-sm/6 font-normal">
-                  <td className="px-0 py-4">Designer</td>
+                  <td className="px-0 py-4">Graphic Designer</td>
                   <td className="px-0 py-4 text-gray-600">Remote</td>
                   <td className="px-0 py-4 text-right">
-                    <Button variant="outline" href="#">
+                    <Button variant="outline" href="/careers/graphic-designer">
                       View listing
                     </Button>
                   </td>
                 </tr>
                 <tr className="text-sm/6 font-normal">
-                  <td className="px-0 py-4">Senior Designer</td>
+                  <td className="px-0 py-4">Product Designer</td>
                   <td className="px-0 py-4 text-gray-600">Remote</td>
                   <td className="px-0 py-4 text-right">
-                    <Button variant="outline" href="#">
+                    <Button variant="outline" href="/careers/product-designer">
                       View listing
                     </Button>
                   </td>
@@ -465,8 +438,8 @@ export default function Company() {
       </Container>
       <Header />
       <Team />
-      <Investors />
-      <Careers />
+      {/* <Investors />
+      <Careers /> */}
       <Footer />
     </main>
   )

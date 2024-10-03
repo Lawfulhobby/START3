@@ -97,7 +97,7 @@ export default function Home({ params: { slug } }: Props) {
               ref={formRef}
               onSubmit={form.handleSubmit(submitHandler)}
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl sm:border">
+              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl border border-[#F14CFF]">
                 <TextareaAutosize
                   tabIndex={0}
                   onKeyDown={onKeyDown}

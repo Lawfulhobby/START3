@@ -14,6 +14,7 @@ import { useEffect, useRef } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import TextareaAutosize from 'react-textarea-autosize';
 import type { AI } from "./actions";
+import { GradientBackground } from "@/components/gradient";
 
 export default function Home() {
   const [messages, setMessages] = useUIState<typeof AI>();
@@ -78,6 +79,7 @@ export default function Home() {
 
   return (
     <main className="bg-background min-h-screen">
+      <GradientBackground />
       <div className="pb-[200px] pt-20 md:pt-20">
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />
@@ -89,12 +91,13 @@ export default function Home() {
               ref={formRef}
               onSubmit={form.handleSubmit(submitHandler)}
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl sm:border">
+              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl ">
                 <TextareaAutosize
                   tabIndex={0}
                   onKeyDown={onKeyDown}
                   placeholder="Send a message."
-                  className="min-h-[60px] text-primary w-full resize-none bg-accent pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
+                  // className="min-h-[60px] text-primary w-full resize-none bg-accent pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
+                  className="focus:border-none min-h-[60px] w-full pr-24 resize-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
                   autoFocus
                   spellCheck={false}
                   autoComplete="off"
@@ -103,14 +106,16 @@ export default function Home() {
                   {...form.register('message')}
                 />
                 <div className="absolute right-0 top-4 sm:right-4">
-                  <Button
-                    type="submit"
-                    size="icon"
-                    disabled={form.watch('message') === ''}
-                    className="border border-2 border-primary rounded-full"
-                  >
-                    <ArrowRight className="text-primary text-sm" />
-                  </Button>
+                  {form.watch('message') != '' &&
+                    <Button
+                      type="submit"
+
+                      disabled={form.watch('message') === ''}
+                      className="rounded-full bg-[#A479FF] py-1 px-3"
+                    >
+                     send
+                    </Button>
+                  }
                 </div>
               </div>
             </form>

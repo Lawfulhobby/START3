@@ -23,7 +23,7 @@ export default function RootLayout({
     <AI>
       <html lang="en">
         <body className={'bg-background'}>
-            <FlyoutNavbar/>
+            {/* <FlyoutNavbar/> */}
             {children}
             </body>
       </html>
