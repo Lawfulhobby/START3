@@ -35,6 +35,7 @@ function DesktopNav() {
           </Link>
         </PlusGridItem>
       ))}
+
       {!address ? (
         <PlusGridItem className="relative flex">
           <div
@@ -45,11 +46,11 @@ function DesktopNav() {
         </PlusGridItem>)
         : (
           <PlusGridItem className="relative flex">
-            <div
+            {/* <div
               className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
-            >
+            > */}
               <SignupButton />
-            </div>
+            {/* </div> */}
           </PlusGridItem>
         )}
     </nav>
