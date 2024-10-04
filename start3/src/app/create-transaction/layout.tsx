@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from 'next/font/google';
 import { AI } from './actions';
 import { FlyoutNavbar } from "@/components/FlyoutNavbar";
+import SideBarLayout from "./Sidebar";
 
 //👇 Configure our font object
 const openSans = Open_Sans({
@@ -23,9 +24,12 @@ export default function RootLayout({
     <AI>
       <html lang="en">
         <body className={'bg-background'}>
-            {/* <FlyoutNavbar/> */}
-            {children}
-            </body>
+          <SideBarLayout>
+            <main className="relative flex w-full flex-1 flex-col overflow-y-auto h-screen bg-background">
+              {children}
+            </main>
+          </SideBarLayout>
+        </body>
       </html>
     </AI>
   );
