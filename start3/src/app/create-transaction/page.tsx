@@ -78,7 +78,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-background min-h-screen">
+    <main className="bg-background min-h-screen flex-1">
       <GradientBackground />
       <div className="pb-[200px] pt-20 md:pt-20">
         <ChatList messages={messages} />
