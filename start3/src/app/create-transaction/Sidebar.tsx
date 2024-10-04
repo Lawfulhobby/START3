@@ -37,18 +37,18 @@ export default function SideBarLayout({
                     </div>
 
                     {!address ? (
-          <div
-            className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
-          >
-            <LoginButton />
-          </div>
-    )
-        : (
+                        <div
+                            className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+                        >
+                            <LoginButton />
+                        </div>
+                    )
+                        : (
 
-            <SignupButton />
+                            <SignupButton />
 
-        )}
-                    
+                        )}
+
                 </SidebarBody>
             </Sidebar>
             {children}

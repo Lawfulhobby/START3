@@ -24,11 +24,11 @@ export default function RootLayout({
     <AI>
       <html lang="en">
         <body className={'bg-background'}>
-          <SideBarLayout>
+          {/* <SideBarLayout> */}
             <main className="relative flex w-full flex-1 flex-col overflow-y-auto h-screen bg-background">
               {children}
             </main>
-          </SideBarLayout>
+          {/* </SideBarLayout> */}
         </body>
       </html>
     </AI>

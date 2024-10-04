@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 "use client";
 
 import { ChatList } from "@/components/chat-list";
@@ -15,13 +15,21 @@ import type { SubmitHandler } from "react-hook-form";
 import TextareaAutosize from 'react-textarea-autosize';
 import type { AI } from "./actions";
 import { GradientBackground } from "@/components/gradient";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+import { useAccount } from 'wagmi';
+import LoginButton from "@/components/wallet/LoginButton";
+import SignupButton from "@/components/wallet/SignupButton";
 
 export default function Home() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { sendMessage } = useActions<typeof AI>();
   const { formRef, onKeyDown } = useEnterSubmit();
   const inputRef = useRef<HTMLTextAreaElement>(null);
-
+  const { address } = useAccount();
   const form = useForm<ChatInputs>();
 
   useEffect(() => {
@@ -78,53 +86,92 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-background min-h-screen flex-1">
-      <GradientBackground />
-      <div className="pb-[200px] pt-20 md:pt-20">
-        <ChatList messages={messages} />
-        <ChatScrollAnchor trackVisibility={true} />
-      </div>
+    <>
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="h-full items-stretch"
+      >
+        <ResizablePanel
+          defaultSize={20}
+          minSize={30}
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1604079628040-94301bb21b91?q=80&w=2731&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="p-4">
+            <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-950">Transactions with Basenames</p>
+            <p className="text-black text-pretty text-xl font-medium tracking-tighter text-gray-950 mt-3">A basename is a human-readable name that can be registered for blockchain addresses. It serves as a foundational building block for on-chain identity, making it easier to identify and interact with addresses. </p>
+          </div>
 
-      <div className="fixed bottom-0 z-50 px-4 pb-10 pt-5 backdrop-blur-sm bg-white bg-opacity-10 w-full">
-        <div className="mx-auto px-4 lg:px-8 flex justify-center items-center h-full">
-          <div className="md:pl-[200px] md:px-[300px] lg:pl-[330px] lg:px-[900px] w-full ">
-            <form
-              ref={formRef}
-              onSubmit={form.handleSubmit(submitHandler)}
-
+          {!address ? (
+            <div
+              className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
             >
-              <div className="relative flex flex-col items-center w-full">
-                <TextareaAutosize
-                  tabIndex={0}
-                  onKeyDown={onKeyDown}
-                  placeholder="Send a message."
-                  className="min-h-[60px] bg-transparent w-full pr-24 resize-none focus:outline-none rounded p-2 text-lg font-medium tracking-tighter text-gray-950 dark:text-white sm:text-xl"
-                  autoFocus
-                  spellCheck={false}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  rows={1}
-                  {...form.register('message')}
-                />
-                <div className="absolute right-0 top-4 sm:right-4">
-                  {form.watch('message') !== '' &&
-                    <Button
-                      type="submit"
-                      disabled={form.watch('message') === ''}
-                      className="rounded-full bg-[#A479FF] py-1 px-3"
-                    >
-                      send
-                    </Button>
-                  }
+              <LoginButton />
+            </div>
+          )
+            : (
+
+              <SignupButton />
+
+            )}
+
+        </ResizablePanel>
+
+        <ResizableHandle withHandle />
+
+        <ResizablePanel defaultSize={32} minSize={30}>
+          <GradientBackground />
+
+          <div className="flex flex-col h-full">
+            {/* Chat list and messages */}
+            <div className="flex-grow overflow-auto pt-20 pb-20">
+              <ChatList messages={messages} />
+              <ChatScrollAnchor trackVisibility={true} />
+            </div>
+
+            {/* Message input at the bottom */}
+            <div className="relative mx-auto max-w-2xl px-4 w-full backdrop-blur-sm bg-white bg-opacity-10">
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="group relative flex flex-col items-start">
+                  <form
+                    ref={formRef}
+                    onSubmit={form.handleSubmit(submitHandler)}
+                    className="w-full flex items-center"
+                  >
+                    <TextareaAutosize
+                      tabIndex={0}
+                      onKeyDown={onKeyDown}
+                      placeholder="Send a message."
+                      className="min-h-[60px]  w-full pr-24 resize-none focus:outline-none rounded p-2 text-lg font-medium tracking-tighter text-gray-950 dark:text-white sm:text-xl"
+                      autoFocus
+                      spellCheck={false}
+                      autoComplete="off"
+                      autoCorrect="off"
+                      rows={1}
+                      {...form.register("message")}
+                    />
+                    <div className="absolute right-0 top-4 sm:right-4">
+                      {form.watch("message") !== "" && (
+                        <Button
+                          type="submit"
+                          disabled={form.watch("message") === ""}
+                          className="rounded-full bg-[#A479FF] py-1 px-3"
+                        >
+                          send
+                        </Button>
+                      )}
+                    </div>
+                  </form>
                 </div>
               </div>
-            </form>
-
-
+            </div>
           </div>
-        </div>
-      </div>
-
-    </main>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </>
   );
 }

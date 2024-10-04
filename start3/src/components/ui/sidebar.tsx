@@ -78,29 +78,24 @@ export const DesktopSidebar = ({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof motion.div>) => {
+}: React.ComponentProps<typeof div>) => {
   const { open, setOpen } = useSidebar();
   return (
     <>
-      <motion.div
+      <div
         className={cn(
           "h-full px-4 py-4 hidden   md:flex md:flex-col bg-neutral-500 dark:bg-neutral-800 w-[600px] flex-shrink-0",
           className
         )}
-        // animate={{
-        //   width: "600px",
-        // }}
-        // onMouseEnter={() => setOpen(true)}
-        // onMouseLeave={() => setOpen(false)}
         style={{
           backgroundImage: "url(https://images.unsplash.com/photo-1604079628040-94301bb21b91?q=80&w=2731&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        {...props}
+
       >
         {children}
-      </motion.div>
+      </div>
     </>
   );
 };
