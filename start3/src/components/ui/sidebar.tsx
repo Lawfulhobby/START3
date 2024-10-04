@@ -84,16 +84,16 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden   md:flex md:flex-col bg-neutral-500 dark:bg-neutral-800 w-[300px] flex-shrink-0",
+          "h-full px-4 py-4 hidden   md:flex md:flex-col bg-neutral-500 dark:bg-neutral-800 w-[600px] flex-shrink-0",
           className
         )}
-        animate={{
-          width: "600px",
-        }}
+        // animate={{
+        //   width: "600px",
+        // }}
         // onMouseEnter={() => setOpen(true)}
         // onMouseLeave={() => setOpen(false)}
         style={{
-          backgroundImage: "url(https://images.unsplash.com/photo-1632516643720-e7f5d7d6ecc9?q=80&w=3411&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          backgroundImage: "url(https://images.unsplash.com/photo-1604079628040-94301bb21b91?q=80&w=2731&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

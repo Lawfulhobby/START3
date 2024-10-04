@@ -84,20 +84,21 @@ export default function Home() {
         <ChatList messages={messages} />
         <ChatScrollAnchor trackVisibility={true} />
       </div>
-      <div className=" inset-x-0 bottom-0 w-full bg-transparent duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
-        <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 flex justify-center flex-col py-2 space-y-4 bg-transparent  md:py-4 ß">
+
+      <div className="fixed bottom-0 z-50 px-4 pb-10 pt-5 backdrop-blur-sm bg-white bg-opacity-10 w-full">
+        <div className="mx-auto px-4 lg:px-8 flex justify-center items-center h-full">
+          <div className="md:pl-[200px] md:px-[300px] lg:pl-[330px] lg:px-[900px] w-full ">
             <form
               ref={formRef}
               onSubmit={form.handleSubmit(submitHandler)}
+
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl ">
+              <div className="relative flex flex-col items-center w-full">
                 <TextareaAutosize
                   tabIndex={0}
                   onKeyDown={onKeyDown}
                   placeholder="Send a message."
-                  // className="min-h-[60px] text-primary w-full resize-none bg-accent pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
-                  className="focus:border-none min-h-[60px] w-full pr-24 resize-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
+                  className="min-h-[60px] bg-transparent w-full pr-24 resize-none focus:outline-none rounded p-2 text-lg font-medium tracking-tighter text-gray-950 dark:text-white sm:text-xl"
                   autoFocus
                   spellCheck={false}
                   autoComplete="off"
@@ -106,22 +107,24 @@ export default function Home() {
                   {...form.register('message')}
                 />
                 <div className="absolute right-0 top-4 sm:right-4">
-                  {form.watch('message') != '' &&
+                  {form.watch('message') !== '' &&
                     <Button
                       type="submit"
-
                       disabled={form.watch('message') === ''}
                       className="rounded-full bg-[#A479FF] py-1 px-3"
                     >
-                     send
+                      send
                     </Button>
                   }
                 </div>
               </div>
             </form>
+
+
           </div>
         </div>
       </div>
+
     </main>
   );
 }

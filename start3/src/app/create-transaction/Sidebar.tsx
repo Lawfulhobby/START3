@@ -9,7 +9,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FiBookOpen } from "react-icons/fi";
 import { FaLightbulb } from "react-icons/fa6";
-
+import SignupButton from "@/components/wallet/SignupButton";
+import LoginButton from "@/components/wallet/LoginButton";
+import { useAccount } from 'wagmi';
 
 interface BridgeLayoutProps {
     children?: React.ReactNode
@@ -19,6 +21,7 @@ export default function SideBarLayout({
     children,
 }: BridgeLayoutProps) {
     const [open, setOpen] = useState(true);
+    const { address } = useAccount();
     return (
         <div
             className={cn(
@@ -29,10 +32,23 @@ export default function SideBarLayout({
             <Sidebar open={open} setOpen={setOpen}>
                 <SidebarBody className="justify-between gap-10">
                     <div>
-                    
-                        {/* <UserButton /> */}
-
+                        <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-950">Transactions with Basenames</p>
+                        <p className="text-black text-pretty text-xl font-medium tracking-tighter text-gray-950 mt-3">A basename is a human-readable name that can be registered for blockchain addresses. It serves as a foundational building block for on-chain identity, making it easier to identify and interact with addresses. </p>
                     </div>
+
+                    {!address ? (
+          <div
+            className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+          >
+            <LoginButton />
+          </div>
+    )
+        : (
+
+            <SignupButton />
+
+        )}
+                    
                 </SidebarBody>
             </Sidebar>
             {children}
