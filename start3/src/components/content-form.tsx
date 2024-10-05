@@ -18,6 +18,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import TokenIcon from './TokenIcon';
 
 
 interface RewardOption {
@@ -118,180 +119,180 @@ export default function ContentForm() {
     };
 
     return (
-        // <div className=" mx-auto text-black ">
-        //     <form onSubmit={handleSubmit}>
-        //         <div className="  flex w-full  ">
-        //             <input
-        //                 type="text"
-        //                 value={name}
-        //                 onChange={(e) => setName(e.target.value)}
-        //                 className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-4xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-6xl"
-        //                 placeholder="Name your flow!"
-        //                 spellCheck={false}
-        //                 required
-        //             />
-        //             <button
-        //                 type="submit"
-        //                 className="bg-[#A479FF] w-[250px] h-12 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300  "
-        //             >
-        //                 Generate flow
-        //             </button>
-        //         </div>
-        //         <div className="mb-4">
-
-        //         </div>
-        //         <div className="mb-4">
-        //             <textarea
-        //                 value={description}
-        //                 onChange={(e) => setDescription(e.target.value)}
-        //                 className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
-        //                 placeholder='Give it a description'
-        //                 required
-        //             />
-        //         </div>
-
-        //         <div className='flex gap-4 justify-left items-center'>
-        //             <h2 className="text-xl  ml-2">Questions</h2>
-        //             <button
-        //                 type="button"
-        //                 onClick={addStep}
-        //                 className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center justify-center text-center hover:bg-black hover:text-white"
-        //             >
-        //                 <PlusIcon className='h-4 w-4 font-bold' />
-        //                 <p className='uppercase text-xs font-bold'>Add Question</p>
-        //             </button>
-        //         </div>
-
-
-        //         {steps.map((step, index) => (
-        //             <div key={index} className="mb-4">
-        //                 <div className="mb-2">
-        //                     <input
-        //                         type="text"
-        //                         value={step.title}
-        //                         placeholder={`Step ${index + 1} title`}
-        //                         onChange={(e) => handleStepChange(index, 'title', e.target.value)}
-        //                         className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
-        //                         required
-        //                     />
-        //                 </div>
-        //                 <div className="mb-2">
-        //                     <textarea
-        //                         value={step.content}
-        //                         placeholder={`Step ${index + 1} content`}
-        //                         onChange={(e) => handleStepChange(index, 'content', e.target.value)}
-        //                         className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
-        //                         required
-        //                     />
-        //                 </div>
-        //             </div>
-        //         ))}
-
-
-
-        //         {/* <p>{JSON.stringify(selectedRewardOption.description)}</p> */}
-
-        //         <fieldset>
-        //             <RadioGroup
-        //                 value={selectedRewardOption}
-        //                 onChange={setSelectedRewardOption}
-        //                 className="mt-6  grid grid-cols-1 gap-y-6 sm:grid-cols-7 sm:gap-x-4"
-        //             >
-        //                 {rewardOptions.map((rewardOption) => (
-        //                     <Radio
-        //                         key={rewardOption.id}
-        //                         value={rewardOption}
-        //                         aria-label={rewardOption.title}
-        //                         aria-description={`${rewardOption.description} to ${rewardOption.users}`}
-        //                         className="group relative flex flex-col cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none data-[focus]:border-[#A479FF] data-[focus]:ring-2 data-[focus]:ring-[#A479FF] group-data-[checked]:bg-[#A479FF]"
-        //                     >
-        //                         <div className="text-2xl text-black transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
-        //                             {rewardOption.graphic}
-        //                         </div>
-        //                         <span className="flex mt-4">
-        //                             <span className="flex flex-col">
-        //                                 <span className="block text-sm font-medium text-gray-900">{rewardOption.title}</span>
-        //                             </span>
-        //                         </span>
-
-        //                         <span
-        //                             aria-hidden="true"
-        //                             className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[focus]:border group-data-[checked]:border-[#A479FF]"
-        //                         />
-        //                     </Radio>
-        //                 ))}
-        //             </RadioGroup>
-        //         </fieldset>
-
-
-
-
-        //     </form>
-        // </div>
-
-
-        <>
-            <IncentiveCalculator />
-            <Dialog open={open} onClose={setOpen} className="relative z-10">
-                <DialogBackdrop
-                    transition
-                    className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
-                />
-
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <DialogPanel
-                            transition
-                            className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
-                        >
-                            {/* <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
-                                <button
-                                    type="button"
-                                    onClick={() => setOpen(false)}
-                                    className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                >
-                                    <span className="sr-only">Close</span>
-                                    <XMarkIcon aria-hidden="true" className="h-6 w-6" />
-                                </button>
-                            </div>
-                            <div className="sm:flex sm:items-start">
-                                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                    <ExclamationTriangleIcon aria-hidden="true" className="h-6 w-6 text-red-600" />
-                                </div>
-                                <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                    <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                                        Deactivate account
-                                    </DialogTitle>
-                                    <div className="mt-2">
-                                        <p className="text-sm text-gray-500">
-                                            Are you sure you want to deactivate your account? All of your data will be permanently removed from
-                                            our servers forever. This action cannot be undone.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> */}
-                            <IncentiveCalculator />
-                            <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                <button
-                                    type="button"
-                                    onClick={() => setOpen(false)}
-                                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                                >
-                                    Deactivate
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setOpen(false)}
-                                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                >
-                                    Cancel
-                                </button>
-                            </div>
-                        </DialogPanel>
-                    </div>
+        <div className=" mx-auto text-black ">
+            <form onSubmit={handleSubmit}>
+                <div className="  flex w-full  ">
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-4xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-6xl"
+                        placeholder="Name your flow!"
+                        spellCheck={false}
+                        required
+                    />
+                    <button
+                        type="submit"
+                        className="bg-[#A479FF] w-[250px] h-12 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300  "
+                    >
+                        Generate flow
+                    </button>
                 </div>
-            </Dialog>
-        </>
+                <div className="mb-4">
+
+                </div>
+                <div className="mb-4">
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
+                        placeholder='Give it a description'
+                        required
+                    />
+                </div>
+
+                <div className='flex gap-4 justify-left items-center'>
+                    <h2 className="text-xl  ml-2">Questions</h2>
+                    <button
+                        type="button"
+                        onClick={addStep}
+                        className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center justify-center text-center hover:bg-black hover:text-white"
+                    >
+                        <PlusIcon className='h-4 w-4 font-bold' />
+                        <p className='uppercase text-xs font-bold'>Add Question</p>
+                    </button>
+                </div>
+
+
+                {steps.map((step, index) => (
+                    <div key={index} className="mb-4">
+                        <div className="mb-2">
+                            <input
+                                type="text"
+                                value={step.title}
+                                placeholder={`Step ${index + 1} title`}
+                                onChange={(e) => handleStepChange(index, 'title', e.target.value)}
+                                className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
+                                required
+                            />
+                        </div>
+                        <div className="mb-2">
+                            <textarea
+                                value={step.content}
+                                placeholder={`Step ${index + 1} content`}
+                                onChange={(e) => handleStepChange(index, 'content', e.target.value)}
+                                className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-lg font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-xl"
+                                required
+                            />
+                        </div>
+                    </div>
+                ))}
+
+
+
+                {/* <p>{JSON.stringify(selectedRewardOption.description)}</p> */}
+
+                <fieldset>
+                    <RadioGroup
+                        value={selectedRewardOption}
+                        onChange={setSelectedRewardOption}
+                        className="mt-6  grid grid-cols-1 gap-y-6 sm:grid-cols-7 sm:gap-x-4"
+                    >
+                        {rewardOptions.map((rewardOption) => (
+                            <Radio
+                                key={rewardOption.id}
+                                value={rewardOption}
+                                aria-label={rewardOption.title}
+                                aria-description={`${rewardOption.description} to ${rewardOption.users}`}
+                                className="group relative flex flex-col cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none data-[focus]:border-[#A479FF] data-[focus]:ring-2 data-[focus]:ring-[#A479FF] group-data-[checked]:bg-[#A479FF]"
+                            >
+                                <div className="text-2xl text-black transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                                    {rewardOption.graphic}
+                                </div>
+                                <span className="flex mt-4">
+                                    <span className="flex flex-col">
+                                        <span className="block text-sm font-medium text-gray-900">{rewardOption.title}</span>
+                                    </span>
+                                </span>
+
+                                <span
+                                    aria-hidden="true"
+                                    className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[focus]:border group-data-[checked]:border-[#A479FF]"
+                                />
+                            </Radio>
+                        ))}
+                    </RadioGroup>
+                </fieldset>
+
+
+
+
+            </form>
+        </div>
+
+
+        // <>
+        //     <IncentiveCalculator />
+        //     <Dialog open={open} onClose={setOpen} className="relative z-10">
+        //         <DialogBackdrop
+        //             transition
+        //             className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+        //         />
+
+        //         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+        //             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        //                 <DialogPanel
+        //                     transition
+        //                     className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+        //                 >
+        //                     {/* <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
+        //                         <button
+        //                             type="button"
+        //                             onClick={() => setOpen(false)}
+        //                             className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        //                         >
+        //                             <span className="sr-only">Close</span>
+        //                             <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+        //                         </button>
+        //                     </div>
+        //                     <div className="sm:flex sm:items-start">
+        //                         <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+        //                             <ExclamationTriangleIcon aria-hidden="true" className="h-6 w-6 text-red-600" />
+        //                         </div>
+        //                         <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+        //                             <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900">
+        //                                 Deactivate account
+        //                             </DialogTitle>
+        //                             <div className="mt-2">
+        //                                 <p className="text-sm text-gray-500">
+        //                                     Are you sure you want to deactivate your account? All of your data will be permanently removed from
+        //                                     our servers forever. This action cannot be undone.
+        //                                 </p>
+        //                             </div>
+        //                         </div>
+        //                     </div> */}
+        //                     <IncentiveCalculator />
+        //                     <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+        //                         <button
+        //                             type="button"
+        //                             onClick={() => setOpen(false)}
+        //                             className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+        //                         >
+        //                             Deactivate
+        //                         </button>
+        //                         <button
+        //                             type="button"
+        //                             onClick={() => setOpen(false)}
+        //                             className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+        //                         >
+        //                             Cancel
+        //                         </button>
+        //                     </div>
+        //                 </DialogPanel>
+        //             </div>
+        //         </div>
+        //     </Dialog>
+        // </>
     );
 }
 
@@ -301,7 +302,7 @@ const IncentiveCalculator = () => {
     const [numOfPeople, setNumOfPeople] = useState('');
     const [prizePool, setPrizePool] = useState('');
     const [incentivePerPerson, setIncentivePerPerson] = useState<number | null>(null);
-    const { account } = useWallet();
+    const { account, chainId } = useWallet();
 
     useEffect(() => {
         // Automatically calculate when the inputs change
@@ -318,22 +319,7 @@ const IncentiveCalculator = () => {
 
     return (
         <div className="max-w-md mx-auto mt-10 p-6 text-black">
-            <div className="mb-4">
-                {/* {account} */}
-                <p
-                    className='ml-2 text-pretty text-sm font-medium tracking-tighter'
-                >Reward token</p>
-                <Select>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Theme" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="light">Light</SelectItem>
-                        <SelectItem value="dark">Dark</SelectItem>
-                    </SelectContent>
-                </Select>
 
-            </div>
 
             <div className="mb-4">
                 <p
@@ -349,19 +335,51 @@ const IncentiveCalculator = () => {
                 />
             </div>
 
-            <div className="mb-4">
-                <p
-                    className='ml-2 text-pretty text-sm font-medium tracking-tighter'
-                >Pool amount</p>
-                <input
-                    type="number"
-                    min={1}
-                    value={prizePool}
-                    onChange={(e) => setPrizePool(e.target.value)}
-                    className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-2xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-5xl"
-                    placeholder="Prize pool"
-                />
+            <div className='flex items-center'>
+                <div className="mb-4">
+                    <p
+                        className='ml-2 text-pretty text-sm font-medium tracking-tighter'
+                    >Pool amount</p>
+                    <input
+                        type="number"
+                        min={1}
+                        value={prizePool}
+                        onChange={(e) => setPrizePool(e.target.value)}
+                        className="focus:border-none focus:outline-none rounded p-2 w-full text-pretty text-2xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-5xl"
+                        placeholder="Prize pool"
+                    />
+                </div>
+
+                <div >
+                    {/* <p
+                        className='ml-2 text-pretty text-sm font-medium tracking-tighter'
+                    >Reward token</p> */}
+                    <Select>
+                        <SelectTrigger
+                            className="w-[180px] border-none shadow-none"
+                            defaultValue={"cUSD"}>
+                            <SelectValue
+                                className="uppercase text-pretty text-4xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-5xl"
+                                placeholder="Select Token" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="cUSD">
+                                <TokenIcon
+                                    symbol='usdc'
+                                    displaySize={32}
+                                />
+                            </SelectItem>
+                            <SelectItem value="cbETH">
+                                <TokenIcon
+                                    symbol='eth'
+                                    displaySize={32}
+                                />
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
             </div>
+
 
             {/* CSS to remove the number input spinner */}
             <style jsx>{`
