@@ -18,6 +18,7 @@ import {
 } from '@coinbase/onchainkit/wallet';
 import { base } from "viem/chains"
 import { useAccount } from 'wagmi';
+import Davatar from "@davatar/react"
 
 type WalletWrapperParams = {
   address?: string;
@@ -47,7 +48,19 @@ export default function WalletWrapper({
               className='group rounded-full border border-[#A479FF] hover:bg-[#A479FF] text-white'
               schemaId="0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9"
             >
-              <Avatar />
+              <Avatar
+                address={address}
+                chain={base}
+                defaultComponent={
+                  <>
+                    <Davatar
+                      size={32}
+                      address={address}
+                      generatedAvatarType='jazzicon' // optional, 'jazzicon' or 'blockies'
+                    />
+                  </>
+                }
+              />
               <Name className='group-hover:text-white'>
                 <Badge />
               </Name>
@@ -60,17 +73,27 @@ export default function WalletWrapper({
             chain={base}
             className="px-4 pt-3 pb-2 hover:bg-[#A479FF] group"
             hasCopyAddressOnClick={true}>
-            <Avatar />
-            <Name className='group-hover:text-white'/>
-            <Address className='group-hover:text-white'/>
-            <EthBalance className='group-hover:text-white'/>
+            <Avatar
+              defaultComponent={
+                <>
+                  <Davatar
+                    size={32}
+                    address={address || '0x00000000000000000000000'}
+                    generatedAvatarType='jazzicon' // optional, 'jazzicon' or 'blockies'
+                  />
+                </>
+              }
+            />
+            <Name className='group-hover:text-white' />
+            <Address className='group-hover:text-white' />
+            <EthBalance className='group-hover:text-white' />
           </Identity>
-          <WalletDropdownBasename className='hover:bg-[#A479FF] hover:text-white'/>
+          <WalletDropdownBasename className='hover:bg-[#A479FF] hover:text-white' />
           <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com" className='hover:bg-[#A479FF] hover:text-white'>
             Go to Wallet Dashboard
           </WalletDropdownLink>
-          <WalletDropdownFundLink className='hover:bg-[#A479FF] hover:text-white'/>
-          <WalletDropdownDisconnect className='hover:bg-[#A479FF] hover:text-white'/>
+          <WalletDropdownFundLink className='hover:bg-[#A479FF] hover:text-white' />
+          <WalletDropdownDisconnect className='hover:bg-[#A479FF] hover:text-white' />
         </WalletDropdown>
       </Wallet>
     </>

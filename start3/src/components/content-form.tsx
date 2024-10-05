@@ -9,6 +9,16 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useEffect } from 'react';
 import { Skeleton } from './ui/skeleton';
+import useWallet from '@/lib/useWallet';
+
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+
 
 interface RewardOption {
     id: number;
@@ -291,6 +301,7 @@ const IncentiveCalculator = () => {
     const [numOfPeople, setNumOfPeople] = useState('');
     const [prizePool, setPrizePool] = useState('');
     const [incentivePerPerson, setIncentivePerPerson] = useState<number | null>(null);
+    const { account } = useWallet();
 
     useEffect(() => {
         // Automatically calculate when the inputs change
@@ -307,6 +318,23 @@ const IncentiveCalculator = () => {
 
     return (
         <div className="max-w-md mx-auto mt-10 p-6 text-black">
+            <div className="mb-4">
+                {/* {account} */}
+                <p
+                    className='ml-2 text-pretty text-sm font-medium tracking-tighter'
+                >Reward token</p>
+                <Select>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Theme" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="light">Light</SelectItem>
+                        <SelectItem value="dark">Dark</SelectItem>
+                    </SelectContent>
+                </Select>
+
+            </div>
+
             <div className="mb-4">
                 <p
                     className='ml-2 text-pretty text-sm font-medium tracking-tighter'
