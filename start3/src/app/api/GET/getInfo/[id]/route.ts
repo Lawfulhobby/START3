@@ -14,6 +14,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
             select: {
                 name: true,
                 description: true,
+                steps: true,
+                rewardInstructions: true,
             },
         });
 

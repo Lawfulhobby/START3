@@ -11,10 +11,7 @@ export function ChatList({ messages }: { messages: UIState[number][]; }) {
         <div className="mt-6 w-full rounded-lg flex-1   ">
           <MarkdownMessage>
             {`#  Hello there! I’m BlockBuddy
-
-Your friendly guide to the exciting world of web3. Whether you’re here to create your first cryptocurrency wallet, dive into airdrops, or just learn more about blockchain, I’m here to help you every step of the way. 🌍
-
-
+Your friendly guide to the exciting world of web3. Whether you’re here to create your first cryptocurrency wallet, dive into airdrops, or just learn more about blockchain, I’m here to help you every step of the way. 
 `}
           </MarkdownMessage>
         </div>

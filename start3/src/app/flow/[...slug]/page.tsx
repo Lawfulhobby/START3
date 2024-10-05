@@ -1,3 +1,4 @@
+
 "use client"
 import { ChatList } from "@/components/chat-list";
 import { ChatScrollAnchor } from "@/components/chat-scroll-anchor";
@@ -29,6 +30,21 @@ type Props = {
     slug: string[];
   };
 };
+
+// Define the type for the content structure
+interface ContentStep {
+  step: number;
+  title: string;
+  content: string;
+}
+
+interface Content {
+  name: string;
+  description: string;
+  steps: ContentStep[];
+  rewardInstructions: string;
+}
+
 
 // Define the fetcher function
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -98,6 +114,33 @@ export default function Home({ params: { slug } }: Props) {
 
   };
 
+  // Function to format the content into a structured format
+  function getContent(content: Content) {
+    if (!content) {
+      throw new Error(`Content with id '${id}' not found`);
+    }
+
+    const formattedContent = `\
+    You are an onboarding assistant for a Web3 project. Use the following description for more understanding:
+    ${content.description}
+    
+    Messages inside [] indicate a UI element or a user event. For example:
+    - "[Question: What is your first name?]" means that the question is shown to the user.
+    - "[Question UI: 1]" meants the UI component shown to the user
+    
+    Ask the following questions one by one:
+    ${content.steps.map(step => `
+    ${step.step}. ${step.title} ${step.content}
+    `).join('\n')}
+    
+    Before they continue to get the reward, ask if the user is okay if the data is saved. Ask them to respond with ‘I agree’ if they do.
+
+    Once all the questions are answered, the onboarding is complete. Call ${content.rewardInstructions}
+    `;
+
+    return formattedContent;
+  }
+
   if (error) return <div>An error occurred.</div>;
   if (!data) return (
     <PathFinderLoader />
@@ -123,7 +166,10 @@ export default function Home({ params: { slug } }: Props) {
             <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-900">{data.session.name}</p>
             <p className="text-black text-pretty text-lg font-medium tracking-tighter text-gray-700 mt-3">{data.session.description}</p>
           </div>
-          {/* {JSON.stringify(data.session)} */}
+          {JSON.stringify(getContent(data.session))}
+
+
+
           {!address ? (
             <div
               className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"

@@ -7,7 +7,7 @@ export function LogoCloud({
   return (
     <>
       <Subheading as="h3" dark={true}>
-        Built on popular chains
+        Built on
       </Subheading>
       <div
         className={clsx(
@@ -20,17 +20,21 @@ export function LogoCloud({
           src="/logo-cloud/base.svg"
           className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"
         />
-        <img
+        <div className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"></div>
+        <div className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"></div>
+        <div className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"></div>
+        <div className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"></div>
+        {/* <img
           alt="Celo"
           src="/logo-cloud/celo.svg"
           className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"
-        />
-        <img
+        /> */}
+        {/* <img
           alt="Arbitrum"
           src="/logo-cloud/arbitrum.svg"
           className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"
-        />
-        <img
+        /> */}
+        {/* <img
           alt="Transistor"
           src="/logo-cloud/polygon.svg"
           className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"
@@ -39,7 +43,7 @@ export function LogoCloud({
           alt="Statamic"
           src="/logo-cloud/avalanche.svg"
           className="h-9 max-sm:mx-auto sm:h-8 lg:h-8"
-        />
+        /> */}
       </div>
     </>
 
