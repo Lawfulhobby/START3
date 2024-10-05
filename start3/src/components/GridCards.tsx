@@ -28,15 +28,15 @@ export const GridCards = () => {
                     disabled={!isConnected} // Pass disabled prop
                 />
                 <Card
-                    href="/create-transaction"
-                    title="Send Transactions"
-                    readTime="Live"
-                    src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2379&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    description="Experience personalized learning paths that adjust content based on your responses to enhance your understanding of web3."
-                    disabled={!isConnected} // Pass disabled prop
+                    href="#"
+                    title="Simulated Smart Contract Interactions"
+                    readTime="Coming soon"
+                    src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    description="Practice safe and risk-free transactions with simulated smart contract interactions to build your confidence in handling real assets."
+                    disabled={true} // Pass disabled prop
                 />
             </div>
-            {/* <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
+            <div className="mx-auto grid  grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-4 md:divide-x md:divide-y-0">
                 <Card
                     href="#"
                     title="Airdrop Eligibility Screener"
@@ -61,8 +61,16 @@ export const GridCards = () => {
                     description="Get real-time assistance and answers to your web3 questions from our AI-powered virtual assistant."
                     disabled={true} // Pass disabled prop
                 />
+                <Card
+                    href="#"
+                    title="Feedback and Improvement AI"
+                    readTime="Coming soon"
+                    src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    description="Enhance your learning experience with AI that analyzes your feedback to continuously improve the onboarding process."
+                    disabled={true} // Pass disabled prop
+                />
             </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
+            {/* <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <Card
                     href="#"
                     title="Simulated Smart Contract Interactions"

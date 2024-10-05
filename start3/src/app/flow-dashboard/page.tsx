@@ -15,13 +15,13 @@ function Header() {
     return (
         <Container className="mt-16">
             <Heading as="h1">Manage Your Onboarding Flows</Heading>
-            <div className="relative isolate overflow-hidden  pt-14">
+            <div className="relative isolate overflow-hidden  pt-8">
                 <GridCards />
             </div>
-            <Heading as="h1" className='mt-10'>Recent Flows</Heading>
+            {/* <Heading as="h4" className='mt-20'>Recent Flows</Heading>
             <div className="relative isolate overflow-hidden  pt-14">
                 <GridCards />
-            </div>
+            </div> */}
         </Container>
     )
 }
