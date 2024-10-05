@@ -7,28 +7,43 @@ import type { ChatInputs } from "@/lib/chat-schema";
 import { useEnterSubmit } from "@/lib/use-enter-submit";
 import { useForm } from "@/lib/use-form";
 import { useActions, useUIState } from "ai/rsc";
-import { ArrowRight } from "lucide-react";
+import { ArrowDownIcon, ArrowRight, PlusIcon } from "lucide-react";
 import { useEffect, useRef } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import TextareaAutosize from 'react-textarea-autosize';
 import type { AI } from "./actions";
+import { GradientBackground } from "@/components/gradient";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+import { useAccount } from 'wagmi';
+import LoginButton from "@/components/wallet/LoginButton";
+import SignupButton from "@/components/wallet/SignupButton";
+import useSWR from "swr";
+import { PathFinderLoader } from "@/components/loader";
 
 type Props = {
   params: {
-      slug: string[];
+    slug: string[];
   };
 };
 
+// Define the fetcher function
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Home({ params: { slug } }: Props) {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { sendMessage } = useActions<typeof AI>();
   const { formRef, onKeyDown } = useEnterSubmit();
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const { address } = useAccount();
 
   const form = useForm<ChatInputs>();
 
   const [id] = slug;
+  const { data, error } = useSWR(`/api/GET/getInfo/${id}`, fetcher);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -71,7 +86,7 @@ export default function Home({ params: { slug } }: Props) {
 
     try {
       // Submit and get response message, passing the dynamic `id`
-      const responseMessage = await sendMessage(value,id); // Pass `id` here
+      const responseMessage = await sendMessage(value, id); // Pass `id` here
       setMessages(currentMessages => [
         ...currentMessages,
         responseMessage,
@@ -83,48 +98,93 @@ export default function Home({ params: { slug } }: Props) {
 
   };
 
+  if (error) return <div>An error occurred.</div>;
+  if (!data) return (
+    <PathFinderLoader />
+  );
+
   return (
-    <main className="bg-background min-h-screen">
-      <div className="pb-[200px] pt-20 md:pt-20">
-        {/* <p>{id}</p> */}
-        <ChatList messages={messages} />
-        <ChatScrollAnchor trackVisibility={true} />
-      </div>
-      <div className="fixed inset-x-0 bottom-0 w-full bg-transparent duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
-        <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 flex justify-center flex-col py-2 space-y-4 bg-transparent  md:py-4">
-            <form
-              ref={formRef}
-              onSubmit={form.handleSubmit(submitHandler)}
+    <>
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="h-full items-stretch"
+      >
+        <ResizablePanel
+          defaultSize={20}
+          minSize={30}
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1604079628040-94301bb21b91?q=80&w=2731&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="p-4">
+            <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-900">{data.session.name}</p>
+            <p className="text-black text-pretty text-lg font-medium tracking-tighter text-gray-700 mt-3">{data.session.description}</p>
+          </div>
+          {/* {JSON.stringify(data.session)} */}
+          {!address ? (
+            <div
+              className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow rounded-3xl border border-[#F14CFF]">
-                <TextareaAutosize
-                  tabIndex={0}
-                  onKeyDown={onKeyDown}
-                  placeholder="Send a message."
-                  className="min-h-[60px] text-primary w-full resize-none bg-accent pl-4 pr-16 py-[1.3rem] focus-within:outline-none sm:text-sm"
-                  autoFocus
-                  spellCheck={false}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  rows={1}
-                  {...form.register('message')}
-                />
-                <div className="absolute right-0 top-4 sm:right-4">
-                  <Button
-                    type="submit"
-                    // size="icon"
-                    disabled={form.watch('message') === ''}
-                    className="border border-2 border-primary rounded-full"
+              <LoginButton />
+            </div>
+          )
+            : (<SignupButton />)}
+        </ResizablePanel>
+
+        <ResizableHandle withHandle />
+
+        <ResizablePanel defaultSize={32} minSize={30}>
+          <GradientBackground />
+
+          <div className="flex flex-col h-full">
+            {/* Chat list and messages */}
+            <div className="flex-grow overflow-auto pt-20 pb-20">
+              <ChatList messages={messages} />
+              <ChatScrollAnchor trackVisibility={true} />
+            </div>
+
+            {/* Message input at the bottom */}
+            <div className="relative mx-auto max-w-2xl px-4 w-full backdrop-blur-sm bg-white bg-opacity-10">
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="group relative flex flex-col items-start">
+                  <form
+                    ref={formRef}
+                    onSubmit={form.handleSubmit(submitHandler)}
+                    className="w-full flex items-center"
                   >
-                    <ArrowRight className="text-primary text-sm" />
-                  </Button>
+                    <TextareaAutosize
+                      tabIndex={0}
+                      onKeyDown={onKeyDown}
+                      placeholder="Send a message."
+                      className="min-h-[60px]  w-full pr-24 resize-none focus:outline-none rounded p-2 text-lg font-medium tracking-tighter text-gray-950 dark:text-white sm:text-xl"
+                      autoFocus
+                      spellCheck={false}
+                      autoComplete="off"
+                      autoCorrect="off"
+                      rows={1}
+                      {...form.register("message")}
+                    />
+                    <div className="absolute right-0 top-4 sm:right-4">
+                      {form.watch("message") !== "" && (
+                        <Button
+                          type="submit"
+                          disabled={form.watch("message") === ""}
+                          className="rounded-full bg-[#A479FF] py-1 px-3"
+                        >
+                          send
+                        </Button>
+                      )}
+                    </div>
+                  </form>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
-    </main>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </>
   );
 }
