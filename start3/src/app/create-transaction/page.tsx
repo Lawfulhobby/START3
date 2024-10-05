@@ -102,8 +102,8 @@ export default function Home() {
           }}
         >
           <div className="p-4">
-            <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-950">Transactions with Basenames</p>
-            <p className="text-black text-pretty text-xl font-medium tracking-tighter text-gray-950 mt-3">A basename is a human-readable name that can be registered for blockchain addresses. It serves as a foundational building block for on-chain identity, making it easier to identify and interact with addresses. </p>
+            <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-900">Transactions with Basenames</p>
+            <p className="text-black text-pretty text-lg font-medium tracking-tighter text-gray-700 mt-3">A basename is a human-readable name that can be registered for blockchain addresses. It serves as a foundational building block for on-chain identity, making it easier to identify and interact with addresses. </p>
           </div>
 
           {!address ? (
@@ -113,12 +113,7 @@ export default function Home() {
               <LoginButton />
             </div>
           )
-            : (
-
-              <SignupButton />
-
-            )}
-
+            : (<SignupButton />)}
         </ResizablePanel>
 
         <ResizableHandle withHandle />

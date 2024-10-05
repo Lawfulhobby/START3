@@ -58,7 +58,7 @@ import {
                 <span>Basename</span>
                 <strong>{data.basename}</strong>
               </li>
-              {/* <li className='flex flex-col gap-2'>
+              <li className='flex flex-col gap-2'>
                 <span>Avatar</span>
                 <strong>
                   <img
@@ -68,7 +68,7 @@ import {
                     height={100}
                   />
                 </strong>
-              </li> */}
+              </li>
               <li className='flex flex-col gap-2'>
                 <span>Description</span>
                 <strong>{data.description}</strong>
