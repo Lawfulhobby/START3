@@ -11,11 +11,19 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+const satoshiBold = localFont({
+  src: "./fonts/Satoshi-Bold.woff",
+  variable: "--font-satoshi-bold",
+  weight: "700",
+});
+
 
 export const metadata: Metadata = {
   title: "Start3",
@@ -42,7 +50,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${satoshiBold.variable} bg-background antialiased`}
       >
         {/* <ThemeProvider
           attribute="class"

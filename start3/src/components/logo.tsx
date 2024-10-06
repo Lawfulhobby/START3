@@ -2,6 +2,7 @@
 
 import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export function Logo({ className }: { className?: string }) {
   let transition = {
@@ -10,8 +11,8 @@ export function Logo({ className }: { className?: string }) {
   }
 
   return (
-    <div className="flex items-center space-x-2">
-      <svg
+    <div className="items-center ">
+      {/* <svg
         width="48"
         height="48"
         viewBox="0 0 92 90"
@@ -80,7 +81,12 @@ export function Logo({ className }: { className?: string }) {
           stroke="white"
           strokeLinejoin="round" />
       </svg>
-      <p className='text-md uppercase text-black font-bold'>Start<span className='text-purple-500'>3W</span></p>
+      <p className='text-md uppercase text-black font-bold'>Start<span className='text-purple-500'>3W</span></p> */}
+      <img
+        src="/Start 3 Logo_3.png"
+        alt='Start3 logo'
+      className='h-8 lg:mt-2'
+      />
     </div>
 
   )
