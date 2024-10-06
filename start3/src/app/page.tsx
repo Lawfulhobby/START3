@@ -30,7 +30,7 @@ function Hero() {
         <Navbar
           banner={
             <Link
-              href="/blog/radiant-raises-100m-series-a-from-tailwind-ventures"
+              href="/"
               className="flex items-center gap-1 rounded-full bg-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-white data-[hover]:bg-black"
             >
               Read our whitepaper!
@@ -59,9 +59,9 @@ function FeatureSection() {
           Customizable AI Flows
         </Heading>
         <Screenshot
-          width={1216}
-          height={768}
-          src="/screenshots/Picture1.png"
+          width={1920}
+          height={1080}
+          src="/screenshots/ai-flow.png"
           className="mt-16 h-[36rem] sm:h-auto sm:w-[76rem]"
         />
       </Container>
@@ -143,11 +143,11 @@ function DarkBentoSection() {
             dark
             eyebrow="Step 1"
             title="Create Your Flow"
-            description="Select a template or start from scratch to build your custom onboarding flow using our intuitive drag-and-drop builder."
+            description="Select a template or start from scratch to build your custom onboarding flow using our intuitive flow builder."
             graphic={
-              <div className="h-80 bg-[url(/screenshots/create_flow.png)] bg-cover bg-center" />
+              <div className="h-80 bg-[url(/screenshots/dashboardd.png)] bg-cover bg-center" />
             }
-            fade={['top']}
+            // fade={['top']}
             className="max-lg:rounded-t-4xl lg:col-span-4 lg:rounded-tl-4xl"
           />
           <BentoCard
@@ -155,7 +155,9 @@ function DarkBentoSection() {
             eyebrow="Step 2"
             title="Customize Interactions"
             description="Integrate various blockchain tools and set up interactions tailored to your needs, enhancing the educational value of each session."
-            graphic={<LogoTimeline />}
+            graphic={
+              <div className="h-80 bg-[url(/screenshots/builderr.png)] bg-cover bg-center" />
+          }
             className="z-10 !overflow-visible lg:col-span-2 lg:rounded-tr-4xl"
           />
           <BentoCard
@@ -172,7 +174,7 @@ function DarkBentoSection() {
             title="Analyze and Optimize"
             description="Monitor user interactions and gather insights to continuously refine and optimize the onboarding process, ensuring maximum effectiveness."
             graphic={
-              <div className="h-80 bg-[url(/screenshots/analyze_optimize.png)] bg-cover bg-center" />
+              <div className="h-80 bg-[url(/screenshots/aii.png)] bg-cover bg-center" />
             }
             fade={['top']}
             className="max-lg:rounded-b-4xl lg:col-span-4 lg:rounded-br-4xl"

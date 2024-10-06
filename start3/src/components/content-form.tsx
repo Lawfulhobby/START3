@@ -278,10 +278,10 @@ export default function ContentForm() {
                                             <SheetContent className='bg-white text-black'>
                                                 <SheetHeader className='mb-5'>
                                                     <SheetTitle>UI Toolbox</SheetTitle>
-                                                    <SheetDescription>
+                                                    {/* <SheetDescription>
                                                         This action cannot be undone. This will permanently delete your account
                                                         and remove your data from our servers.
-                                                    </SheetDescription>
+                                                    </SheetDescription> */}
                                                 </SheetHeader>
                                                 <div className='flex grid grid-cols-3'>
                                                     {options.map((option) => (

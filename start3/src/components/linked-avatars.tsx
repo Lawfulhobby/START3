@@ -69,12 +69,12 @@ function Photos() {
       <div className="mx-auto flex size-full max-w-md items-center justify-around">
         <img
           alt=""
-          src="/linked-avatars/customer.jpg"
+          src="/purple-white.png"
           className="size-20 rounded-full bg-white/15 ring-4 ring-white/10"
         />
         <img
           alt=""
-          src="/linked-avatars/manager.jpg"
+          src="/x.png"
           className="size-20 rounded-full bg-white/15 ring-4 ring-white/10"
         />
       </div>
@@ -86,8 +86,8 @@ export function LinkedAvatars() {
   return (
     <div aria-hidden="true" className="isolate mx-auto grid h-full grid-cols-1">
       <Rings />
-      {/* <Photos /> */}
-      {/* <Checkmark /> */}
+      <Photos />
+      <Checkmark />
     </div>
   )
 }
