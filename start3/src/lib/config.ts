@@ -9,7 +9,7 @@ const projectId = "db8b0b37d764ec63748a90b266315c3a";
 const supportedChains: Chain[] = [baseSepolia, sepolia,  celoAlfajores, optimismSepolia];
 
 export const config = getDefaultConfig({
-   appName: "WalletConnection",
+   appName: "Start3",
    projectId,
    chains: supportedChains as any,
    ssr: true,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Providers from "./providers";
+import Providers from "@/components/providers/Providers";
 import "@rainbow-me/rainbowkit/styles.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import '@coinbase/onchainkit/styles.css';
