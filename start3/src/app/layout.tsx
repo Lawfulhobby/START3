@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <head>
         <link
           rel="stylesheet"
@@ -50,7 +50,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${satoshiBold.variable} bg-background antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${satoshiBold.variable} bg-background antialiased h-full`}
       >
         {/* <ThemeProvider
           attribute="class"
