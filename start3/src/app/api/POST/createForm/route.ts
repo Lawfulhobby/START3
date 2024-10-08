@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       address,
     } = body;
 
-    console.log(address)
+    console.log(address.toLowerCase());
 
     if (!address) {
       return NextResponse.json({ error: "User not logged in" }, { status: 401 });
@@ -24,8 +24,8 @@ export async function POST(request: Request) {
     await connectToDatabase
 
     // Fetch all users to test database connection
-    const user = await prisma.user.findMany({
-      where: { address: "0x06ad34ecdc7b2a212fc815eaf06e229e37297712" },
+    const user = await prisma.user.findUnique({
+      where: { address: address.toLowerCase() },
       select: {
         id: true,
         address: true,
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Cannot fund because User private key is not found" }, { status: 404 });
     }
 
-    console.log(user[0].id)
+    console.log(user.id)
     // Create content with steps
     const content = await prisma.content.create({
       data: {
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
         description,
         rewardInstructions,
         steps,  // Prisma will handle the embedded array of steps
-        userId: user[0].id,  // Connect the content to the user
+        userId: user.id,  // Connect the content to the user
       },
     });
 
