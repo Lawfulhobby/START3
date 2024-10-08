@@ -21,7 +21,7 @@ function CallToAction() {
         Simplify your entry into blockchain and accelerate your digital adventure.
       </p>
       <div className="mt-6">
-        <Button className="w-full sm:w-auto" href="#">
+        <Button className="" href="#">
           Sign Up Free
         </Button>
       </div>

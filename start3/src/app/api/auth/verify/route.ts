@@ -6,6 +6,7 @@ import { SiweMessage } from 'siwe';
 import { SignJWT } from 'jose';
 import { env } from '@/lib/config/env';
 import { JWT_CONFIG } from '@/lib/constants';
+import prisma from '../../../../../prisma';
 
 export async function POST(request: Request) {
   const session = await getIronSession<{ nonce: string }>(
@@ -20,6 +21,20 @@ export async function POST(request: Request) {
 
   if (fields.nonce !== session.nonce) {
     return NextResponse.json({ message: 'Invalid nonce.' }, { status: 422 });
+  }
+
+  // Retrieve or create the user in the database
+  let user = await prisma.user.findUnique({
+    where: { address: fields.address.toLowerCase() }, // Ensure case-insensitive match
+  });
+
+  if (!user) {
+    user = await prisma.user.create({
+      data: {
+        address: fields.address.toLowerCase(),
+        // Add other fields as necessary, e.g., email, name
+      },
+    });
   }
 
   const jwt = await generateJwt({
