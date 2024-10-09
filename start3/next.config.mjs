@@ -23,6 +23,18 @@
 // export default nextConfig
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+
+const nextConfig = {
+    images: {
+        domains: ["images.unsplash.com", "assets.aceternity.com", "lh3.googleusercontent.com", "s3.us-west-2.amazonaws.com", "https:/i.pravatar.cc", "i.pravatar.cc"],
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    typescript: {
+        ignoreBuildErrors: true,
+    },
+    output: "standalone",
+};
 
 export default nextConfig

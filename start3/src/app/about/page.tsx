@@ -6,6 +6,7 @@ import { GradientBackground } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'About Start3',
@@ -36,31 +37,39 @@ function Header() {
         <div className="pt-20 lg:row-span-2 lg:-mr-16 xl:mr-auto">
           <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-              <img
+              <Image
                 alt="Start3 Team"
                 src="https://images.unsplash.com/photo-1589707197624-27802d81f462?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
+                width={500}
+                height={500}
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-32">
-              <img
+              <Image
                 alt="Blockchain Technology"
                 src="https://images.unsplash.com/photo-1562964400-f8ec1ef25777?q=80&w=3311&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
+                width={500}
+                height={500}
               />
             </div>
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-              <img
+              <Image
                 alt="AI-Powered Onboarding"
                 src="https://images.unsplash.com/photo-1515658323406-25d61c141a6e?q=80&w=3001&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
+                width={500}
+                height={500}
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-32">
-              <img
+              <Image
                 alt="Web3 Community"
                 src="https://images.unsplash.com/photo-1497271679421-ce9c3d6a31da?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="block size-full object-cover"
+                width={500}
+                height={500}
               />
             </div>
           </div>
@@ -148,10 +157,12 @@ function Team() {
         </div>
         <div className="max-lg:order-first max-lg:max-w-lg">
           <div className="aspect-[3/2] overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-            <img
+            <Image
               alt="Start3 Team"
               src="https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               className="block size-full object-cover"
+              width={500}
+              height={500}
             />
           </div>
         </div>
