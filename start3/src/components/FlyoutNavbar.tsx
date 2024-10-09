@@ -33,7 +33,7 @@ export const FlyoutNavbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Logo />
         <div className="hidden gap-6 lg:flex">
-          <ModeToggle />
+          {/* <ModeToggle /> */}
           <CTAs />
         </div>
         {/* <MobileMenu /> */}

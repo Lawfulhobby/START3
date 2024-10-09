@@ -42,7 +42,7 @@ export default function LanguageOptions() {
                 id: Date.now(),
                 role: "user",
                 display: <></>,
-                
+
                 // <ResponseSubmitted> {selected.name}</ResponseSubmitted>,
             },
         ]);
@@ -63,46 +63,31 @@ export default function LanguageOptions() {
 
     return (
         <>
-            <div className="mx-auto sm:px-4">
+            <div className="mx-auto">
                 <fieldset aria-label="Select an option">
-                    <RadioGroup 
-                        value={selected} 
-                        onChange={setSelected} 
-                        className="-space-y-px rounded-md bg-neutral-400"
+                    <RadioGroup
+                        value={selected}
+                        onChange={setSelected}
+                        className="space-y-1 rounded-md "
                         disabled={dis} // Disable RadioGroup when `dis` is true
                     >
                         {settings.map((setting, settingIdx) => (
                             <RadioGroup.Option
                                 key={setting.name}
                                 value={setting}
-                                className={({ checked }) =>
-                                    cn(
-                                        settingIdx === 0 ? 'rounded-tl-md rounded-tr-md' : '',
-                                        settingIdx === settings.length - 1 ? 'rounded-bl-md rounded-br-md' : '',
-                                        'group items-center relative flex cursor-pointer border border-gray-200 p-2 focus:outline-none',
-                                        checked ? 'bg-neutral-50 border-neutral-200 z-10' : 'bg-background',
-                                        dis ? 'cursor-not-allowed opacity-50' : '' // Add disabled styling when `dis` is true
-                                    )
-                                }
+                                className="group relative block cursor-pointer rounded-lg border border-gray-300 bg-white px-6 py-4 shadow-sm focus:outline-none data-[focus]:border-[#A479FF] data-[focus]:ring-2 data-[focus]:ring-indigo-600 sm:flex sm:justify-between"
                             >
                                 {({ checked }) => (
                                     <>
-                                        <span
-                                            aria-hidden="true"
-                                            className={cn(
-                                                'mt-0.5 flex h-4 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border border-gray-300 bg-white',
-                                                checked ? 'border-transparent bg-neutral-600' : ''
-                                            )}
-                                        >
-                                            <span className="rounded-full ">
-                                                {checked ? <CheckIcon className="text-sm h-3 w-3 text-white" /> : <MinusIcon className="text-sm h-3 w-3 text-black" />}
-                                            </span>
-                                        </span>
                                         <span className="ml-3 flex flex-col">
-                                            <span className={cn('block text-sm font-medium text-gray-900', checked ? 'text-green-900' : 'text-white')}>
+                                            <span className={cn('block text-sm font-medium text-gray-900', checked ? 'text-[#A479FF]' : 'text-black')}>
                                                 {setting.name}
                                             </span>
                                         </span>
+                                        <span
+                                            aria-hidden="true"
+                                            className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[focus]:border group-data-[checked]:border-[#A479FF]"
+                                        />
                                     </>
                                 )}
                             </RadioGroup.Option>

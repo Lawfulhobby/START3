@@ -10,6 +10,10 @@ export async function ServerSideSendTx({
 
     const renderQuestion = () => {
         switch (question) {
+            case 0:
+                return (
+                    <LanguageOptions />
+                );
             case 1:
                 return (
                     <LanguageOptions />
@@ -22,9 +26,15 @@ export async function ServerSideSendTx({
                 );
             case 3:
                 return (
-                    <></>
+                    <>
+
+                    </>
                 );
             case 4:
+                return (
+                    <></>
+                );
+            default:
                 return (
                     <></>
                 );

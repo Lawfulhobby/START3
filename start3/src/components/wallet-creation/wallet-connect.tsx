@@ -9,7 +9,7 @@ import Profile from "@/components/profile";
 export default function WalletConnect() {
   return (
     <div className="bg-neutral-800 pt-10 rounded-lg pb-5 max-w-2xl w-full">
-          <ConnectBtn />
+          {/* <ConnectBtn /> */}
     </div>
   )
 }

@@ -79,7 +79,7 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           h1: ({ children, id }: JSX.IntrinsicElements["h1"]) => (
             <h1
-              className="font-sans font-semibold text-2xl text-primary-foreground mb-6 mt-6"
+              className="text-pretty font-semibold tracking-tighter text-2xl text-black mb-6 mt-6"
               id={id}
             >
               {children}
@@ -87,7 +87,7 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           h2: ({ children, id }: JSX.IntrinsicElements["h2"]) => (
             <h2
-              className="font-sans font-medium text-2xl text-primary-foreground mb-6 mt-6"
+              className="text-pretty font-medium tracking-tighter  text-2xl text-black mb-6 mt-6"
               id={id}
             >
               {children}
@@ -95,7 +95,7 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           h3: ({ children, id }: JSX.IntrinsicElements["h3"]) => (
             <h3
-              className="font-sans font-semibold text-xl text-primary-foreground mb-6 mt-2"
+              className="text-pretty font-semibold tracking-tighter text-xl text-black mb-6 mt-2"
               id={id}
             >
               {children}
@@ -103,7 +103,7 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           h4: ({ children, id }: JSX.IntrinsicElements["h4"]) => (
             <h4
-              className="font-sans font-medium text-xl text-primary-foreground my-6"
+              className="text-pretty font-medium text-xl tracking-tighter  text-black my-6"
               id={id}
             >
               {children}
@@ -111,7 +111,7 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           h5: ({ children, id }: JSX.IntrinsicElements["h5"]) => (
             <h5
-              className="font-sans font-semibold text-lg text-primary-foreground my-6"
+              className="text-pretty font-semibold tracking-tighter text-lg text-black my-6"
               id={id}
             >
               {children}
@@ -119,7 +119,7 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           h6: ({ children, id }: JSX.IntrinsicElements["h6"]) => (
             <h6
-              className="font-sans font-medium text-lg text-primary-foreground my-6"
+              className="text-pretty font-medium text-lg tracking-tighter text-black my-6"
               id={id}
             >
               {children}
@@ -127,13 +127,13 @@ export const useMarkdownProcessor = (content: string) => {
           ),
           p: (props: JSX.IntrinsicElements["p"]) => {
             return (
-              <p className="font-sans  text-primary-foreground mb-6">
+              <p className="text-pretty  text-black mb-6">
                 {props.children}
               </p>
             );
           },
           strong: ({ children }: JSX.IntrinsicElements["strong"]) => (
-            <strong className="text-primary-foreground font-semibold">
+            <strong className="text-black font-semibold">
               {children}
             </strong>
           ),
@@ -151,7 +151,7 @@ export const useMarkdownProcessor = (content: string) => {
             );
           },
           ul: ({ children }: JSX.IntrinsicElements["ul"]) => (
-            <ul className="flex flex-col gap-3 text-primary-foreground my-6 pl-3 [&_ol]:my-3 [&_ul]:my-3">
+            <ul className="flex flex-col gap-3 text-black my-6 pl-3 [&_ol]:my-3 [&_ul]:my-3">
               {Children.map(
                 flattenChildren(children).filter(isValidElement),
                 (child, index) => (
@@ -164,13 +164,13 @@ export const useMarkdownProcessor = (content: string) => {
             </ul>
           ),
           ol: ({ children }: JSX.IntrinsicElements["ol"]) => (
-            <ol className="flex flex-col gap-3 text-primary-foreground my-6 pl-3 [&_ol]:my-3 [&_ul]:my-3">
+            <ol className="flex flex-col gap-3 text-black my-6 pl-3 [&_ol]:my-3 [&_ul]:my-3">
               {Children.map(
                 flattenChildren(children).filter(isValidElement),
                 (child, index) => (
                   <li key={index} className="flex gap-2 items-start">
                     <div
-                      className="font-sans  text-primary-foreground font-semibold shrink-0 min-w-[1.4ch]"
+                      className="text-pretty  text-black font-semibold shrink-0 min-w-[1.4ch]"
                       aria-hidden
                     >
                       {index + 1}.
@@ -182,7 +182,7 @@ export const useMarkdownProcessor = (content: string) => {
             </ol>
           ),
           li: ({ children }: JSX.IntrinsicElements["li"]) => (
-            <div className="font-sans ">{children}</div>
+            <div className="text-pretty ">{children}</div>
           ),
           table: ({ children }: JSX.IntrinsicElements["table"]) => (
             <div className="overflow-x-auto mb-6">
@@ -195,17 +195,17 @@ export const useMarkdownProcessor = (content: string) => {
             <thead className="bg-emerald-100">{children}</thead>
           ),
           th: ({ children }: JSX.IntrinsicElements["th"]) => (
-            <th className="border-2 border-emerald-200 p-2 font-sans  font-semibold text-primary-foreground">
+            <th className="border-2 border-emerald-200 p-2 text-pretty  font-semibold text-primary-foreground">
               {children}
             </th>
           ),
           td: ({ children }: JSX.IntrinsicElements["td"]) => (
-            <td className="border-2 border-emerald-200 p-2 font-sans  text-primary-foreground">
+            <td className="border-2 border-emerald-200 p-2 text-pretty  text-primary-foreground">
               {children}
             </td>
           ),
           blockquote: ({ children }: JSX.IntrinsicElements["blockquote"]) => (
-            <blockquote className="border-l-4 border-emerald-200 pl-2 text-primary-foreground italic">
+            <blockquote className="border-l-4 border-emerald-200 pl-2 text-black italic">
               {children}
             </blockquote>
           ),
@@ -242,7 +242,7 @@ const CodeBlock = ({ children, className }: JSX.IntrinsicElements["code"]) => {
         <div className="flex flex-col gap-1 flex-grow-0 flex-shrink-0">
           <button
             type="button"
-            className="rounded-md p-1 text-primary-foreground hover:bg-emerald-200 border-2 border-emerald-200 transition-colors"
+            className="rounded-md p-1 text-black hover:bg-emerald-200 border-2 border-emerald-200 transition-colors"
             aria-label="copy code to clipboard"
             title="Copy code to clipboard"
             onClick={() => {
@@ -262,7 +262,7 @@ const CodeBlock = ({ children, className }: JSX.IntrinsicElements["code"]) => {
             <>
               <button
                 type="button"
-                className="rounded-md p-1 text-primary-foreground hover:bg-emerald-200 border-2 border-emerald-200 transition-colors"
+                className="rounded-md p-1 text-black hover:bg-emerald-200 border-2 border-emerald-200 transition-colors"
                 aria-label="Open Mermaid preview"
                 title="Open Mermaid preview"
                 onClick={() => {
@@ -285,7 +285,7 @@ const CodeBlock = ({ children, className }: JSX.IntrinsicElements["code"]) => {
             <>
               <button
                 type="button"
-                className="rounded-md p-1 text-primary-foreground hover:bg-emerald-200 border-2 border-emerald-200 transition-colors"
+                className="rounded-md p-1 text-black hover:bg-emerald-200 border-2 border-emerald-200 transition-colors"
                 aria-label="Open Latex preview"
                 title="Open Latex preview"
                 onClick={() => {
@@ -310,7 +310,7 @@ const CodeBlock = ({ children, className }: JSX.IntrinsicElements["code"]) => {
   }
 
   return (
-    <code className="inline-block font-code bg-emerald-100 text-primary-foreground p-0.5 -my-0.5 rounded">
+    <code className="inline-block font-code bg-emerald-100 text-black p-0.5 -my-0.5 rounded">
       {children}
     </code>
   );
@@ -334,12 +334,12 @@ const Latex = ({ content }: { content: string }) => {
     return (
       <div className="flex gap-2 items-center">
         <CircleNotch className="animate-spin w-4 h-4 text-primary-foreground" />
-        <p className="font-sans  text-slate-700">Rendering diagram...</p>
+        <p className="text-pretty  text-slate-700">Rendering diagram...</p>
       </div>
     );
   } else if (diagram === false) {
     return (
-      <p className="font-sans  text-slate-700">
+      <p className="text-pretty  text-slate-700">
         Unable to render this diagram.
       </p>
     );
@@ -371,12 +371,12 @@ const Mermaid = ({ content }: { content: string }) => {
     return (
       <div className="flex gap-2 items-center">
         <CircleNotch className="animate-spin w-4 h-4 text-primary-foreground" />
-        <p className="font-sans  text-slate-700">Rendering diagram...</p>
+        <p className="text-pretty  text-slate-700">Rendering diagram...</p>
       </div>
     );
   } else if (diagram === false) {
     return (
-      <p className="font-sans  text-slate-700">
+      <p className="text-pretty  text-slate-700">
         Unable to render this diagram. Try copying it into the{" "}
         <Link
           href="https://mermaid.live/edit"
