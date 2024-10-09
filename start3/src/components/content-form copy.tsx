@@ -167,13 +167,13 @@ export default function ContentForm() {
                                         value={step.content}
                                         onChange={(value) => handleStepChange(index, 'content', value)}
                                         className="flex items-center space-x-3">
-                                        <Sheet>
+                                        <Sheet key={'left'}>
                                             <SheetTrigger
                                                 className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center justify-center text-center hover:bg-black hover:text-white"
                                             >
                                                 {selectedOption ? selectedOption.name : 'Select an option'}
                                             </SheetTrigger>
-                                            <SheetContent className='bg-white text-black'>
+                                            <SheetContent className='bg-white text-black' side={'left'}>
                                                 <SheetHeader className='mb-5'>
                                                     <SheetTitle>UI Toolbox</SheetTitle>
                                                 </SheetHeader>

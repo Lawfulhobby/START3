@@ -14,7 +14,7 @@ import ContentForm from '@/components/content-form'
 function Header() {
 
     return (
-        <Container className="mt-16">
+        <Container className="mt-3">
             {/* <Heading as="h1">Manage Your Onboarding Flows</Heading> */}
             <div className="relative isolate overflow-hidden  ">
             <ContentForm/>
@@ -26,9 +26,9 @@ function Header() {
 export default function Dashboard() {
 
     return (
-        <main className="overflow-hidden">
-            <GradientBackground />
-            <Container>
+        <main>
+            {/* <GradientBackground /> */}
+            {/* <Container>
                 <Navbar
                     banner={
                         <p
@@ -36,7 +36,7 @@ export default function Dashboard() {
                         >Flow Builder</p>
                     }
                 />
-            </Container>
+            </Container> */}
             <Header />
         </main>
     )

@@ -2,7 +2,7 @@ import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
-import { Gradient } from '@/components/gradient'
+import { Gradient, GradientBackground } from '@/components/gradient'
 import { Keyboard } from '@/components/keyboard'
 import { Link } from '@/components/link'
 import { LinkedAvatars } from '@/components/linked-avatars'
@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 function Hero() {
   return (
     <div className="relative">
+      <GradientBackground/>
       <Container className="relative">
         <Navbar
           banner={
