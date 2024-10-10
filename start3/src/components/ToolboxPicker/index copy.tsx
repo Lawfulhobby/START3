@@ -80,7 +80,6 @@ export const ToolboxPicker = () => {
   const [dis, setDis] = useState(false);
   const [qrUrl, setQrUrl] = useState('');
   const [stepsComplete, setStepsComplete] = useState(0);
-  const [activeStep, setActiveStep] = useState<number | null>(null); // New state for active step
 
   const { SVG } = useQRCode()
 
@@ -119,7 +118,7 @@ export const ToolboxPicker = () => {
       address,
     };
 
-    console.log("Content Data",contentData);
+    console.log(contentData);
     try {
       const response = await fetch('/api/POST/createForm', {
         method: 'POST',
@@ -251,8 +250,6 @@ export const ToolboxPicker = () => {
             </div>
           </>
         );
-      default:
-        return null;
     }
   }
 
@@ -271,49 +268,51 @@ export const ToolboxPicker = () => {
           <div className="space-y-1">
             <p className="text-black text-medium">Toolbox</p>
 
-            {/* 
-              Render toolbox options based on activeStep.
-              If no step is active, you can choose to render nothing or a default message.
-            */}
-            {activeStep !== null && steps[activeStep] && (
-              <div
-                key={activeStep}
-                className="mb-2 flex flex-col w-full justify-between"
-              >
-                <p className="focus:outline-none rounded p-2 w-full text-4xl font-medium tracking-tighter text-gray-950 sm:text-2xl">Question {activeStep + 1}</p>
-                  <fieldset>
-                    <RadioGroup
-                      value={steps[activeStep].content}
-                      onChange={(value) => handleStepChange(activeStep, 'content', value)}
-                      className="flex flex-col items-center"
-                    >
+            {steps.map((step, index) => {
+              const selectedOption = options.find(option => option.content === step.content);
+              return (
+                <div key={index}
+                  className="mb-2 flex flex-col w-full justify-between"
 
-                      {/* <div className="grid grid-cols-3"> */}
-                        {options.map((option) => (
-                          <div key={option.content} className="flex items-center w-full mt-2">
-                            <Radio
-                              value={option.content}
-                              aria-label={option.name}
-                              className="group relative p-3 items-center gap-2 flex w-full cursor-pointer rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
-                            >
-                              <div className="text-black transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
-                                {option.graphic}
-                              </div>
-                              <span
-                                aria-hidden="true"
-                                className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[checked]:border-[#A479FF]"
-                              />
-                              <p className="text-xl font-medium text-gray-900 font-medium tracking-tighter text-gray-950 ">
-                                {option.name}
-                              </p>
-                            </Radio>
-                          </div>
-                        ))}
-                      {/* </div> */}
-                    </RadioGroup>
-                  </fieldset>
-              </div>
-            )}
+                >
+                  <p className="text-black">Question {index + 1}</p>
+                  <div className="mb-2">
+                    <fieldset>
+                      <RadioGroup
+                        value={step.content}
+                        onChange={(value) => handleStepChange(index, 'content', value)}
+                        className="flex items-center space-x-3"
+                      >
+
+                        <div className="grid grid-cols-3">
+                          {options.map((option) => (
+                            <div key={option.content} className="flex flex-col items-center">
+                              <Radio
+                                value={option.content}
+                                aria-label={option.name}
+                                className="group relative flex flex-col cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
+                              >
+                                <div className="text-black transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                                  {option.graphic}
+                                </div>
+                                <span
+                                  aria-hidden="true"
+                                  className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[checked]:border-[#A479FF]"
+                                />
+                                <p className="text-sm font-medium text-gray-900">
+                                  {option.name}
+                                </p>
+                              </Radio>
+
+                            </div>
+                          ))}
+                        </div>
+                      </RadioGroup>
+                    </fieldset>
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <Dialog>
             <DialogTrigger asChild className='flex  '>
@@ -490,32 +489,6 @@ export const ToolboxPicker = () => {
 
                   <div className="flex gap-4 items-center">
                     <h2 className="text-xl ml-2">Questions</h2>
-                  </div>
-
-                  {steps.map((step, index) => {
-                    const selectedOption = options.find(option => option.content === step.content);
-                    return (
-                      <div key={index}
-                        className="mb-2 flex flex-col w-full justify-between mt-2"
-                      >
-                        <div className="mb-2 w-10/12">
-                          <input
-                            type="text"
-                            value={step.title}
-                            placeholder={`Question ${index + 1}`}
-                            onChange={(e) => handleStepChange(index, 'title', e.target.value)}
-                            onFocus={() => setActiveStep(index)} // Set activeStep on focus
-                            className="focus:outline-none rounded p-2 w-full text-lg font-medium tracking-tighter text-gray-950 sm:text-xl"
-                            required
-                          />
-                        </div>
-                        {/* Optional: Display selected option for each step */}
-                        {step.content && (
-                          <p className="text-xs ml-2 text-gray-600">Selected Option: {step.content}</p>
-                        )}
-                      </div>
-                    );
-                  })}
                     <button
                       type="button"
                       onClick={addStep}
@@ -524,6 +497,29 @@ export const ToolboxPicker = () => {
                       <PlusIcon className="h-4 w-4 font-bold" />
                       <p className="uppercase text-xs font-bold">Add Question</p>
                     </button>
+                  </div>
+
+                  {steps.map((step, index) => {
+                    const selectedOption = options.find(option => option.content === step.content);
+                    return (
+                      <div key={index}
+                        className="mb-2 flex flex-col w-full justify-between border mt-2 p-2"
+
+                      >
+                        <div className="mb-2 w-10/12">
+                          <input
+                            type="text"
+                            value={step.title}
+                            placeholder={`Question ${index + 1}`}
+                            onChange={(e) => handleStepChange(index, 'title', e.target.value)}
+                            className="focus:outline-none rounded p-2 w-full text-lg font-medium tracking-tighter text-gray-950 sm:text-xl"
+                            required
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+
                   <fieldset>
                     <RadioGroup
                       value={selectedRewardOption}
