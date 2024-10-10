@@ -119,7 +119,7 @@ export const ToolboxPicker = () => {
       address,
     };
 
-    console.log("Content Data",contentData);
+    console.log("Content Data", contentData);
     try {
       const response = await fetch('/api/POST/createForm', {
         method: 'POST',
@@ -281,37 +281,37 @@ export const ToolboxPicker = () => {
                 className="mb-2 flex flex-col w-full justify-between"
               >
                 <p className="focus:outline-none rounded p-2 w-full text-4xl font-medium tracking-tighter text-gray-950 sm:text-2xl">Question {activeStep + 1}</p>
-                  <fieldset>
-                    <RadioGroup
-                      value={steps[activeStep].content}
-                      onChange={(value) => handleStepChange(activeStep, 'content', value)}
-                      className="flex flex-col items-center"
-                    >
+                <fieldset>
+                  <RadioGroup
+                    value={steps[activeStep].content}
+                    onChange={(value) => handleStepChange(activeStep, 'content', value)}
+                    className="flex flex-col items-center"
+                  >
 
-                      {/* <div className="grid grid-cols-3"> */}
-                        {options.map((option) => (
-                          <div key={option.content} className="flex items-center w-full mt-2">
-                            <Radio
-                              value={option.content}
-                              aria-label={option.name}
-                              className="group relative p-3 items-center gap-2 flex w-full cursor-pointer rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
-                            >
-                              <div className="text-black transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
-                                {option.graphic}
-                              </div>
-                              <span
-                                aria-hidden="true"
-                                className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[checked]:border-[#A479FF]"
-                              />
-                              <p className="text-xl font-medium text-gray-900 font-medium tracking-tighter text-gray-950 ">
-                                {option.name}
-                              </p>
-                            </Radio>
+                    {/* <div className="grid grid-cols-3"> */}
+                    {options.map((option) => (
+                      <div key={option.content} className="flex items-center w-full mt-2">
+                        <Radio
+                          value={option.content}
+                          aria-label={option.name}
+                          className="group relative p-3 items-center gap-2 flex w-full cursor-pointer rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
+                        >
+                          <div className="text-gray-400 transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                            {option.graphic}
                           </div>
-                        ))}
-                      {/* </div> */}
-                    </RadioGroup>
-                  </fieldset>
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-[checked]:border-[#A479FF]"
+                          />
+                          <p className="text-xl text-gray-400 font-medium tracking-tighter transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                            {option.name}
+                          </p>
+                        </Radio>
+                      </div>
+                    ))}
+                    {/* </div> */}
+                  </RadioGroup>
+                </fieldset>
               </div>
             )}
           </div>
@@ -510,20 +510,20 @@ export const ToolboxPicker = () => {
                           />
                         </div>
                         {/* Optional: Display selected option for each step */}
-                        {step.content && (
-                          <p className="text-xs ml-2 text-gray-600">Selected Option: {step.content}</p>
+                        {selectedOption && (
+                          <p className="text-xs ml-2 text-gray-600">Selected Option: {selectedOption.name}</p>
                         )}
                       </div>
                     );
                   })}
-                    <button
-                      type="button"
-                      onClick={addStep}
-                      className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center hover:bg-black hover:text-white"
-                    >
-                      <PlusIcon className="h-4 w-4 font-bold" />
-                      <p className="uppercase text-xs font-bold">Add Question</p>
-                    </button>
+                  <button
+                    type="button"
+                    onClick={addStep}
+                    className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center hover:bg-black hover:text-white"
+                  >
+                    <PlusIcon className="h-4 w-4 font-bold" />
+                    <p className="uppercase text-xs font-bold">Add Question</p>
+                  </button>
                   <fieldset>
                     <RadioGroup
                       value={selectedRewardOption}
@@ -537,12 +537,12 @@ export const ToolboxPicker = () => {
                           aria-label={rewardOption.title}
                           className="group relative flex flex-col cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
                         >
-                          <div className="text-2xl text-black transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                          <div className="text-2xl text-gray-400 transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
                             {rewardOption.graphic}
                           </div>
                           <span className="flex mt-4">
                             <span className="flex flex-col">
-                              <span className="block text-sm font-medium text-gray-900">
+                              <span className="text-xl text-gray-400 font-medium tracking-tighter transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
                                 {rewardOption.title}
                               </span>
                             </span>
