@@ -10,6 +10,8 @@ import type { Metadata } from 'next'
 import { GridCards } from '@/components/GridCards'
 import { FlyoutNavbar } from '@/components/FlyoutNavbar'
 import ContentForm from '@/components/content-form'
+import { RetractingSidebar } from '@/components/RetractingSidebar'
+import { ToolboxPicker } from '@/components/ToolboxPicker'
 
 function Header() {
 
@@ -17,7 +19,7 @@ function Header() {
         <Container className="mt-3">
             {/* <Heading as="h1">Manage Your Onboarding Flows</Heading> */}
             <div className="relative isolate overflow-hidden  ">
-            <ContentForm/>
+                <ContentForm />
             </div>
         </Container>
     )
@@ -26,18 +28,9 @@ function Header() {
 export default function Dashboard() {
 
     return (
-        <main>
-            {/* <GradientBackground /> */}
-            {/* <Container>
-                <Navbar
-                    banner={
-                        <p
-                            className="flex items-center gap-1 rounded-full bg-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-white data-[hover]:bg-black"
-                        >Flow Builder</p>
-                    }
-                />
-            </Container> */}
-            <Header />
-        </main>
+        <>
+            <ToolboxPicker />
+        </>
+
     )
 }

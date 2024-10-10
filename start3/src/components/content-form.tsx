@@ -244,10 +244,10 @@ export default function ContentForm() {
                 <div className="relative flex bg-black w-full">
                     <Dialog>
                         <DialogTrigger asChild className='flex bg-black w-[250px] '>
-                            <Button className="bg-black right-0 absolute justify-between  w-[250px] text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center hover:bg-black hover:text-white">
+                            {/* <Button className="bg-black right-0 absolute justify-between  w-[250px] text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center hover:bg-black hover:text-white">
                                 <p>Generate flow</p>
                                 <ArrowRight className='h-4 w-4' />
-                            </Button>
+                            </Button> */}
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[425px] bg-white">
                             {/* <DialogHeader>
@@ -388,7 +388,10 @@ export default function ContentForm() {
                 {steps.map((step, index) => {
                     const selectedOption = options.find(option => option.content === step.content);
                     return (
-                        <div key={index} className="mb-2 flex flex-col w-full justify-between">
+                        <div key={index} 
+                        className="mb-2 flex flex-col w-full justify-between"
+                        
+                        >
                             <div className="mb-2 w-10/12">
                                 <input
                                     type="text"
@@ -401,19 +404,20 @@ export default function ContentForm() {
                             </div>
                             <div className="mb-2">
                                 <fieldset>
-                                    <RadioGroup
-                                        value={step.content}
-                                        onChange={(value) => handleStepChange(index, 'content', value)}
-                                        className="flex items-center space-x-3"
-                                    >
-                                        <Sheet>
-                                            <SheetTrigger className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center hover:bg-black hover:text-white">
-                                                {selectedOption ? selectedOption.name : 'Text'}
-                                            </SheetTrigger>
-                                            <SheetContent className="bg-white text-black" side={'left'}>
-                                                <SheetHeader className="mb-5">
-                                                    <SheetTitle>UI Toolbox</SheetTitle>
-                                                </SheetHeader>
+                                    <Sheet>
+                                        <SheetTrigger className="bg-white text-[#A479FF] border border-[#A479FF] rounded-full flex py-2 px-3 items-center hover:bg-black hover:text-white">
+                                            {selectedOption ? selectedOption.name : 'Text'}
+                                        </SheetTrigger>
+                                        <SheetContent className="bg-white text-black" side={'left'}>
+                                            <SheetHeader className="mb-5">
+                                                <SheetTitle>UI Toolbox</SheetTitle>
+                                            </SheetHeader>
+                                            <RadioGroup
+                                                value={step.content}
+                                                onChange={(value) => handleStepChange(index, 'content', value)}
+                                                className="flex items-center space-x-3"
+                                            >
+
                                                 <div className="grid grid-cols-3">
                                                     {options.map((option) => (
                                                         <div key={option.content} className="flex flex-col items-center">
@@ -436,9 +440,9 @@ export default function ContentForm() {
                                                         </div>
                                                     ))}
                                                 </div>
-                                            </SheetContent>
-                                        </Sheet>
-                                    </RadioGroup>
+                                            </RadioGroup>
+                                        </SheetContent>
+                                    </Sheet>
                                 </fieldset>
                             </div>
                         </div>

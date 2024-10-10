@@ -9,6 +9,7 @@ import {
 import { parseEther } from 'viem'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { BackgroundGradient } from '../ui/background-gradient'
 
 // Define the props interface
 interface SendTransactionProps {
@@ -57,45 +58,47 @@ export function TransactComponent({
         })
 
     return (
-        <form onSubmit={submit} className='mt-10 flex flex-col space-y-4'>
+        <BackgroundGradient className="relative flex w-full p-4 sm:p-10 rounded-[22px] bg-white dark:bg-zinc-900">
+            <form onSubmit={submit} className='mt-10 flex flex-col w-full  space-y-4'>
 
-            {/* Address Input */}
-            <Input
-                name="address"
-                placeholder="0xA0Cf…251e"
-                required
-                defaultValue={toAddress}
-            />
+                {/* Address Input */}
+                <Input
+                    name="address"
+                    placeholder="0xA0Cf…251e"
+                    required
+                    defaultValue={toAddress}
+                />
 
-            {/* Value Input */}
-            <Input
-                name="value"
-                placeholder="0.05"
-                required
-                defaultValue={initialValue}
-                type="number"
-                min="0"
-                step="any"
-            />
+                {/* Value Input */}
+                <Input
+                    name="value"
+                    placeholder="0.05"
+                    required
+                    defaultValue={initialValue}
+                    type="number"
+                    min="0"
+                    step="any"
+                />
 
-            {/* Submit Button */}
-            <Button
-            className='bg-purple-500 '
-                disabled={isPending}
-                type="submit"
-            >
-                {isPending ? 'Confirming...' : 'Send'}
-            </Button>
+                {/* Submit Button */}
+                <Button
+                    className='bg-purple-500 '
+                    disabled={isPending}
+                    type="submit"
+                >
+                    {isPending ? 'Confirming...' : 'Send'}
+                </Button>
 
-            {/* Transaction Status Messages */}
-            {hash && <div className="mt-2 text-sm text-gray-600">Transaction Hash: {hash}</div>}
-            {isConfirming && <div className="mt-2 text-sm text-yellow-600">Waiting for confirmation...</div>}
-            {isConfirmed && <div className="mt-2 text-sm text-green-600">Transaction confirmed.</div>}
-            {error && (
-                <div className="mt-2 text-sm text-red-600">
-                    Error: {(error as BaseError).shortMessage || error.message}
-                </div>
-            )}
-        </form>
+                {/* Transaction Status Messages */}
+                {hash && <div className="mt-2 text-sm text-gray-600">Transaction Hash: {hash}</div>}
+                {isConfirming && <div className="mt-2 text-sm text-yellow-600">Waiting for confirmation...</div>}
+                {isConfirmed && <div className="mt-2 text-sm text-green-600">Transaction confirmed.</div>}
+                {error && (
+                    <div className="mt-2 text-sm text-red-600">
+                        Error: {(error as BaseError).shortMessage || error.message}
+                    </div>
+                )}
+            </form>
+        </BackgroundGradient>
     )
 }

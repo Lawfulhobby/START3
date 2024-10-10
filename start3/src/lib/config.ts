@@ -1,12 +1,12 @@
 'use client';
 
 import { http, createStorage, cookieStorage } from 'wagmi';
-import { base , baseSepolia, sepolia, celoAlfajores, optimismSepolia} from 'wagmi/chains';
+import {  baseSepolia, base } from 'wagmi/chains';
 import { Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 
 const projectId = "db8b0b37d764ec63748a90b266315c3a";
 
-const supportedChains: Chain[] = [baseSepolia, sepolia,  celoAlfajores, optimismSepolia];
+const supportedChains: Chain[] = [baseSepolia];
 
 export const config = getDefaultConfig({
    appName: "Start3",
