@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { getBasenameAddress, Basename } from '@/apis/basenames';
+import { BackgroundGradient } from '../ui/background-gradient';
 
 const BasenameComponent: React.FC = () => {
   // State to hold the user input for basename
@@ -44,8 +45,8 @@ const BasenameComponent: React.FC = () => {
   };
 
   return (
-    <main className='flex  flex-col gap-12 text-black'>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+    <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900">
+      <form onSubmit={handleSubmit} className='flex w-full flex-col gap-4'>
         <label htmlFor="basename" className='text-lg font-medium'>
           Enter Basename:
         </label>
@@ -79,7 +80,7 @@ const BasenameComponent: React.FC = () => {
           <strong className='text-xl'>{address}</strong>
         </div>
       )}
-    </main>
+  </BackgroundGradient>
   );
 };
 

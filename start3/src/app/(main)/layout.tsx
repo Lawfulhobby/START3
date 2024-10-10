@@ -1,4 +1,5 @@
-import DashSidebar from "@/components/DashSidebar";
+"use client"
+import { RetractingSidebar } from "@/components/RetractingSidebar";
 
 export default function RootLayout({
     children,
@@ -6,8 +7,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <DashSidebar>
-            {children}
-        </DashSidebar>
+        <div className="flex">
+            <RetractingSidebar />
+           {children}
+        </div>
     );
 }

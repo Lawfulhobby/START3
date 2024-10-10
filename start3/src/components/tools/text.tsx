@@ -3,11 +3,12 @@
 
 import TextareaAutosize from 'react-textarea-autosize';
 import { Button } from '../button';
+import { BackgroundGradient } from '../ui/background-gradient';
 
 export default function TextComponent() {
 
     return (
-        <div className="bg-neutral-800 pt-10 rounded-lg pb-5 max-w-2xl w-full">
+        <BackgroundGradient  className="relative flex w-full  rounded-[22px] bg-white dark:bg-zinc-900">
             {/* Message input at the bottom */}
             <div className="relative mx-auto max-w-2xl px-4 w-full backdrop-blur-sm bg-white bg-opacity-10">
                 <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -42,6 +43,6 @@ export default function TextComponent() {
                     </div>
                 </div>
             </div>
-        </div>
+        </BackgroundGradient >
     )
 }

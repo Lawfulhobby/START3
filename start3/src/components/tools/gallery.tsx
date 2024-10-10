@@ -16,8 +16,8 @@ const ToolGallery = () => {
 
     return (
         <section className="px-8 bg-white">
-            <div className="w-full items-center max-w-5xl mx-auto grid gap-8 grid-cols-1 lg:grid-cols-[1fr_350px]">
-                <div>
+            <div className="w-full items-center max-w-7xl mx-auto grid gap-8 grid-cols-1 lg:grid-cols-2">
+                <div className="w-5xl flex">
                     {/* <h3 className="text-4xl text-black font-bold mb-8">Tools</h3> */}
                     <div className="flex flex-col gap-4">
                         {tools.map((q) => (

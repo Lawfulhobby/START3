@@ -26,17 +26,7 @@ function Header() {
 export default function Dashboard() {
 
     return (
-        <main>
-            {/* <GradientBackground /> */}
-            {/* <Container>
-                <Navbar
-                    banner={
-                        <p
-                            className="flex items-center gap-1 rounded-full bg-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-white data-[hover]:bg-black"
-                        >Flow Builder</p>
-                    }
-                />
-            </Container> */}
+        <main className="h-[200vh] w-full">
             <Header />
         </main>
     )
