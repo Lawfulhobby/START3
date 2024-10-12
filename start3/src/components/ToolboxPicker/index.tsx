@@ -14,11 +14,13 @@ import {
 import { motion } from "framer-motion";
 import ContentForm from "../content-form";
 import { Container } from "../container";
+import { MotionConfig } from "framer-motion";
 
 import { useRouter } from 'next/navigation';
 import { Radio, RadioGroup } from '@headlessui/react';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { useAccount } from 'wagmi';
+import { FiArrowRight } from "react-icons/fi";
 
 import {
   Sheet,
@@ -269,8 +271,18 @@ export const ToolboxPicker = () => {
           <TitleSection open={open} />
 
           <div className="space-y-1">
-            <p className="text-black text-medium">Toolbox</p>
+            {/* <p className="text-black text-medium">Toolbox</p> */}
+            {activeStep === null && (
+              <>
+                <SpringCard
+                  title="UI Toolbox"
+                  subtitle="The UI Toolbox in Start3 is a powerful set of components designed to help users easily build and customize their Web3 onboarding flows."
+                  className="bg-indigo-300"
 
+                />
+              </>
+            )
+            }
             {/* 
               Render toolbox options based on activeStep.
               If no step is active, you can choose to render nothing or a default message.
@@ -702,5 +714,63 @@ const ToggleClose = ({
         </motion.span>
       </div>
     </motion.button>
+  );
+};
+
+
+const SpringCard = ({
+  title,
+  subtitle,
+  className,
+}: {
+  title: string;
+  subtitle: string;
+  className?: string;
+}) => {
+  return (
+    <MotionConfig
+      transition={{
+        type: "spring",
+        bounce: 0.5,
+      }}
+    >
+      <motion.div
+        whileHover="hovered"
+        className={cn(
+          "group w-full text-black border-1 border-black bg-emerald-300",
+          className
+        )}
+      >
+        <motion.div
+          className={cn(
+            "-m-0.5 border-1 border-black bg-emerald-300",
+            className
+          )}
+        >
+          <motion.div
+            className={cn(
+              "relative -m-0.5 flex h-72 flex-col justify-between overflow-hidden border border-black bg-emerald-300 p-8",
+              className
+            )}
+          >
+            <p className="flex items-center text-2xl font-medium uppercase">
+              <FiArrowRight className="-ml-8 mr-2 opacity-0 transition-all duration-300 ease-in-out group-hover:ml-0 group-hover:opacity-100" />
+              {title}
+            </p>
+            <div>
+              <p className="transition-[margin] duration-300 ease-in-out group-hover:mb-10">
+                {subtitle}
+              </p>
+              <Link href={"/gallery"}>
+                <button className="absolute bottom-2 left-2 right-2 translate-y-full border-2 border-black bg-white px-4 py-2 text-black opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
+                  Explore Gallery
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </MotionConfig>
+
   );
 };

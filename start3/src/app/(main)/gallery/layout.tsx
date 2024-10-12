@@ -22,15 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <AI>
-      <html lang="en">
-        <body className={'bg-background'}>
-          {/* <SideBarLayout> */}
-            <main className="relative flex w-full flex-1 flex-col overflow-y-auto h-screen bg-background">
-              {children}
-            </main>
-          {/* </SideBarLayout> */}
-        </body>
-      </html>
+      {children}
     </AI>
   );
 }

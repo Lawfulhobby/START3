@@ -5,8 +5,11 @@ import { IconType } from "react-icons";
 import {
   FiChevronDown,
   FiChevronsRight,
+  FiCircle,
   FiDollarSign,
+  FiGrid,
   FiHome,
+  FiZap,
 } from "react-icons/fi";
 import {
   Address,
@@ -20,6 +23,8 @@ import { useAccount } from 'wagmi';
 import Davatar from "@davatar/react";
 import { base } from "viem/chains";
 import { useRouter } from 'next/navigation'; // Import useRouter from Next.js
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // Main Sidebar Component
 export const RetractingSide: React.FC = () => {
@@ -55,19 +60,28 @@ export const RetractingSidebar: React.FC = () => {
 
       <div className="space-y-1">
         <Option
-          Icon={FiHome}
+          Icon={FiGrid}
           title="Dashboard"
           selected={selected}
           setSelected={setSelected}
           open={open}
+          link="/flow-dashboard"
         />
         <Option
-          Icon={FiDollarSign}
-          title="Builder"
+          Icon={FiZap}
+          title="Flow Builder"
           selected={selected}
           setSelected={setSelected}
           open={open}
-          notifs={3}
+          link="/create-flow"
+        />
+        <Option
+          Icon={FiCircle}
+          title="Tool Gallery"
+          selected={selected}
+          setSelected={setSelected}
+          open={open}
+          link="/gallery"
         />
         {/* Add more options as needed */}
       </div>
@@ -84,6 +98,7 @@ interface OptionProps {
   setSelected: Dispatch<SetStateAction<string>>;
   open: boolean;
   notifs?: number;
+  link: string;
 }
 
 const Option: React.FC<OptionProps> = ({
@@ -93,50 +108,55 @@ const Option: React.FC<OptionProps> = ({
   setSelected,
   open,
   notifs,
+  link,
 }) => {
+ const pathname = usePathname();
+  const isSelected = pathname === link; // Compare the current pathname with the link
+
   return (
-    <motion.button
-      layout
-      onClick={() => setSelected(title)}
-      className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
-        selected === title
+    <Link href={link}>
+      <motion.button
+        layout
+        onClick={() => setSelected(title)}
+        className={`relative flex h-10 w-full items-center rounded-md transition-colors ${isSelected
           ? "bg-indigo-100 text-indigo-800"
           : "text-slate-500 hover:bg-slate-100"
-      }`}
-    >
-      <motion.div
-        layout
-        className="grid h-full w-10 place-content-center text-lg"
+          }`}
       >
-        <Icon />
-      </motion.div>
-      {open && (
-        <motion.span
+        <motion.div
           layout
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.125 }}
-          className="text-xs font-medium"
+          className="grid h-full w-10 place-content-center text-lg"
         >
-          {title}
-        </motion.span>
-      )}
+          <Icon />
+        </motion.div>
+        {open && (
+          <motion.span
+            layout
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.125 }}
+            className="text-xs font-medium"
+          >
+            {title}
+          </motion.span>
+        )}
 
-      {notifs && open && (
-        <motion.span
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-          }}
-          style={{ y: "-50%" }}
-          transition={{ delay: 0.5 }}
-          className="absolute right-2 top-1/2 size-4 rounded bg-indigo-500 text-xs text-white"
-        >
-          {notifs}
-        </motion.span>
-      )}
-    </motion.button>
+        {notifs && open && (
+          <motion.span
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            style={{ y: "-50%" }}
+            transition={{ delay: 0.5 }}
+            className="absolute right-2 top-1/2 size-4 rounded bg-indigo-500 text-xs text-white"
+          >
+            {notifs}
+          </motion.span>
+        )}
+      </motion.button>
+    </Link>
   );
 };
 
