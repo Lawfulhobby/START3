@@ -24,7 +24,7 @@ function DesktopNav() {
   const { address } = useAccount();
   return (
     <nav className="relative hidden lg:flex">
-      {links.map(({ href, label }) => (
+      {/* {links.map(({ href, label }) => (
         <PlusGridItem key={href} className="relative flex">
           <Link
             href={href}
@@ -33,7 +33,27 @@ function DesktopNav() {
             {label}
           </Link>
         </PlusGridItem>
-      ))}
+      ))} */}
+
+      <PlusGridItem key={"/about"} className="relative flex">
+        <Link
+          href={'/about'}
+          className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+        >
+          About
+        </Link>
+      </PlusGridItem>
+
+      {address &&
+        <PlusGridItem key={"/flow-dashboard"} className="relative flex">
+          <Link
+            href={'/flow-dashboard'}
+            className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+          >
+            Dashboard
+          </Link>
+        </PlusGridItem>
+      }
 
       {!address ? (
         <PlusGridItem className="relative flex">
