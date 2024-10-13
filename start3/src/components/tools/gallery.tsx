@@ -9,6 +9,7 @@ import { TransactComponent } from "./transact";
 import WalletComponent from "./wallet";
 import TextComponent from "./text";
 import BasenameComponent from "./basename";
+import TwitterComponent from "./twitter";
 
 const ToolGallery = () => {
     const [open, setOpen] = useState(tools[0].id); // Keep track of selected tool ID
@@ -151,5 +152,12 @@ const tools = [
         description:
             "Enable token swapping within the onboarding flow. Users can exchange one cryptocurrency for another, helping them understand liquidity pools and decentralized exchanges (DEXs) as part of their Web3 journey.",
         tool: <BasenameComponent />,
+    },
+    {
+        id: 8,
+        title: "Twitter Embed",
+        description:
+            "Enable token swapping within the onboarding flow. Users can exchange one cryptocurrency for another, helping them understand liquidity pools and decentralized exchanges (DEXs) as part of their Web3 journey.",
+        tool: <TwitterComponent />,
     },
 ];
