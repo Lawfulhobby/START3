@@ -15,7 +15,7 @@ const ToolGallery = () => {
     const selectedTool = tools.find((s) => s.id === open)?.tool; // Get the selected tool component
 
     return (
-        <section className="px-8 bg-white">
+        <section className=" bg-white">
             <div className="w-full items-center max-w-7xl mx-auto grid gap-8 grid-cols-1 lg:grid-cols-2">
                 <div className="w-5xl flex">
                     {/* <h3 className="text-4xl text-black font-bold mb-8">Tools</h3> */}

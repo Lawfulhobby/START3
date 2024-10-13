@@ -3,7 +3,7 @@
 import { WagmiProvider, cookieToInitialState } from "wagmi";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { Analytics } from '@vercel/analytics/react';
 import { config } from "@/lib/config";
 
 const queryClient = new QueryClient();
@@ -32,6 +32,7 @@ export default function Providers({ children, cookie }: Props) {
           })}
         >
           {children}
+          <Analytics/>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

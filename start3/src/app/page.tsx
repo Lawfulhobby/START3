@@ -1,3 +1,4 @@
+"use client"
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
@@ -17,16 +18,22 @@ import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import type { Metadata } from 'next'
+import { FiArrowDown, FiArrowRight } from 'react-icons/fi'
+import { FiChevronDown } from "react-icons/fi";
+import { motion } from "framer-motion";
+import useMeasure from "react-use-measure";
+import { useState } from 'react'
+import { GridCardSamples } from '@/components/GridCardSamples'
 
-export const metadata: Metadata = {
-  description:
-    'Radiant helps you sell more by revealing sensitive information about your customers.',
-}
+// export const metadata: Metadata = {
+//   description:
+//     'Radiant helps you sell more by revealing sensitive information about your customers.',
+// }
 
 function Hero() {
   return (
     <div className="relative">
-      <GradientBackground/>
+      <GradientBackground />
       <Container className="relative">
         <Navbar
           banner={
@@ -46,11 +53,74 @@ function Hero() {
           <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
             Easily step into the world of blockchain with our guided AI platform.
           </p>
+
+          <TrySamples title='Try Ready Made flows'>
+            <GridCardSamples />
+          </TrySamples>
+
+
         </div>
       </Container>
     </div>
   )
 }
+
+const TrySamples = ({
+  title,
+  children,
+  defaultOpen = false,
+}: {
+  title: string;
+  children: JSX.Element;
+  defaultOpen?: boolean;
+}) => {
+  const [ref, { height }] = useMeasure();
+  const [open, setOpen] = useState(defaultOpen);
+
+  return (
+    <motion.div
+      animate={open ? "open" : "closed"}
+      className=""
+    >
+      <button
+        onClick={() => setOpen((pv) => !pv)}
+        className="flex w-full items-center justify-between gap-4 py-6"
+      >
+        <motion.span
+          variants={{
+            open: {
+              color: "rgba(3, 6, 23, 0)",
+            },
+            closed: {
+              color: "rgba(3, 6, 23, 1)",
+            },
+          }}
+
+           
+          className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-left text-lg font-medium"
+        >
+          <div className="group text-black mt-5 flex h-10 items-center gap-2 rounded-full bg-neutral-200 pl-3 pr-4 transition-all duration-300 ease-in-out hover:bg-black hover:pl-2 hover:text-white active:bg-neutral-700">
+            <span className="rounded-full bg-black p-1 text-sm transition-colors duration-300 group-hover:bg-white">
+              <FiArrowDown className="-translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-lg group-hover:text-black group-active:-rotate-45" />
+            </span>
+            <span> {title}</span>
+          </div>
+        </motion.span>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{
+          height: open ? height : "0px",
+          marginBottom: open ? "24px" : "0px",
+        }}
+        className="overflow-hidden text-slate-600"
+      >
+        <p ref={ref}>{children}</p>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 
 function FeatureSection() {
   return (
@@ -158,7 +228,7 @@ function DarkBentoSection() {
             description="Integrate various blockchain tools and set up interactions tailored to your needs, enhancing the educational value of each session."
             graphic={
               <div className="h-80 bg-[url(/screenshots/builderr.png)] bg-cover bg-center" />
-          }
+            }
             className="z-10 !overflow-visible lg:col-span-2 lg:rounded-tr-4xl"
           />
           <BentoCard
