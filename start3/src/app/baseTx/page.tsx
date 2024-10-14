@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 'use client';
 
 import React, { useEffect, useState, useContext } from 'react';
@@ -19,10 +19,12 @@ import { CONTEXT } from "../../apis/context_provider"
 
 const Home = () => {
     const { account, active, connector, rpcUrl } = useWallet();
-    const [fee, setFee] = useState();
+    const [fee, setFee] = useState("");
+    const [airdropamount, setAirdropamount] = useState("");
 
     const {
         SET_FEE,
+        SET_AIRDROP_AMOUNT,
         address,
         chainId,
         connectedTokenAddr,
@@ -100,6 +102,31 @@ const Home = () => {
                             className="btn margin-btn-new"
                         >
                             Update Fee For Airdrop
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* SET_AIRDROP_AMOUNT */}
+            <div className="col-xl-3 col-lg-4 col-md-6">
+                <div className="contact-info-item">
+                    <div className="content">
+                        <h6 className="title">Airdrop Amount </h6>
+
+                        <div className="input-group-new">
+                            <label className="label-new">Airdrop Claim Amount</label>
+                            <input
+                                onChange={(e) => setAirdropamount(e.target.value)}
+                                placeholder={`${airdropPerUser || 0} Matic`}
+                                type="text"
+                            />
+                            <div></div>
+                        </div>
+                        <button
+                            onClick={() => SET_AIRDROP_AMOUNT(airdropamount)}
+                            className="btn margin-btn-new"
+                        >
+                            Update Claim Airdrop
                         </button>
                     </div>
                 </div>
