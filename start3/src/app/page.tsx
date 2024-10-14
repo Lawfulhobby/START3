@@ -38,8 +38,9 @@ function Hero() {
         <Navbar
           banner={
             <Link
-              href="/"
-              className="flex items-center gap-1 rounded-full bg-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-white data-[hover]:bg-black"
+              href="https://docs.google.com/document/d/1peqLmBk8YCYZ7z-TVZz7SmxGJUbL35ETlxqCE3Tp_2w/edit?usp=sharing"
+              target='_blank'
+              className="flex items-center gap-1 rounded-full border border-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-[#A479FF] data-[hover]:bg-black data-[hover]:text-white"
             >
               Read our whitepaper!
               <ChevronRightIcon className="size-4" />
