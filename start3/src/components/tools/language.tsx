@@ -64,7 +64,7 @@ export default function LanguageComponent() {
 
     return (
         <>
-            <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900">
+            <BackgroundGradient className="rounded-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
             <div className="mx-auto">
                 <fieldset aria-label="Select an option">
                     <RadioGroup

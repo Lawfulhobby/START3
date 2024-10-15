@@ -728,28 +728,22 @@ const SpringCard = ({
   className?: string;
 }) => {
   return (
-    <MotionConfig
-      transition={{
-        type: "spring",
-        bounce: 0.5,
-      }}
-    >
       <motion.div
         whileHover="hovered"
         className={cn(
-          "group w-full text-black border-1 border-black bg-emerald-300",
+          "group w-full text-black border-1 border-black bg-red-300 ",
           className
         )}
       >
         <motion.div
           className={cn(
-            "-m-0.5 border-1 border-black bg-emerald-300",
+            "-m-0.5 border-1 border-black bg-red-300 ",
             className
           )}
         >
           <motion.div
             className={cn(
-              "relative -m-0.5 flex h-72 flex-col justify-between overflow-hidden border border-black bg-emerald-300 p-8",
+              "relative -m-0.5 flex h-72 flex-col justify-between overflow-hidden border border-black bg-red-300 p-8",
               className
             )}
           >
@@ -762,7 +756,7 @@ const SpringCard = ({
                 {subtitle}
               </p>
               <Link href={"/gallery"}>
-                <button className="absolute bottom-2 left-2 right-2 translate-y-full border-2 border-black bg-white px-4 py-2 text-black opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
+                <button className="absolute bottom-2 left-2 right-2 translate-y-full border border-black bg-white px-4 py-2 text-black opacity-0 transition-all duration-300 ease-in-outc hover:rounded-full group-hover:translate-y-0 group-hover:opacity-100">
                   Explore Gallery
                 </button>
               </Link>
@@ -770,7 +764,6 @@ const SpringCard = ({
           </motion.div>
         </motion.div>
       </motion.div>
-    </MotionConfig>
 
   );
 };

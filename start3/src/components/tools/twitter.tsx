@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useState } from "react";
 import {
   TwitterShareButton,
@@ -48,7 +49,7 @@ const TwitterComponent: FC = () => {
   };
 
   return (
-    <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900">
+    <BackgroundGradient className="rounded-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
       <div className="container mx-auto ">
         <div className="flex justify-center">
           <div className="w-full max-w-lg">

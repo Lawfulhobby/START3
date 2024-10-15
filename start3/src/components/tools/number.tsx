@@ -45,7 +45,7 @@ export default function NumberTool() {
 
     return (
         <>
-            <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900">
+            <BackgroundGradient className="rounded-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
             <div className="mx-auto sm:px-4">
                 <p className="text-3xl text-black mb-5">{size}</p>
                 <Slider

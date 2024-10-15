@@ -1,9 +1,9 @@
 // @ts-nocheck
 import type { Metadata } from "next";
 import { Open_Sans } from 'next/font/google';
-import { AI } from './actions';
 import { FlyoutNavbar } from "@/components/FlyoutNavbar";
 import SideBarLayout from "./Sidebar";
+import { AI } from "@/app/flow/[...slug]/actions";
 
 //👇 Configure our font object
 const openSans = Open_Sans({

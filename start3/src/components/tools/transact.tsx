@@ -58,7 +58,7 @@ export function TransactComponent({
         })
 
     return (
-        <BackgroundGradient className="relative flex w-full p-4 sm:p-10 rounded-[22px] bg-white dark:bg-zinc-900">
+        <BackgroundGradient className="relative flex w-full p-4 sm:p-10 rounded-xl bg-white dark:bg-zinc-900">
             <form onSubmit={submit} className='mt-10 flex flex-col w-full  space-y-4'>
 
                 {/* Address Input */}

@@ -20,10 +20,6 @@ function Header() {
             <div className="relative isolate overflow-hidden  pt-8">
                 <GridCards />
             </div>
-            {/* <Heading as="h4" className='mt-20'>Recent Flows</Heading>
-            <div className="relative isolate overflow-hidden  pt-14">
-                <GridCards />
-            </div> */}
         </Container>
     )
 }
@@ -31,20 +27,6 @@ function Header() {
 export default function Dashboard() {
 
     return (
-        // <main className="overflow-hidden">
-        //     <GradientBackground />
-        //     <Container>
-        //         <Navbar
-        //             banner={
-        //                 <p
-        //                     className="flex items-center gap-1 rounded-full bg-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-white data-[hover]:bg-black"
-        //                 >Dashboard</p>
-        //             }
-        //         />
-        //     </Container>
-        //     <Header />
-        // </main>
-
         <main className="h-[200vh] w-full">
             <GradientBackground />
             <Header />
