@@ -11,6 +11,8 @@ import { GridCards } from '@/components/GridCards'
 import { FlyoutNavbar } from '@/components/FlyoutNavbar'
 import DashSidebar from '@/components/DashSidebar'
 import { RetractingSide } from '@/components/RetractingSidebar'
+import { RecentGrid } from '@/components/RecentGrid'
+import { WobbleCard } from '@/components/ui/wobble-card'
 
 function Header() {
 
@@ -19,6 +21,9 @@ function Header() {
             <Heading as="h1">Manage Your Onboarding Flows</Heading>
             <div className="relative isolate overflow-hidden  pt-8">
                 <GridCards />
+            </div>
+            <div className="relative isolate overflow-hidden  pt-8">
+                <RecentGrid/>
             </div>
         </Container>
     )

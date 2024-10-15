@@ -36,7 +36,7 @@ export const GridCards = () => {
                     disabled={true} // Pass disabled prop
                 />
             </div>
-            <div className="mx-auto grid  grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-4 md:divide-x md:divide-y-0">
+            {/* <div className="mx-auto grid  grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-4 md:divide-x md:divide-y-0">
                 <Card
                     href="#"
                     title="Airdrop Eligibility Screener"
@@ -67,32 +67,6 @@ export const GridCards = () => {
                     readTime="Coming soon"
                     src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Enhance your learning experience with AI that analyzes your feedback to continuously improve the onboarding process."
-                    disabled={true} // Pass disabled prop
-                />
-            </div>
-            {/* <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-neutral-700 border-x border-b border-neutral-700 md:grid-cols-3 md:divide-x md:divide-y-0">
-                <Card
-                    href="#"
-                    title="Simulated Smart Contract Interactions"
-                    readTime="Coming soon"
-                    src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    description="Practice safe and risk-free transactions with simulated smart contract interactions to build your confidence in handling real assets."
-                    disabled={true} // Pass disabled prop
-                />
-                <Card
-                    href="#"
-                    title="Feedback and Improvement AI"
-                    readTime="Coming soon"
-                    src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    description="Enhance your learning experience with AI that analyzes your feedback to continuously improve the onboarding process."
-                    disabled={true} // Pass disabled prop
-                />
-                <Card
-                    href="#"
-                    title="AI-Guided Web3 Exploration"
-                    readTime="Coming soon"
-                    src="https://images.unsplash.com/photo-1506259091721-347e791bab0f?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    description="Navigate the complexities of the web3 world with guided tours and explorations designed by our advanced AI system."
                     disabled={true} // Pass disabled prop
                 />
             </div> */}

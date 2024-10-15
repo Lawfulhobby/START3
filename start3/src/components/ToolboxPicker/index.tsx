@@ -1,35 +1,15 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { IconType } from "react-icons";
 import {
-  FiBarChart,
   FiChevronDown,
-  FiChevronsRight,
-  FiDollarSign,
-  FiHome,
-  FiMonitor,
-  FiShoppingCart,
-  FiTag,
-  FiUsers,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
-import ContentForm from "../content-form";
 import { Container } from "../container";
-import { MotionConfig } from "framer-motion";
-
 import { useRouter } from 'next/navigation';
 import { Radio, RadioGroup } from '@headlessui/react';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { useAccount } from 'wagmi';
 import { FiArrowRight } from "react-icons/fi";
-
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
 import { rewardOptions } from "../builder/reward";
 import { options } from "../builder/tools";
 import { ArrowRight, LinkIcon, SquareArrowOutDownRightIcon, SquareArrowOutUpRight, SquareArrowUpRight } from 'lucide-react';
@@ -38,10 +18,6 @@ import { cn } from '@/lib/utils';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 
@@ -56,7 +32,6 @@ import { Copy } from "lucide-react"
 
 import { Button } from "../button";
 import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 import Link from 'next/link';
 
 interface Option {
@@ -414,7 +389,7 @@ export const ToolboxPicker = () => {
             <>
               <div className="mx-auto text-black">
                 <form>
-                  <div className="relative flex bg-black w-full">
+                  {/* <div className="relative flex bg-black w-full">
                     <Dialog>
                       <DialogTrigger asChild className='flex bg-black w-[250px] '>
                         Ge
@@ -478,7 +453,7 @@ export const ToolboxPicker = () => {
                         </div>
                       </DialogContent>
                     </Dialog>
-                  </div>
+                  </div> */}
                   <div className="flex w-full">
                     <input
                       type="text"
@@ -501,7 +476,7 @@ export const ToolboxPicker = () => {
                   </div>
 
                   <div className="flex gap-4 items-center">
-                    <h2 className="text-xl ml-2">Questions</h2>
+                    <h2 className="text-lg font-medium tracking-tighter ml-2">Questions</h2>
                   </div>
 
                   {steps.map((step, index) => {
@@ -536,27 +511,29 @@ export const ToolboxPicker = () => {
                     <PlusIcon className="h-4 w-4 font-bold" />
                     <p className="uppercase text-xs font-bold">Add Question</p>
                   </button>
+
+                  <div className="flex gap-4 items-center">
+                    <h2 className="text-lg font-medium tracking-tighter my-4">Reward Instructions</h2>
+                  </div>
                   <fieldset>
                     <RadioGroup
                       value={selectedRewardOption}
                       onChange={setSelectedRewardOption}
-                      className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-4 sm:gap-x-4"
+                      className=" grid grid-cols-1 gap-y-6 sm:grid-cols-5 sm:gap-x-4"
                     >
                       {rewardOptions.map((rewardOption) => (
                         <Radio
                           key={rewardOption.id}
                           value={rewardOption}
                           aria-label={rewardOption.title}
-                          className="group relative flex flex-col cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
+                          className="group relative items-center flex cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
                         >
-                          <div className="text-2xl text-gray-400 transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                          <div className="text-2xl flex-1 text-gray-400 transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
                             {rewardOption.graphic}
                           </div>
-                          <span className="flex mt-4">
-                            <span className="flex flex-col">
-                              <span className="text-xl text-gray-400 font-medium tracking-tighter transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
-                                {rewardOption.title}
-                              </span>
+                          <span className="flex-1 ">
+                            <span className="text-xl text-gray-400 font-medium tracking-tighter transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
+                              {rewardOption.title}
                             </span>
                           </span>
                           <span
@@ -667,56 +644,10 @@ const Logo = () => {
       layout
       className="grid size-10 shrink-0 w-full place-content-center rounded-full px-3 bg-[#A479FF]"
     >
-      {/* <svg
-        width="24"
-        height="auto"
-        viewBox="0 0 50 39"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="fill-slate-50"
-      >
-        <path
-          d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
-          stopColor="#000000"
-        ></path>
-        <path
-          d="M17.4224 27.102L11.4192 36H33.5008L49 13.0271H32.7024L23.2064 27.102H17.4224Z"
-          stopColor="#000000"
-        ></path>
-      </svg> */}
       Flow Builder
     </motion.div>
   );
 };
-
-const ToggleClose = ({
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}) => {
-  return (
-    <motion.button
-      layout
-      //   onClick={''}
-      className="absolute bottom-0 left-0 right-0 border-t border-slate-300 transition-colors hover:bg-slate-100"
-    >
-      <div className="flex items-center p-2">
-        <motion.span
-          layout
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.125 }}
-          className="text-xs size-10 text-black font-medium"
-        >
-          Publish
-        </motion.span>
-      </div>
-    </motion.button>
-  );
-};
-
 
 const SpringCard = ({
   title,
@@ -728,42 +659,42 @@ const SpringCard = ({
   className?: string;
 }) => {
   return (
+    <motion.div
+      whileHover="hovered"
+      className={cn(
+        "group w-full text-black border-1 border-black bg-red-300 ",
+        className
+      )}
+    >
       <motion.div
-        whileHover="hovered"
         className={cn(
-          "group w-full text-black border-1 border-black bg-red-300 ",
+          "-m-0.5 border-1 border-black bg-red-300 ",
           className
         )}
       >
         <motion.div
           className={cn(
-            "-m-0.5 border-1 border-black bg-red-300 ",
+            "relative -m-0.5 flex h-72 flex-col justify-between overflow-hidden border border-black bg-red-300 p-8",
             className
           )}
         >
-          <motion.div
-            className={cn(
-              "relative -m-0.5 flex h-72 flex-col justify-between overflow-hidden border border-black bg-red-300 p-8",
-              className
-            )}
-          >
-            <p className="flex items-center text-2xl font-medium uppercase">
-              <FiArrowRight className="-ml-8 mr-2 opacity-0 transition-all duration-300 ease-in-out group-hover:ml-0 group-hover:opacity-100" />
-              {title}
+          <p className="flex items-center text-2xl font-medium uppercase">
+            <FiArrowRight className="-ml-8 mr-2 opacity-0 transition-all duration-300 ease-in-out group-hover:ml-0 group-hover:opacity-100" />
+            {title}
+          </p>
+          <div>
+            <p className="transition-[margin] duration-300 ease-in-out group-hover:mb-10">
+              {subtitle}
             </p>
-            <div>
-              <p className="transition-[margin] duration-300 ease-in-out group-hover:mb-10">
-                {subtitle}
-              </p>
-              <Link href={"/gallery"}>
-                <button className="absolute bottom-2 left-2 right-2 translate-y-full border border-black bg-white px-4 py-2 text-black opacity-0 transition-all duration-300 ease-in-outc hover:rounded-full group-hover:translate-y-0 group-hover:opacity-100">
-                  Explore Gallery
-                </button>
-              </Link>
-            </div>
-          </motion.div>
+            <Link href={"/gallery"}>
+              <button className="absolute bottom-2 left-2 right-2 translate-y-full border border-black bg-white px-4 py-2 text-black opacity-0 transition-all duration-300 ease-in-outc hover:rounded-full group-hover:translate-y-0 group-hover:opacity-100">
+                Explore Gallery
+              </button>
+            </Link>
+          </div>
         </motion.div>
       </motion.div>
+    </motion.div>
 
   );
 };

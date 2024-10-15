@@ -160,7 +160,7 @@ export async function sendMessage(message: string, id: string): Promise<{
                 <ServerSideMarkdown>{remainingContent}</ServerSideMarkdown>
               }
               {question && (
-                <div className={`${remainingContent && `mt-2`} bg-transparent`}>
+                <div className={`${remainingContent && `mt-2`} text-black bg-transparent`}>
                   {question}
                 </div>
               )}
