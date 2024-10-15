@@ -20,11 +20,11 @@ function CallToAction() {
       <p className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-500">
         Simplify your entry into blockchain and accelerate your digital adventure.
       </p>
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <Button className="" href="#">
           Sign Up Free
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

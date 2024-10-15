@@ -18,7 +18,7 @@ import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
 import type { Metadata } from 'next'
-import { FiArrowDown, FiArrowRight } from 'react-icons/fi'
+import { FiArrowDown, FiArrowRight, FiArrowUp } from 'react-icons/fi'
 import { FiChevronDown } from "react-icons/fi";
 import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
@@ -38,8 +38,9 @@ function Hero() {
         <Navbar
           banner={
             <Link
-              href="/"
-              className="flex items-center gap-1 rounded-full bg-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-white data-[hover]:bg-black"
+              href="https://docs.google.com/document/d/1peqLmBk8YCYZ7z-TVZz7SmxGJUbL35ETlxqCE3Tp_2w/edit?usp=sharing"
+              target='_blank'
+              className="flex items-center gap-1 rounded-full border border-[#A479FF] px-3 py-0.5 text-sm/6 font-medium text-[#A479FF] data-[hover]:bg-black data-[hover]:text-white"
             >
               Read our whitepaper!
               <ChevronRightIcon className="size-4" />
@@ -96,12 +97,13 @@ const TrySamples = ({
             },
           }}
 
-           
+
           className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-left text-lg font-medium"
         >
-          <div className="group text-black mt-5 flex h-10 items-center gap-2 rounded-full bg-neutral-200 pl-3 pr-4 transition-all duration-300 ease-in-out hover:bg-black hover:pl-2 hover:text-white active:bg-neutral-700">
-            <span className="rounded-full bg-black p-1 text-sm transition-colors duration-300 group-hover:bg-white">
-              <FiArrowDown className="-translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-lg group-hover:text-black group-active:-rotate-45" />
+          <div className={`group text-black mt-5 flex h-10 items-center gap-2 rounded-full  pl-3 pr-4 transition-all duration-300 ease-in-out hover:bg-black hover:pl-2 hover:text-white active:bg-neutral-700 ${open ? "bg-black text-white" : "bg-neutral-200"}`}>
+            <span className={`rounded-full bg-black p-1 text-sm transition-colors duration-300 group-hover:bg-white ${open ? "bg-white" : "bg-neutral-200"}`}>
+              {open ? <FiArrowUp className="-translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-lg group-hover:text-black group-active:-rotate-45" />
+                : <FiArrowDown className="-translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-lg group-hover:text-black group-active:-rotate-45" />}
             </span>
             <span> {title}</span>
           </div>

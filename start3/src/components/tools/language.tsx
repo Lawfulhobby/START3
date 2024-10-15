@@ -10,6 +10,7 @@ import { RadioGroup } from '@headlessui/react';
 import { AI } from "@/app/wallet-creation/actions";
 import { ArrowLeft, ArrowRight, ArrowUp, CheckIcon, MinusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BackgroundGradient } from "../ui/background-gradient";
 
 interface Option {
     name: string;
@@ -63,6 +64,7 @@ export default function LanguageComponent() {
 
     return (
         <>
+            <BackgroundGradient className="rounded-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
             <div className="mx-auto">
                 <fieldset aria-label="Select an option">
                     <RadioGroup
@@ -106,6 +108,7 @@ export default function LanguageComponent() {
                     </Button>
                 </div>
             </div>
+            </BackgroundGradient>
         </>
     );
 }

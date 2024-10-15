@@ -166,7 +166,7 @@ export default function Home({ params: { slug } }: Props) {
             <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-900">{data.session.name}</p>
             <p className="text-black text-pretty text-lg font-medium tracking-tighter text-gray-700 mt-3">{data.session.description}</p>
           </div>
-          {JSON.stringify(getContent(data.session))}
+          {/* {JSON.stringify(getContent(data.session))} */}
 
 
 

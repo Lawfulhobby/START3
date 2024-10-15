@@ -8,7 +8,7 @@ import { BackgroundGradient } from '../ui/background-gradient';
 export default function TextComponent() {
 
     return (
-        <BackgroundGradient  className="relative flex w-full  rounded-[22px] bg-white dark:bg-zinc-900">
+        <BackgroundGradient  className="relative flex w-full  rounded-xl bg-white dark:bg-zinc-900">
             {/* Message input at the bottom */}
             <div className="relative mx-auto max-w-2xl px-4 w-full backdrop-blur-sm bg-white bg-opacity-10">
                 <div className="absolute bottom-0 left-0 right-0 p-4">

@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import {
   Swap,
@@ -38,8 +39,8 @@ export default function SwapComponent() {
 
 
   return address ? (
-    <BackgroundGradient className="relative flex w-full  rounded-[22px] bg-white dark:bg-zinc-900">
-      <Swap>
+    <BackgroundGradient className="relative flex w-full items-center justify-center rounded-xl bg-white dark:bg-zinc-900">
+      <Swap className='text-black bg-white'>
         <SwapAmountInput
           label="Sell"
           swappableTokens={swappableTokens}

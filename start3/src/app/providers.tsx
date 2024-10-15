@@ -16,13 +16,13 @@ type Props = {
 export default function Providers({ children, cookie }: Props) {
   const initialState = cookieToInitialState(config, cookie);
 
-  
+
 
   return (
     <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-        modalSize="compact"
+          modalSize="compact"
           theme={lightTheme({
             accentColor: '#7b3fe4',
             accentColorForeground: 'white',
@@ -32,7 +32,7 @@ export default function Providers({ children, cookie }: Props) {
           })}
         >
           {children}
-          <Analytics/>
+          <Analytics />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import useWallet from '@/lib/useWallet';
 import { ethers, formatUnits, JsonRpcProvider } from 'ethers';
 import { STRT_ADDRESS, STRT_ABI } from '@/lib/contract';
@@ -13,9 +14,25 @@ import AirdropBalance from '@/components/AirdropBalance';
 import AirdropTokenAddress from '@/components/AirdropTokenAddress';
 import TransferFundsToAirdrop from '@/components/TransferFundsToAirdrop';
 import AdminSetAirdropAmount from '@/components/AdminSetAirdropAmount';
+import { TokenContract } from '@/apis/constants';
+import { CONTEXT } from "../../apis/context_provider"
 
 const Home = () => {
-    const { account, chainId, active, connector, rpcUrl } = useWallet();
+    const { account, active, connector, rpcUrl } = useWallet();
+    const [fee, setFee] = useState("");
+    const [airdropamount, setAirdropamount] = useState("");
+
+    const {
+        SET_FEE,
+        SET_AIRDROP_AMOUNT,
+        address,
+        chainId,
+        connectedTokenAddr,
+        contractOwnerAddr,
+        airdropPerUser,
+        allUsers,
+        airdropFee
+    } = useContext(CONTEXT);
 
     // State variables
     const [formattedBalance, setFormattedBalance] = useState<string>('0');
@@ -35,14 +52,12 @@ const Home = () => {
             setIsError(false);
 
             try {
-                // Initialize provider
-                const provider = new JsonRpcProvider(rpcUrl);
+                const TOKEN_CONTRACT = await TokenContract();
 
-                // Initialize contract
-                const contract = new ethers.Contract(STRT_ADDRESS, STRT_ABI, provider);
+                if (!TOKEN_CONTRACT) return null
 
                 // Fetch token balance
-                const balance = await contract.balanceOf(account);
+                const balance = await TOKEN_CONTRACT.balanceOf(account);
                 console.log(`Token balance is`, balance.toString());
 
                 // Format the balance based on the decimals (assuming 18 decimals)
@@ -64,21 +79,67 @@ const Home = () => {
 
     return (
         <main className='flex min-h-screen flex-col gap-12 p-24 text-black'>
-            <span><strong>Address:</strong> {account ? account : 'Not Connected'}</span>
-            <span><strong>Chain ID:</strong> {chainId ? chainId : 'N/A'}</span>
-            <div>
-                <strong>STRT Token Balance:</strong>{' '}
-                {isLoading ? (
-                    <span>Loading...</span>
-                ) : isError ? (
-                    <span style={{ color: 'red' }}>Error fetching balance</span>
-                ) : (
-                    <span>{numberWithCommas(formattedBalance)} STRT</span>
-                )}
+            {/* SET_FEE */}
+            <div className="col-xl-3 col-lg-4 col-md-6">
+                <div className="contact-info-item">
+                    <div className="icon">
+
+                    </div>
+                    <div className="content">
+                        <h6 className="title">Airdrop Fee </h6>
+                        <div className="input-group-new">
+                            <label className="label-new">Airdrop Charge</label>
+                            <input
+                                onChange={(e) => setFee(e.target.value)}
+                                placeholder={`${airdropFee || 0} Matic`}
+                                type="text"
+                            />
+                            <div></div>
+                        </div>
+
+                        <button
+                            onClick={() => SET_FEE(fee)}
+                            className="btn margin-btn-new"
+                        >
+                            Update Fee For Airdrop
+                        </button>
+                    </div>
+                </div>
             </div>
-            <AdminSetAirdropAmount/>
-            <TransferFundsToAirdrop/>
-            <AirdropTokenAddress/>
+
+            {/* SET_AIRDROP_AMOUNT */}
+            <div className="col-xl-3 col-lg-4 col-md-6">
+                <div className="contact-info-item">
+                    <div className="content">
+                        <h6 className="title">Airdrop Amount </h6>
+
+                        <div className="input-group-new">
+                            <label className="label-new">Airdrop Claim Amount</label>
+                            <input
+                                onChange={(e) => setAirdropamount(e.target.value)}
+                                placeholder={`${airdropPerUser || 0} Matic`}
+                                type="text"
+                            />
+                            <div></div>
+                        </div>
+                        <button
+                            onClick={() => SET_AIRDROP_AMOUNT(airdropamount)}
+                            className="btn margin-btn-new"
+                        >
+                            Update Claim Airdrop
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <p>{connectedTokenAddr}</p>
+            <p>{contractOwnerAddr}</p>
+            <p>{airdropPerUser}</p>
+            <p>{allUsers}</p>
+            <p>{airdropFee}</p>
+            <AdminSetAirdropAmount />
+            <TransferFundsToAirdrop />
+            <AirdropTokenAddress />
             <AirdropBalance />
             <ClaimAirdrop />
             <AirdropRecords />
