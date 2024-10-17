@@ -5,6 +5,7 @@ import Providers from "@/components/providers/Providers";
 import "@rainbow-me/rainbowkit/styles.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import '@coinbase/onchainkit/styles.css';
+import { Toaster } from "@/components/ui/toaster"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -52,14 +53,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${satoshiBold.variable} bg-background antialiased h-full`}
       >
-        {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        > */}
           <Providers>{children}</Providers>
-        {/* </ThemeProvider> */}
+          <Toaster/>
       </body>
     </html>
   );

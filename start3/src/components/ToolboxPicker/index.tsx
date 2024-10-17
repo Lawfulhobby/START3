@@ -33,6 +33,8 @@ import { Copy } from "lucide-react"
 import { Button } from "../button";
 import { Input } from "../ui/input";
 import Link from 'next/link';
+import { IncentiveCalculator } from "../builder/incentive-calculator";
+import ShareSection from "../ShareSection";
 
 interface Option {
   name: string;
@@ -55,9 +57,10 @@ export const ToolboxPicker = () => {
   const { address } = useAccount();
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [dis, setDis] = useState(false);
-  const [qrUrl, setQrUrl] = useState('');
+  // const [qrUrl, setQrUrl] = useState('');
   const [stepsComplete, setStepsComplete] = useState(0);
   const [activeStep, setActiveStep] = useState<number | null>(null); // New state for active step
+  const qrUrl = "http://localhost:3000/create-flow"
 
   const { SVG } = useQRCode()
 
@@ -109,7 +112,7 @@ export const ToolboxPicker = () => {
         const contentId = responseData.id;
         // alert(`Content created successfully with ID: ${contentId}`);
         // router.push(`/flow/${contentId}`);
-        setQrUrl(`http://localhost:3000/flow/${contentId}`);
+        // setQrUrl(`http://localhost:3000/flow/${contentId}`);
         setStepsComplete((pv) => pv + 1);
       } else {
         alert('Failed to create content');
@@ -168,51 +171,48 @@ export const ToolboxPicker = () => {
           <>
             <div className="overflow-hidden">
               {qrUrl &&
-                <div className='text-center items-center flex flex-col'>
-                  <div className='border rounded border-[#A479FF] p-2'>
-                    <SVG
-                      text={qrUrl}
-                      options={{
-                        margin: 2,
-                        width: 150,
-                        color: {
-                          dark: '#A479FF',
-                          light: '#FFFFFF',
-                        },
-                      }}
-                    />
-                  </div>
+                <div className="flex space-x-2">
 
-
-                  <div className="flex items-center space-x-2 mt-2">
-                    <div className="grid flex-1 gap-2">
-                      <Input
-                        id="link"
-                        className='text-black/60'
-                        defaultValue={qrUrl}
-                        readOnly
+                  <div className='text-center items-center flex flex-col'>
+                    <div className='border rounded border-[#A479FF] p-2'>
+                      <SVG
+                        text={qrUrl}
+                        options={{
+                          margin: 2,
+                          width: 150,
+                          color: {
+                            dark: '#A479FF',
+                            light: '#FFFFFF',
+                          },
+                        }}
                       />
                     </div>
-                    <Button onClick={handleCopy} className="px-3" >
-                      <span className="sr-only">Copy</span>
-                      <Copy className="h-4 w-4" />
-                    </Button>
 
-                    <Link href={qrUrl} className='text-[#A479FF]'>
+
+                    <div className="flex flex-col items-center mt-2">
+                      <div className="grid flex-1 gap-2">
+                        <Input
+                          id="link"
+                          className='text-black/60'
+                          defaultValue={qrUrl}
+                          readOnly
+                        />
+                      </div>
+                      <Button onClick={handleCopy} className="px-2 w-full mt-2 rounded" >
+                        <Copy className="h-3 w-3" />
+                        <span className="ml-2">Copy</span>
+                      </Button>
+
+                      {/* <Link href={qrUrl} className='text-[#A479FF]'>
                       <Button>
                         <SquareArrowOutUpRight className="h-4 w-4" />
                       </Button>
-                    </Link>
-                  </div>
+                    </Link> */}
+                    </div>
 
-                  <TwitterShareButton
-                    url={'https://start3.com/your-flow-link'}
-                    title={'I just completed my Web3 onboarding flow on Start3! Join me and get started with your own personalized Web3 journey 🚀'}
-                    hashtags={['Web3', 'Blockchain', 'Start3', 'Crypto']}
-                    via={'Start3Platform'}
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
+
+                  </div>
+                  <ShareSection qrUrl={`qrUrl`}/>
                 </div>
               }
             </div>
@@ -306,24 +306,20 @@ export const ToolboxPicker = () => {
             <DialogTrigger asChild className='flex  '>
               <motion.button
                 layout
-                //   onClick={''}
-                className="absolute bottom-0 left-0 right-0 border-t border-slate-300 transition-colors hover:bg-slate-100"
+                className="absolute items-center text-black bottom-0 left-0  p-2 right-0 border-t border-slate-300 text-center transition-colors hover:bg-[#A479FF] hover:text-white"
               >
-                <div className="flex items-center p-2">
-                  <motion.span
-                    layout
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.125 }}
-                    className="text-xl size-10 text-black items-center justify-center font-medium"
-                  >
-                    Publish
-                  </motion.span>
-                </div>
+
+                <p
+
+                  className="text-xl size-10 text-center items-center justify-center font-medium"
+                >
+                  Publish
+                </p>
+
               </motion.button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] bg-white">
-              <div className="grid gap-4 py-4">
+              {/* <div className="grid gap-4 py-4">
                 <div className="grid ">
 
                   {renderProcess(stepsComplete)}
@@ -378,7 +374,10 @@ export const ToolboxPicker = () => {
                     </>
                   }
                 </div>
-              </div>
+              </div> */}
+              {/* <IncentiveCalculator/> */}
+
+              {renderProcess(1)}
             </DialogContent>
           </Dialog>
         </motion.nav>
@@ -389,71 +388,6 @@ export const ToolboxPicker = () => {
             <>
               <div className="mx-auto text-black">
                 <form>
-                  {/* <div className="relative flex bg-black w-full">
-                    <Dialog>
-                      <DialogTrigger asChild className='flex bg-black w-[250px] '>
-                        Ge
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px] bg-white">
-                        <div className="grid gap-4 py-4">
-                          <div className="grid ">
-
-                            {renderProcess(stepsComplete)}
-
-                            {!selectedOption?.name &&
-                              <>
-                                <button
-                                  type="button"
-                                  disabled
-                                  onClick={handleSubmit}
-                                  className="bg-[#A479FF] mt-4 w-full h-12 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300"
-                                >
-                                  Next
-                                </button>
-                              </>
-                            }
-                            {!qrUrl &&
-                              <>
-                                {selectedOption?.name == "Preview" &&
-                                  <>
-                                    <button
-                                      type="button"
-                                      onClick={handleSubmit}
-                                      className="bg-[#A479FF] mt-4 w-full h-12 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300"
-                                    >
-                                      Next
-                                    </button>
-                                  </>
-                                }
-                                {selectedOption?.name == "Testnet" &&
-                                  <>
-                                    <button
-                                      type="button"
-                                      onClick={handleSubmit}
-                                      className="bg-[#A479FF] mt-4 w-full h-12 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300"
-                                    >
-                                      Next
-                                    </button>
-                                  </>
-                                }
-                                {selectedOption?.name == "Mainnet" &&
-                                  <>
-                                    <button
-                                      type="button"
-                                      onClick={handleSubmit}
-                                      className="bg-[#A479FF] mt-4 w-full h-12 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300"
-                                    >
-                                      Next
-                                    </button>
-                                  </>
-                                }
-                              </>
-                            }
-                          </div>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div> */}
                   <div className="flex w-full">
                     <input
                       type="text"
@@ -469,7 +403,7 @@ export const ToolboxPicker = () => {
                     <textarea
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      className="focus:outline-none rounded p-2 w-full text-lg font-medium tracking-tighter text-gray-950 sm:text-xl"
+                      className="focus:outline-none rounded p-2 h-[100px] w-full text-lg font-medium tracking-tighter text-gray-950 sm:text-xl"
                       placeholder="Give it a description"
                       required
                     />
@@ -526,6 +460,7 @@ export const ToolboxPicker = () => {
                           key={rewardOption.id}
                           value={rewardOption}
                           aria-label={rewardOption.title}
+                          disabled={rewardOption.id == 2 || rewardOption.id == 3}
                           className="group relative items-center flex cursor-pointer rounded-lg border border-gray-300 bg-white p-4 shadow-sm focus:outline-none group-data-[checked]:bg-[#A479FF]"
                         >
                           <div className="text-2xl flex-1 text-gray-400 transition-colors duration-500 group-hover:text-[#A479FF] group-data-[checked]:text-[#A479FF]">
@@ -544,12 +479,15 @@ export const ToolboxPicker = () => {
                       ))}
                     </RadioGroup>
                   </fieldset>
+
                 </form>
 
               </div>
             </>
           </div>
         </Container>
+
+
       </div>
     </div>
   );

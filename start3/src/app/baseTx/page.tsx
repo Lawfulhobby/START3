@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 'use client';
 
 import React, { useEffect, useState, useContext } from 'react';
@@ -16,6 +16,7 @@ import TransferFundsToAirdrop from '@/components/TransferFundsToAirdrop';
 import AdminSetAirdropAmount from '@/components/AdminSetAirdropAmount';
 import { TokenContract } from '@/apis/constants';
 import { CONTEXT } from "../../apis/context_provider"
+import { IncentiveCalculator } from '@/components/builder/incentive-calculator';
 
 const Home = () => {
     const { account, active, connector, rpcUrl } = useWallet();
@@ -137,6 +138,8 @@ const Home = () => {
             <p>{airdropPerUser}</p>
             <p>{allUsers}</p>
             <p>{airdropFee}</p>
+
+            <IncentiveCalculator/>
             <AdminSetAirdropAmount />
             <TransferFundsToAirdrop />
             <AirdropTokenAddress />

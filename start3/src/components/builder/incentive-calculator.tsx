@@ -1,17 +1,10 @@
+// @ts-nocheck
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Radio, RadioGroup } from '@headlessui/react'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
-import { PlusCircleIcon, PlusIcon } from '@heroicons/react/24/solid';
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { Skeleton } from '../ui/skeleton';
 import useWallet from '@/lib/useWallet';
-import { useAccount } from 'wagmi';
-import { cn } from '@/lib/utils';
 
 import {
     Select,
@@ -19,14 +12,24 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import TokenIcon from '../TokenIcon';
+import { Button } from '../button';
+import { CONTEXT } from "../../apis/context_provider";
 
-const IncentiveCalculator = () => {
+export const IncentiveCalculator = () => {
     const [numOfPeople, setNumOfPeople] = useState('');
     const [prizePool, setPrizePool] = useState('');
     const [incentivePerPerson, setIncentivePerPerson] = useState<number | null>(null);
-    const { account, chainId } = useWallet();
+    const { account } = useWallet();
+
+    const {
+        TRANSFER_FUNDS,
+        SET_AIRDROP_AMOUNT,
+    } = useContext(CONTEXT);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         // Automatically calculate when the inputs change
@@ -41,9 +44,29 @@ const IncentiveCalculator = () => {
         }
     }, [numOfPeople, prizePool]); // Run the effect whenever these values change
 
-    return (
-        <div className="max-w-md mx-auto mt-10 p-6 text-black">
+    const handleDepositAndAirdrop = async () => {
+        setIsLoading(true);
+        setError(null);
 
+        try {
+            // Transfer Funds
+            await TRANSFER_FUNDS(Number(prizePool));
+
+            // Set Airdrop Amount if incentivePerPerson is valid
+            if (incentivePerPerson !== null) {
+                await SET_AIRDROP_AMOUNT(Number(incentivePerPerson));
+            } else {
+                throw new Error('Invalid incentive per person.');
+            }
+        } catch (err: any) {
+            setError(err.message || 'An unexpected error occurred.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className=" text-black">
 
             <div className="mb-4">
                 <p
@@ -60,7 +83,7 @@ const IncentiveCalculator = () => {
             </div>
 
             <div className='flex items-center'>
-                <div className="mb-4">
+                <div className="mb-4 flex-1">
                     <p
                         className='ml-2 text-pretty text-sm font-medium tracking-tighter'
                     >Pool amount</p>
@@ -74,19 +97,22 @@ const IncentiveCalculator = () => {
                     />
                 </div>
 
-                <div >
-                    {/* <p
-                        className='ml-2 text-pretty text-sm font-medium tracking-tighter'
-                    >Reward token</p> */}
+                <div className="ml-4">
                     <Select>
                         <SelectTrigger
-                            className="w-[180px] border-none shadow-none"
-                            defaultValue={"cUSD"}>
+                            className="w-[135px] border-none shadow-none"
+                            defaultValue={"STRT"}>
                             <SelectValue
                                 className="uppercase text-pretty text-4xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-5xl"
                                 placeholder="Select Token" />
                         </SelectTrigger>
                         <SelectContent>
+                            <SelectItem value="STRT">
+                                <TokenIcon
+                                    symbol='strt'
+                                    displaySize={32}
+                                />
+                            </SelectItem>
                             <SelectItem value="cUSD">
                                 <TokenIcon
                                     symbol='usdc'
@@ -103,7 +129,6 @@ const IncentiveCalculator = () => {
                     </Select>
                 </div>
             </div>
-
 
             {/* CSS to remove the number input spinner */}
             <style jsx>{`
@@ -126,7 +151,7 @@ const IncentiveCalculator = () => {
             {incentivePerPerson !== null && (
                 <div className="mt-2 p-4 ">
                     <p className='ml-2 text-center text-pretty text-4xl font-semibold tracking-tighter'>
-                        {incentivePerPerson.toFixed(6)} ETH
+                        {incentivePerPerson.toFixed(6)} STRT
                     </p>
                 </div>
             )}
@@ -135,9 +160,20 @@ const IncentiveCalculator = () => {
                 <Skeleton className="mt-2 p-7 " />
             )}
 
+            {error && (
+                <div className="mt-2 p-4 bg-red-100 text-red-700 rounded">
+                    {error}
+                </div>
+            )}
 
+            <Button
+                className='flex bg-black w-full mt-4 disabled:opacity-50'
+                onClick={handleDepositAndAirdrop}
+                disabled={isLoading || incentivePerPerson === null || !prizePool || !numOfPeople}
+            >
+                {isLoading ? 'Processing...' : 'Transact'}
+            </Button>
 
         </div>
     );
 };
-

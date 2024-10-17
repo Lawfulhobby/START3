@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import React, { useState, useEffect } from "react";
@@ -5,7 +6,7 @@ import useWallet from "@/lib/useWallet";
 import { ethers, formatEther, formatUnits, parseUnits } from "ethers";
 import { AirdropContract, TokenContract } from "./constants";
 import { AIRDROP_ABI, AIRDROP_ADDRESS, STRT_ADDRESS, STRT_ABI } from "@/lib/contract";
-import toast from "react-hot-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export const CONTEXT = React.createContext();
 
@@ -26,10 +27,11 @@ export const ContractProvider = ({
     const [contractOwnerAddr, setContractOwnerAddr] = useState("");
     const [connectedTokenAddr, setConnectedTokenAddr] = useState("");
     const [count, setCount] = useState(0);
+    const { toast } = useToast()
 
     //NOTIFICATION
-    const notifyError = (msg: any) => toast.error(msg, { duration: 4000 });
-    const notifySuccess = (msg: any) => toast.success(msg, { duration: 4000 });
+    // const notifyError = (msg: any) => toast.error(msg, { duration: 4000 });
+    // const notifySuccess = (msg: any) => toast.success(msg, { duration: 4000 });
 
     const fetchInitialData = async () => {
         try {
@@ -120,7 +122,10 @@ export const ContractProvider = ({
             }
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -157,12 +162,18 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            notifySuccess("Airdrop Amount Updated");
+            // notifySuccess("Airdrop Amount Updated");
+            toast({
+                description: "Airdrop Amount Updated",
+              })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -192,12 +203,18 @@ export const ContractProvider = ({
             await transaction.wait();
 
             setLoader(false);
-            notifySuccess("Airdrop Fee Updated");
+            // notifySuccess("Airdrop Fee Updated");
+            toast({
+                description: "Airdrop Fee Updated",
+              })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                // variant='destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -225,12 +242,18 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            notifySuccess(`Successfully transferred ${amount} STRT to Airdrop contract!`);
+            // notifySuccess(`Successfully transferred ${amount} STRT to Airdrop contract!`);
+            toast({
+                description: `Successfully transferred ${amount} STRT to Airdrop contract!`,
+              })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -272,12 +295,18 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            notifySuccess('Airdrop claimed successfully!');
+
+            toast({
+                description: 'Airdrop claimed successfully!',
+              })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -292,8 +321,6 @@ export const ContractProvider = ({
 
                 address,
                 chainId,
-                notifyError,
-                notifySuccess,
 
                 connectedTokenAddr,
                 contractOwnerAddr,
