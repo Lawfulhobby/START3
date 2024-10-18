@@ -1,3 +1,4 @@
+
 // @ts-nocheck
 'use server';
 
@@ -79,6 +80,8 @@ export async function getContent(id: string): Promise<string> {
 
     // return formattedContent;
 
+    // Before they continue to get the reward, ask if the user is okay if the data is saved. Ask them to respond with ‘I agree’ if they do.
+
     const formattedContent = `\
     You are an onboarding assistant for a Web3 project. Use the following description for more understanding:
     ${content.description}
@@ -91,10 +94,8 @@ export async function getContent(id: string): Promise<string> {
     ${content.steps.map(step => `
     ${step.step}. ${step.title} ${step.content}
     `).join('\n')}
-    
-    Before they continue to get the reward, ask if the user is okay if the data is saved. Ask them to respond with ‘I agree’ if they do.
 
-    Once all the questions are answered, the onboarding is complete. Call ${content.rewardInstructions}
+    Once all the questions are answered, the onboarding is complete. Call \`claim_reward\`, for the user to collect their reward.
     `;
 
     return formattedContent;
@@ -177,8 +178,7 @@ export async function sendMessage(message: string, id: string): Promise<{
         description: "Start the blockchain transaction process",
         parameters: z.object({
           txData: z.object({
-            walletAddress: z.string(),
-            amount: z.number(),
+            RandomflowId: z.string(),
           }),
         }),
         generate: async function* ({ txData }) {
@@ -202,8 +202,7 @@ export async function sendMessage(message: string, id: string): Promise<{
 
             return (
               <BotMessage>
-                You qualify for a reward of 0.1 ETH on Arbitrum Sepolia
-                <ServerSideReward />
+                <ServerSideReward flowId={id} sessionId={txData.RandomflowId}/>
               </BotMessage>
             );
 

@@ -16,12 +16,15 @@ import {
 import TokenIcon from '../TokenIcon';
 import { Button } from '../button';
 import { CONTEXT } from "../../apis/context_provider";
+import { useToast } from '@/hooks/use-toast';
+
 
 export const IncentiveCalculator = () => {
     const [numOfPeople, setNumOfPeople] = useState('');
     const [prizePool, setPrizePool] = useState('');
     const [incentivePerPerson, setIncentivePerPerson] = useState<number | null>(null);
     const { account } = useWallet();
+    const { toast } = useToast()
 
     const {
         TRANSFER_FUNDS,
@@ -66,7 +69,7 @@ export const IncentiveCalculator = () => {
     };
 
     return (
-        <div className=" text-black">
+        <div className=" text-black ">
 
             <div className="mb-4">
                 <p
@@ -173,7 +176,6 @@ export const IncentiveCalculator = () => {
             >
                 {isLoading ? 'Processing...' : 'Transact'}
             </Button>
-
         </div>
     );
 };

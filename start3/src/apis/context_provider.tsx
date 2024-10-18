@@ -27,11 +27,9 @@ export const ContractProvider = ({
     const [contractOwnerAddr, setContractOwnerAddr] = useState("");
     const [connectedTokenAddr, setConnectedTokenAddr] = useState("");
     const [count, setCount] = useState(0);
+    const [flowStep, setFlowStep] = useState(0)
+    // const [stepsComplete, setStepsComplete] = useState(0);
     const { toast } = useToast()
-
-    //NOTIFICATION
-    // const notifyError = (msg: any) => toast.error(msg, { duration: 4000 });
-    // const notifySuccess = (msg: any) => toast.success(msg, { duration: 4000 });
 
     const fetchInitialData = async () => {
         try {
@@ -122,7 +120,7 @@ export const ContractProvider = ({
             }
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            toast({
+            await toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -163,14 +161,14 @@ export const ContractProvider = ({
 
             setLoader(false);
             // notifySuccess("Airdrop Amount Updated");
-            toast({
+            await toast({
                 description: "Airdrop Amount Updated",
-              })
+            })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            toast({
+            await toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -204,15 +202,15 @@ export const ContractProvider = ({
 
             setLoader(false);
             // notifySuccess("Airdrop Fee Updated");
-            toast({
+            await toast({
                 description: "Airdrop Fee Updated",
-              })
+            })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            toast({
-                // variant='destructive',
+            await toast({
+                variant: 'destructive',
                 description: `${errorMsg}`,
             })
             console.log(error);
@@ -243,14 +241,14 @@ export const ContractProvider = ({
 
             setLoader(false);
             // notifySuccess(`Successfully transferred ${amount} STRT to Airdrop contract!`);
-            toast({
+            await toast({
                 description: `Successfully transferred ${amount} STRT to Airdrop contract!`,
-              })
+            })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            toast({
+            await toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -296,14 +294,14 @@ export const ContractProvider = ({
 
             setLoader(false);
 
-            toast({
+            await toast({
                 description: 'Airdrop claimed successfully!',
-              })
+            })
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            toast({
+            await toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -321,7 +319,7 @@ export const ContractProvider = ({
 
                 address,
                 chainId,
-
+                count,
                 connectedTokenAddr,
                 contractOwnerAddr,
                 airdropPerUser,
