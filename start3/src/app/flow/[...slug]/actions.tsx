@@ -90,6 +90,8 @@ export async function getContent(id: string): Promise<string> {
     - "[Question: What is your first name?]" means that the question is shown to the user.
     - "[Question UI: 1]" meants the UI component shown to the user
     
+    Note that if one of the question has to do with language make sure to communicate with the user based on what they select. 
+
     Ask the following questions one by one:
     ${content.steps.map(step => `
     ${step.step}. ${step.title} ${step.content}

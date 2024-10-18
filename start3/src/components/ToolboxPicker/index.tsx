@@ -61,10 +61,10 @@ export const ToolboxPicker = () => {
   const [dis, setDis] = useState(false);
   const [stepsComplete, setStepsComplete] = useState(0);
   const { toast } = useToast()
-  // const [qrUrl, setQrUrl] = useState('');
+  const [qrUrl, setQrUrl] = useState('');
 
   const [activeStep, setActiveStep] = useState<number | null>(null); // New state for active step
-  const qrUrl = "http://localhost:3000/create-flow"
+  // const qrUrl = "http://localhost:3000/create-flow"
 
   const { SVG } = useQRCode()
 
@@ -116,7 +116,7 @@ export const ToolboxPicker = () => {
         const contentId = responseData.id;
         // alert(`Content created successfully with ID: ${contentId}`);
         // router.push(`/flow/${contentId}`);
-        // setQrUrl(`http://localhost:3000/flow/${contentId}`);
+        setQrUrl(`http://localhost:3000/flow/${contentId}`);
         setStepsComplete((pv: number) => pv + 1);
       } else {
         alert('Failed to create content');
