@@ -36,6 +36,8 @@ import { Input } from "../ui/input";
 import Link from 'next/link';
 import { IncentiveCalculator } from "../builder/incentive-calculator";
 import ShareSection from "../ShareSection";
+import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast"
 
 interface Option {
   name: string;
@@ -58,6 +60,7 @@ export const ToolboxPicker = () => {
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [dis, setDis] = useState(false);
   const [stepsComplete, setStepsComplete] = useState(0);
+  const { toast } = useToast()
   // const [qrUrl, setQrUrl] = useState('');
 
   const [activeStep, setActiveStep] = useState<number | null>(null); // New state for active step
@@ -208,14 +211,14 @@ export const ToolboxPicker = () => {
       case 1:
         return (
           <>
-                    <IncentiveCalculator />
-                    <button
-                            type="button"
-                            onClick={handleSubmit}
-                            className="bg-[#A479FF]  w-full h-10 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300"
-                          >
-                            Complete
-                          </button>
+            <IncentiveCalculator />
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="bg-[#A479FF]  w-full h-10 rounded-full text-white py-2 px-4 hover:bg-[#8e56d4] transition-colors duration-300"
+            >
+              Complete
+            </button>
           </>
 
         );
@@ -372,6 +375,27 @@ export const ToolboxPicker = () => {
                 </fieldset>
               </div>
             )}
+
+            {/* 
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <ToastAction altText="Goto schedule to undo">
+                      <Link href={"/"} target="_blank">
+                      Undo
+                      </Link>
+                    </ToastAction>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+             */}
           </div>
           <Dialog>
             <DialogTrigger asChild className='flex  '>

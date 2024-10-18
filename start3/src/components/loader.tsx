@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export const PathFinderLoader = () => {
   return (
-    <div className="grid h-screen w-full place-content-center bg-neutral-50">
+    <div className="grid h-screen w-full place-content-center ">
       <PathFinder />
     </div>
   );

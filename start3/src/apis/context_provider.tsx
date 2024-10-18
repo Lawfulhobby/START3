@@ -7,6 +7,8 @@ import { ethers, formatEther, formatUnits, parseUnits } from "ethers";
 import { AirdropContract, TokenContract } from "./constants";
 import { AIRDROP_ABI, AIRDROP_ADDRESS, STRT_ADDRESS, STRT_ABI } from "@/lib/contract";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
+import { ToastAction } from "@/components/ui/toast";
 
 export const CONTEXT = React.createContext();
 
@@ -28,7 +30,6 @@ export const ContractProvider = ({
     const [connectedTokenAddr, setConnectedTokenAddr] = useState("");
     const [count, setCount] = useState(0);
     const [flowStep, setFlowStep] = useState(0)
-    // const [stepsComplete, setStepsComplete] = useState(0);
     const { toast } = useToast()
 
     const fetchInitialData = async () => {
@@ -120,7 +121,7 @@ export const ContractProvider = ({
             }
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            await toast({
+            toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -160,15 +161,24 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            // notifySuccess("Airdrop Amount Updated");
-            await toast({
-                description: "Airdrop Amount Updated",
+
+            toast({
+                title: "Airdrop Amount Updated",
+                // description: `Tx hash: ${tx.hash}`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${tx.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
             })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            await toast({
+            toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -201,15 +211,24 @@ export const ContractProvider = ({
             await transaction.wait();
 
             setLoader(false);
-            // notifySuccess("Airdrop Fee Updated");
-            await toast({
-                description: "Airdrop Fee Updated",
+
+            toast({
+                title: "Airdrop Fee Updated",
+                // description: `Tx hash: ${transaction.hash}`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${transaction.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
             })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            await toast({
+            toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -240,15 +259,24 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            // notifySuccess(`Successfully transferred ${amount} STRT to Airdrop contract!`);
-            await toast({
-                description: `Successfully transferred ${amount} STRT to Airdrop contract!`,
+
+            toast({
+                title: "Funds transfered",
+                description: `${amount} STRT`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${tx.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
             })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            await toast({
+            toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -294,14 +322,27 @@ export const ContractProvider = ({
 
             setLoader(false);
 
-            await toast({
+            toast({
                 description: 'Airdrop claimed successfully!',
             })
+
+            toast({
+                title: 'Airdrop claimed successfully!',
+                // description: `Tx hash: ${tx.hash}`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${tx.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
+            })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            await toast({
+            toast({
                 variant: 'destructive',
                 description: `${errorMsg}`,
             })
@@ -317,6 +358,7 @@ export const ContractProvider = ({
                 TRANSFER_FUNDS,
                 CLAIM_AIRDROP,
 
+                loader,
                 address,
                 chainId,
                 count,
