@@ -26,13 +26,20 @@ The Web3 space can be daunting, especially for those unfamiliar with concepts li
 
 ## Architecture
 
-Start3 is built on a robust architecture leveraging **Next.js** for frontend development, integrated with **ethers.js** and **wagmi** for seamless blockchain interactions. The backend is designed to be scalable, with AI algorithms optimizing the onboarding process. The platform is hosted on **Vercel** for fast deployment and scalability, ensuring a smooth experience for users. Smart contracts, developed using **Solidity**, are deployed on the **Base** network, ensuring secure and efficient operations onchain.
+![Architecture Diagram](./assets/architecture.jpg)
 
 - **Frontend:** Built using **Next.js** and styled with **Tailwind CSS**.
 - **Blockchain Integration:** Powered by **ethers.js** and **wagmi** to interact with smart contracts.
 - **Backend:** AI-driven algorithms optimize the onboarding process.
 - **Smart Contracts:** Deployed on **Base**, enabling secure, onchain rewards and interactions.
 - **Hosting:** Deployed on **Vercel** for global scalability and performance.
+
+## Contracts
+
+The project utilizes smart contracts for managing the core functionality of the platform, including the STRT token, which follows the ERC-20 standard for minting, transfers, and rewards distribution. The Airdrop Contract manages token distribution for specific campaigns, while the AI flow track user progress through onboarding tasks and automatically distribute rewards.
+
+- **Start Token (STRT):** [0xad1Bcd68C47f9f31Df1495Ff62b2567093C754ce](https://sepolia.basescan.org/address/0xad1Bcd68C47f9f31Df1495Ff62b2567093C754ce)
+- **Airdrop Contract:** [0xf8aE91c86627F5D3fb14BC7426BCCdf0C50f085A](https://sepolia.arbiscan.io/address/0xf8aE91c86627F5D3fb14BC7426BCCdf0C50f085A)
 
 ## Demo Video
 
