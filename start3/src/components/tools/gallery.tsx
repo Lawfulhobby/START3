@@ -159,21 +159,21 @@ const tools = [
         id: 8,
         title: "Twitter Embed",
         description:
-            "Enable token swapping within the onboarding flow. Users can exchange one cryptocurrency for another, helping them understand liquidity pools and decentralized exchanges (DEXs) as part of their Web3 journey.",
+            "Embed a Twitter post directly into the flow to allow users to showcase their tweets or follow discussions. This can be used for sharing progress, updates, or engaging with the Web3 community on Twitter.",
         tool: <TwitterComponent />,
     },
     {
-        id: 9,
+        id: 9, 
         title: "Instagram Embed",
         description:
-            "Enable token swapping within the onboarding flow. Users can exchange one cryptocurrency for another, helping them understand liquidity pools and decentralized exchanges (DEXs) as part of their Web3 journey.",
+            "Embed an Instagram post or feed, enabling users to showcase visual content or campaigns related to their Web3 journey. This is great for highlighting achievements, events, or social media participation.",
         tool: <InstagramComponent/>
     },
     {
         id: 10,
         title: "LinkedIn Embed",
         description:
-            "Enable token swapping within the onboarding flow. Users can exchange one cryptocurrency for another, helping them understand liquidity pools and decentralized exchanges (DEXs) as part of their Web3 journey.",
+            "Embed a LinkedIn post or profile to help users connect professionally or share milestones in the Web3 space. Perfect for highlighting career advancements, partnerships, or thought leadership in the blockchain ecosystem.",
         tool: <LinkedInComponent/>
     },
 ];

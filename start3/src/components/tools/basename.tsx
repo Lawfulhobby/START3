@@ -57,7 +57,7 @@ const BasenameComponent: React.FC = () => {
           onChange={handleInputChange}
           placeholder="e.g., start3.base.eth"
           required
-          className='p-2 border border-gray-300 rounded-md'
+          className='p-2 border border-gray-300 text-black rounded-md'
         />
         <button
           type="submit"
@@ -76,8 +76,8 @@ const BasenameComponent: React.FC = () => {
       {/* Display the fetched address */}
       {address && (
         <div className='mt-4'>
-          <span className='block text-lg font-semibold'>Address Resolved:</span>
-          <strong className='text-xl'>{address}</strong>
+          <span className='block text-lg text-black font-semibold'>Address Resolved:</span>
+          <strong className='text-xl text-black'>{address}</strong>
         </div>
       )}
   </BackgroundGradient>
