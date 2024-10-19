@@ -42,6 +42,11 @@ import { Button } from './button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import Link from 'next/link';
+import { NEXT_PUBLIC_URL } from '@/lib/config';
+
+
+import { useToast } from '@/hooks/use-toast';
+import { ToastAction } from "@/components/ui/toast"
 
 interface Option {
     name: string;
@@ -65,6 +70,8 @@ export default function ContentForm() {
     const [dis, setDis] = useState(false);
     const [qrUrl, setQrUrl] = useState('');
     const [stepsComplete, setStepsComplete] = useState(0);
+
+    const { toast } = useToast()
 
     const { SVG } = useQRCode()
 
@@ -116,7 +123,7 @@ export default function ContentForm() {
                 const contentId = responseData.id;
                 // alert(`Content created successfully with ID: ${contentId}`);
                 // router.push(`/flow/${contentId}`);
-                setQrUrl(`http://localhost:3000/flow/${contentId}`);
+                setQrUrl(`${NEXT_PUBLIC_URL}/flow/${contentId}`);
                 setStepsComplete((pv) => pv + 1);
             } else {
                 alert('Failed to create content');
@@ -353,6 +360,7 @@ export default function ContentForm() {
                     </Dialog>
                 </div>
                 <div className="flex w-full">
+
                     <input
                         type="text"
                         value={name}
@@ -385,12 +393,13 @@ export default function ContentForm() {
                     </button>
                 </div>
 
+
                 {steps.map((step, index) => {
                     const selectedOption = options.find(option => option.content === step.content);
                     return (
-                        <div key={index} 
-                        className="mb-2 flex flex-col w-full justify-between"
-                        
+                        <div key={index}
+                            className="mb-2 flex flex-col w-full justify-between"
+
                         >
                             <div className="mb-2 w-10/12">
                                 <input

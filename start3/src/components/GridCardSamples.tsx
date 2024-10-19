@@ -11,15 +11,15 @@ export const GridCardSamples = () => {
         <div className="bg-background text-foreground ">
             <div className="mx-auto grid  grid-cols-1 divide-y divide-neutral-700 border border-neutral-700 md:grid-cols-4 md:divide-x md:divide-y-0">
                 <Card
-                    href="/marketing"
-                    title="Setting up your wallet"
+                    href="/flow/6712d6a4978e727acc1f361e"
+                    title="Setting Up Your First Wallet in the Base Ecosystem"
                     readTime="Live"
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     description="Guide users through the process of creating and securing their first crypto wallet using interactive AI assistance."
                 // disabled={!isConnected} // Pass disabled prop
                 />
                 <Card
-                    href="/create-transaction"
+                    href="/flow/6712dbf4cfe5f074bb1042c1"
                     title="Understanding Basenames"
                     readTime={`Live ${!isConnected ? "- Connect Wallet" : ""}`}
                     src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2379&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -34,14 +34,6 @@ export const GridCardSamples = () => {
                     description="Experience personalized learning paths that adjust content based on your responses to enhance your understanding of web3."
                     disabled={!isConnected} // Pass disabled prop
                 />
-                {/* <Card
-                    href="#"
-                    title="Simulated Smart Contract Interactions"
-                    readTime="Coming soon"
-                    src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    description="Practice safe and risk-free transactions with simulated smart contract interactions to build your confidence in handling real assets."
-                    disabled={true} // Pass disabled prop
-                /> */}
                 <Card
                     href="#"
                     title="Simulated Smart Contract Interactions"

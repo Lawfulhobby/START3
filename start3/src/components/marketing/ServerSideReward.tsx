@@ -1,11 +1,12 @@
-// @ts-nocheck
-'use server';
-import Reward from "./reward";
 
-export async function ServerSideReward() {
+'use server';
+
+import ClaimAirdrop from "../ClaimAirdrop";
+
+export async function ServerSideReward({ sessionId, flowId }: { sessionId: string, flowId: string }) {
     return (
         <div>
-            <Reward />
+            <ClaimAirdrop sessionId={sessionId} flowId={flowId} />
         </div>
     );
 }

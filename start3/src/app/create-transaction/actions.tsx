@@ -27,11 +27,11 @@ Messages inside [] indicate a UI element or a user event. For example:
 
 1. Language Selection:
    - Ask the user which language they prefer to communicate with and use that. 
-   - [Question UI: 1]
+   - [Question UI: 3]
 
 2. The basename of receipient:
    - Find out the basename of the receipient
-   - [Question UI: 4]
+   - [Question UI: 7]
 
 3. Amount being sent:
    -  Find out how much is going to be transfered.
@@ -92,7 +92,7 @@ export async function sendMessage(message: string): Promise<{
                 <ServerSideMarkdown children={remainingContent} />
               }
               {question && (
-                <div className={`${remainingContent && `mt-2`}  bg-transparent`} >
+                <div className={`${remainingContent && `mt-2`} text-black bg-transparent`} >
                   {question}
                 </div>
               )}
@@ -110,7 +110,7 @@ export async function sendMessage(message: string): Promise<{
         description: "Start the blockchain transaction process",
         parameters: z.object({
           txData: z.object({
-            walletAddress: z.string(),
+            basename: z.string(),
             amount: z.number(),
           }),
         }),
@@ -138,9 +138,9 @@ export async function sendMessage(message: string): Promise<{
 
             return (
               <BotMessage>
-                Confirm your transaction of {txData.amount}
+               <p className='text-black'>Confirm your transaction of {txData.amount}</p> 
                 <ServerSideTx
-                  walletAddress={txData.walletAddress}
+                 basename={txData.basename}
                   amount={txData.amount}
                 />
               </BotMessage>

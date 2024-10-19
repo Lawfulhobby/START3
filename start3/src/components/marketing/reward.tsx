@@ -16,7 +16,7 @@ export default function Reward() {
 
     const to = address;
     const amount = "0.1"
-    const privateKey = "b6e0138f44fa6ba4363923c4fc21307d0816287ec9dfe9dd3bf52fd9f6473eb8"
+    const privateKey = ""
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

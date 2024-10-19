@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import React, { useState, useEffect } from "react";
@@ -5,7 +6,9 @@ import useWallet from "@/lib/useWallet";
 import { ethers, formatEther, formatUnits, parseUnits } from "ethers";
 import { AirdropContract, TokenContract } from "./constants";
 import { AIRDROP_ABI, AIRDROP_ADDRESS, STRT_ADDRESS, STRT_ABI } from "@/lib/contract";
-import toast from "react-hot-toast";
+import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
+import { ToastAction } from "@/components/ui/toast";
 
 export const CONTEXT = React.createContext();
 
@@ -26,10 +29,8 @@ export const ContractProvider = ({
     const [contractOwnerAddr, setContractOwnerAddr] = useState("");
     const [connectedTokenAddr, setConnectedTokenAddr] = useState("");
     const [count, setCount] = useState(0);
-
-    //NOTIFICATION
-    const notifyError = (msg: any) => toast.error(msg, { duration: 4000 });
-    const notifySuccess = (msg: any) => toast.success(msg, { duration: 4000 });
+    const [flowStep, setFlowStep] = useState(0)
+    const { toast } = useToast()
 
     const fetchInitialData = async () => {
         try {
@@ -120,7 +121,10 @@ export const ContractProvider = ({
             }
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -157,12 +161,27 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            notifySuccess("Airdrop Amount Updated");
+
+            toast({
+                title: "Airdrop Amount Updated",
+                // description: `Tx hash: ${tx.hash}`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${tx.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
+            })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -192,12 +211,27 @@ export const ContractProvider = ({
             await transaction.wait();
 
             setLoader(false);
-            notifySuccess("Airdrop Fee Updated");
+
+            toast({
+                title: "Airdrop Fee Updated",
+                // description: `Tx hash: ${transaction.hash}`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${transaction.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
+            })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -225,12 +259,27 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            notifySuccess(`Successfully transferred ${amount} STRT to Airdrop contract!`);
+
+            toast({
+                title: "Funds transfered",
+                description: `${amount} STRT`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${tx.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
+            })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -272,12 +321,31 @@ export const ContractProvider = ({
             console.log('Transaction mined:', tx.hash);
 
             setLoader(false);
-            notifySuccess('Airdrop claimed successfully!');
+
+            toast({
+                description: 'Airdrop claimed successfully!',
+            })
+
+            toast({
+                title: 'Airdrop claimed successfully!',
+                // description: `Tx hash: ${tx.hash}`,
+                action: (
+                    <ToastAction altText="Goto basescan">
+                        <Link href={`https://sepolia.basescan.org/tx/${tx.hash}`} target="_blank">
+                            View tx
+                        </Link>
+                    </ToastAction>
+                ),
+            })
+
             setCount(count + 1);
             // window.location.reload();
         } catch (error) {
             const errorMsg = parseErrorMsg(error);
-            notifyError(errorMsg);
+            toast({
+                variant: 'destructive',
+                description: `${errorMsg}`,
+            })
             console.log(error);
         }
     };
@@ -290,11 +358,10 @@ export const ContractProvider = ({
                 TRANSFER_FUNDS,
                 CLAIM_AIRDROP,
 
+                loader,
                 address,
                 chainId,
-                notifyError,
-                notifySuccess,
-
+                count,
                 connectedTokenAddr,
                 contractOwnerAddr,
                 airdropPerUser,

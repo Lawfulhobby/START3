@@ -24,6 +24,8 @@ import LoginButton from "@/components/wallet/LoginButton";
 import SignupButton from "@/components/wallet/SignupButton";
 import useSWR from "swr";
 import { PathFinderLoader } from "@/components/loader";
+import { GridCardSamples } from "@/components/GridCardSamples";
+import { GridFlow } from "@/components/GridFlow";
 
 type Props = {
   params: {
@@ -166,18 +168,27 @@ export default function Home({ params: { slug } }: Props) {
             <p className="text-black text-pretty text-7xl font-bold tracking-tighter text-gray-900">{data.session.name}</p>
             <p className="text-black text-pretty text-lg font-medium tracking-tighter text-gray-700 mt-3">{data.session.description}</p>
           </div>
-          {/* {JSON.stringify(getContent(data.session))} */}
 
+          <div className="flex w-full justify-end">
+            {!address ? (
+              <div
+                className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+              >
+                <LoginButton />
+              </div>
+            ) : (
+              <div
+                className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
+              >
+                <SignupButton />
+              </div>
+            )}
+          </div>
 
+          {!address && (
+            <GridFlow />
+          )}
 
-          {!address ? (
-            <div
-              className="flex items-center px-4 py-3 text-base font-medium text-gray-950 bg-blend-multiply data-[hover]:bg-black/[2.5%]"
-            >
-              <LoginButton />
-            </div>
-          )
-            : (<SignupButton />)}
         </ResizablePanel>
 
         <ResizableHandle withHandle />

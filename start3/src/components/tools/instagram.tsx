@@ -45,11 +45,17 @@ const InstagramComponent: FC = () => {
 
     return (
         <BackgroundGradient className="rounded-xl flex items-center justify-center p-5 bg-white">
-            <div className="bg-white ">
-                <Instagram
-                    user={user}
-                    handleClick={(e) => handleFormFieldChange("instagramUrl", e)}
-                />
+            <div className="container mx-auto ">
+                <div className="flex justify-center">
+                    <div className="w-full max-w-lg">
+                        <div className="bg-white ">
+                            <Instagram
+                                user={user}
+                                handleClick={(e) => handleFormFieldChange("instagramUrl", e)}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         </BackgroundGradient>
     );

@@ -1,19 +1,20 @@
-// @ts-nocheck
+
 'use server';
 import { SendTransaction } from "./create-tx";
+import { Basename } from "@/apis/basenames";
 
 export async function ServerSideTx(
     {
-        walletAddress,
+        basename,
         amount,
     }: {
-        walletAddress: string,
+        basename: Basename,
         amount: number,
     }) {
     return (
         <div>
             <SendTransaction
-                toAddress={walletAddress}
+                basename={basename}
                 initialValue={amount.toString()}
             />
         </div>

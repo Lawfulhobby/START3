@@ -31,7 +31,7 @@ export const rewardOptions: RewardOption[] = [
         action: "\`call_nft\`",
     },
     {
-        id: 6,
+        id: 3,
         title: 'Partnership Perks',
         description: `
     • **Software Tools:** Collaborate with other software providers to offer free or discounted access to tools that can benefit users in their blockchain ventures.
